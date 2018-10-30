@@ -1,0 +1,15 @@
+{
+  "entrypoint": "index.html",
+  "sources": [
+   "src/**/*",
+   "images/**/*"
+  ],
+  "extraDependencies": [
+    "manifest.json"
+  ],
+  "builds": [
+    {
+      "name": "polymer-default"
+    }
+  ]
+}
