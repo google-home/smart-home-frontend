@@ -310,6 +310,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.SECURITYSYSTEM':
         icon = 'icons:verified-user';
         break;
+      case 'action.devices.types.MICROWAVE':
+        icon = 'device:nfc';
+        break;
     }
     this.$.icon.icon = icon;
   }
@@ -626,6 +629,37 @@ export class SmartDevice extends PolymerElement {
           this.traitHandlers.push(states => {
             const thermostatElement = this.$.states.querySelector(`#states-thermostatmode`);
             thermostatElement.innerText = states.thermostatMode;
+          });
+          break;
+
+        case 'action.devices.traits.Timer':
+          // Add a block for the timer
+          const timerElement = document.createElement('div');
+          timerElement.appendChild(document.createTextNode(`Timer: `))
+          timerElement.id = `states-timer`;
+          const modeValue = document.createElement('span');
+          timerElement.appendChild(modeValue);
+          this.$.states.appendChild(timerElement);
+
+          this.$.icon.addEventListener('tap', event => {
+            // Finish the Timer task
+            this.device.states.timerRemainingSec = -1;
+            this._updateState();
+          });
+
+          this.traitHandlers.push(states => {
+            const elementId = `states-timer`
+            const elementValue = this.$.states.querySelector(`#${elementId} span`);
+            if (!elementValue) return;
+            if (states.timerRemainingSec === -1) {
+              // -1 means no timer set
+              elementValue.innerText = 'No timer set'
+            } else {
+              elementValue.innerText = `${states.timerRemainingSec}s remaining`;
+              if (states.timerPaused) {
+                elementValue.innerText += ' (Paused)';
+              }
+            }
           });
           break;
 

@@ -280,6 +280,10 @@ export class MyApp extends PolymerElement {
           <iron-icon icon="icons:verified-user"></iron-icon>
           <p>Security System</p>
         </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addMicrowave">
+          <iron-icon icon="device:nfc"></iron-icon>
+          <p>Microwave</p>
+        </button>
       </div>
     </paper-dialog>
 
@@ -1961,6 +1965,45 @@ export class MyApp extends PolymerElement {
         online: true,
         currentArmLevel: 'L1',
         isArmed: false
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addMicrowave() {
+    if (!this.microwaveValuesArray) {
+      this.microwaveValuesArray = [{
+        nicknames: ['microwave'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.microwaveValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.MICROWAVE',
+      traits: [
+        'action.devices.traits.StartStop',
+        'action.devices.traits.Timer'
+      ],
+      defaultNames: [`Smart Microwave ${this.devices.length}`],
+      name: `Smart Microwave ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        maxTimerLimitSec: 60,
+        pausable: true
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        timerRemainingSec: -1,
+        timerPaused: false,
+        isRunning: false,
+        isPaused: false,
       },
       hwVersion: '3.2',
       swVersion: '11.4',
