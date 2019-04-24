@@ -252,6 +252,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.HEATER':
         icon = 'icons:account-balance-wallet';
         break;
+      case 'action.devices.types.HEATER':
+        icon = 'icons:view-day';
+        break;
       case 'action.devices.types.LIGHT':
         if (this.device.attributes.colorTemperatureRange) {
           icon = 'image:wb-iridescent';

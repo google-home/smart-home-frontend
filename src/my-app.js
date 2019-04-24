@@ -194,6 +194,10 @@ export class MyApp extends PolymerElement {
           <iron-icon icon="icons:account-balance-wallet"></iron-icon>
           <p>Heater</p>
         </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addHood">
+          <iron-icon icon="icons:view-day"></iron-icon>
+          <p>Hood</p>
+        </button>
         <button dialog-confirm autofocus class="square" id="kettleSelector"
           on-tap="_addKettle">
           <iron-icon icon="image:filter-frames"></iron-icon>
@@ -1158,6 +1162,73 @@ export class MyApp extends PolymerElement {
     this._createDevice(device);
   }
 
+  _addHood() {
+    if (!this.hoodValuesArray) {
+      this.hoodValuesArray = [{
+        nicknames: ['Range hood'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.hoodValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.HOOD',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.Toggles',
+        'action.devices.traits.FanSpeed'
+      ],
+      defaultNames: [`Smart Hood ${this.devices.length}`],
+      name: `Smart Hood ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        availableToggles: [{
+          name: 'Light',
+          name_values: [{
+            name_synonym: [
+            'light'
+            ],
+            lang: 'en'
+          }]
+        }],
+        availableFanSpeeds: {
+          speeds: [{
+            speed_name: 'Low',
+            speed_values: [{
+              speed_synonym: [
+                'low',
+                'slow'
+              ],
+              lang: 'en'
+              }]
+            },
+            {
+            speed_name: 'High',
+            speed_values: [{
+              speed_synonym: [
+                'high'
+                ],
+                lang: 'en'
+              }]
+            }
+          ],
+          ordered: true
+        },
+        reversible: true
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
   _addKettle() {
     if (!this.kettleValuesArray) {
       this.kettleValuesArray = [{
@@ -2011,7 +2082,7 @@ export class MyApp extends PolymerElement {
       manufacturer: 'sirius',
     };
     this._createDevice(device);
-  }
+}
 }
 
 window.customElements.define('my-app', MyApp);
