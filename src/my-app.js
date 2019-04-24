@@ -18,6 +18,7 @@ import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/iron-icons/iron-icons.js';
 import '@polymer/iron-icons/av-icons.js';
 import '@polymer/iron-icons/communication-icons.js';
+import '@polymer/iron-icons/device-icons.js';
 import '@polymer/iron-icons/image-icons.js';
 import '@polymer/iron-icons/hardware-icons.js';
 import '@polymer/iron-icons/maps-icons.js';
@@ -238,6 +239,38 @@ export class MyApp extends PolymerElement {
         <button dialog-confirm autofocus class="square" on-tap="_addWaterHeater">
           <iron-icon icon="maps:local-drink"></iron-icon>
           <p>Water Heater</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addBlinds">
+          <iron-icon icon="icons:view-week"></iron-icon>
+          <p>Blinds</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addAwning">
+          <iron-icon icon="maps:store-mall-directory"></iron-icon>
+          <p>Awning</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addCurtain">
+          <iron-icon icon="icons:flag"></iron-icon>
+          <p>Curtain</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addGarage">
+          <iron-icon icon="notification:drive-eta"></iron-icon>
+          <p>Garage Door</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addPergola">
+          <iron-icon icon="maps:layers"></iron-icon>
+          <p>Pergola</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addShutter">
+          <iron-icon icon="maps:map"></iron-icon>
+          <p>Shutter</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addValve">
+          <iron-icon icon="icons:settings-input-component"></iron-icon>
+          <p>Valve</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addWindow">
+          <iron-icon icon="device:wallpaper"></iron-icon>
+          <p>Window</p>
         </button>
       </div>
     </paper-dialog>
@@ -1507,13 +1540,13 @@ export class MyApp extends PolymerElement {
   }
 
   _addWaterHeater() {
-    if (!this.heaterValuesArray) {
-      this.heaterValuesArray = [{
+    if (!this.waterHeaterValuesArray) {
+      this.waterHeaterValuesArray = [{
         nicknames: ['basement water heater'],
         roomHint: 'Basement'
       }];
     }
-    const element = this.heaterValuesArray.shift();
+    const element = this.waterHeaterValuesArray.shift();
     const device = {
       id: this._genUuid(),
       type: 'action.devices.types.WATERHEATER',
@@ -1521,8 +1554,8 @@ export class MyApp extends PolymerElement {
         'action.devices.traits.OnOff',
         'action.devices.traits.TemperatureControl'
       ],
-      defaultNames: [`Smart Heater ${this.devices.length}`],
-      name: `Smart Heater ${this.devices.length}`,
+      defaultNames: [`Smart Water Heater ${this.devices.length}`],
+      name: `Smart Water Heater ${this.devices.length}`,
       nicknames: this._getNicknames(element),
       roomHint: this._getRoomHint(element),
       attributes: {
@@ -1535,6 +1568,300 @@ export class MyApp extends PolymerElement {
       willReportState: true,
       states: {
         online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addBlinds() {
+    if (!this.blindsValuesArray) {
+      this.blindsValuesArray = [{
+        nicknames: ['sink window'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.blindsValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.BLINDS',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Blinds ${this.devices.length}`],
+      name: `Smart Blinds ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        openDirection: ['LEFT', 'RIGHT']
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        openState: [{
+          openPercent: 0,
+          openDirection: 'LEFT'
+        }, {
+          openPercent: 0,
+          openDirection: 'RIGHT'
+        }]
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addAwning() {
+    if (!this.awningValuesArray) {
+      this.awningValuesArray = [{
+        nicknames: ['back window awning'],
+        roomHint: 'Patio'
+      }];
+    }
+    const element = this.awningValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.AWNING',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Awning ${this.devices.length}`],
+      name: `Smart Awning ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        openDirection: ['UP', 'DOWN']
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        openState: [{
+          openPercent: 0,
+          openDirection: 'UP'
+        }, {
+          openPercent: 0,
+          openDirection: 'DOWN'
+        }]
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addCurtain() {
+    if (!this.curtainValuesArray) {
+      this.curtainValuesArray = [{
+        nicknames: ['living room curtain'],
+        roomHint: 'Living Room'
+      }];
+    }
+    const element = this.curtainValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.CURTAIN',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Curtain ${this.devices.length}`],
+      name: `Smart Curtain ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        openDirection: ['LEFT', 'RIGHT']
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        openState: [{
+          openPercent: 0,
+          openDirection: 'LEFT'
+        }, {
+          openPercent: 0,
+          openDirection: 'RIGHT'
+        }]
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addGarage() {
+    if (!this.garageValuesArray) {
+      this.garageValuesArray = [{
+        nicknames: ['left entrance'],
+        roomHint: 'Garage'
+      }];
+    }
+    const element = this.garageValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.GARAGE',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Garage ${this.devices.length}`],
+      name: `Smart Garage ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      willReportState: true,
+      states: {
+        online: true,
+        openPercent: 0
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addPergola() {
+    if (!this.pergolaValuesArray) {
+      this.pergolaValuesArray = [{
+        nicknames: ['patio pergola'],
+        roomHint: 'Patio'
+      }];
+    }
+    const element = this.pergolaValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.PERGOLA',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Pergola ${this.devices.length}`],
+      name: `Smart Pergola ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        openDirection: ['LEFT', 'RIGHT']
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        openState: [{
+          openPercent: 0,
+          openDirection: 'LEFT'
+        }, {
+          openPercent: 0,
+          openDirection: 'RIGHT'
+        }]
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addShutter() {
+    if (!this.shutterValuesArray) {
+      this.shutterValuesArray = [{
+        nicknames: ['back window shutter'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.pergolshutterValuesArrayaValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.SHUTTER',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Shutter ${this.devices.length}`],
+      name: `Smart Shutter ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        openDirection: ['LEFT', 'RIGHT']
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        openState: [{
+          openPercent: 0,
+          openDirection: 'LEFT'
+        }, {
+          openPercent: 0,
+          openDirection: 'RIGHT'
+        }]
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addValve() {
+    if (!this.valveValuesArray) {
+      this.valveValuesArray = [{
+        nicknames: ['water valve'],
+        roomHint: 'Laundry Room'
+      }];
+    }
+    const element = this.valveValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.VALVE',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Valve ${this.devices.length}`],
+      name: `Smart Valve ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      willReportState: true,
+      states: {
+        online: true,
+        openPercent: 0
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addWindow() {
+    if (!this.windowValuesArray) {
+      this.windowValuesArray = [{
+        nicknames: ['sink window'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.windowValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.WINDOW',
+      traits: [
+        'action.devices.traits.LockUnlock',
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Window ${this.devices.length}`],
+      name: `Smart Window ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      willReportState: true,
+      states: {
+        online: true,
+        openPercent: 0
       },
       hwVersion: '3.2',
       swVersion: '11.4',

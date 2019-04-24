@@ -280,6 +280,30 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.WATERHEATER':
         icon = 'maps:local-drink';
         break;
+      case 'action.devices.types.BLINDS':
+        icon = 'icons:view-week';
+        break;
+      case 'action.devices.types.AWNING':
+        icon = 'maps:store-mall-directory';
+        break;
+      case 'action.devices.types.CURTAIN':
+        icon = 'icons:flag';
+        break;
+      case 'action.devices.types.GARAGE':
+        icon = 'notification:drive-eta';
+        break;
+      case 'action.devices.types.PERGOLA':
+        icon = 'maps:layers';
+        break;
+      case 'action.devices.types.SHUTTER':
+        icon = 'maps:map';
+        break;
+      case 'action.devices.types.VALVE':
+        icon = 'icons:settings-input-component';
+        break;
+      case 'action.devices.types.WINDOW':
+        icon = 'device:wallpaper';
+        break;
     }
     this.$.icon.icon = icon;
   }
@@ -445,6 +469,47 @@ export class SmartDevice extends PolymerElement {
             if (states.on) {
               this.$.icon.style.color = '#4CAF50';
             } else {
+              this.$.icon.style.color = '#333333';
+            }
+          })
+          break;
+
+        case 'action.devices.traits.OpenClose':
+          this.$.icon.style.cursor = 'pointer';
+          this.$.icon.addEventListener('tap', event => {
+            if (this.device.attributes && this.device.attributes.openDirection) {
+              // Tap will open/close in the primary direction
+              const percent = this.device.states.openState[0].openPercent;
+              if (percent > 0) {
+                this.device.states.openState[0].openPercent = 0;
+              } else {
+                this.device.states.openState[0].openPercent = 100;
+              }
+            } else {
+              // There is only one direction
+              const percent = this.device.states.openPercent;
+              if (percent > 0) {
+                this.device.states.openPercent = 0;
+              } else {
+                this.device.states.openPercent = 100;
+              }
+            }
+            this._updateState();
+          });
+          this.traitHandlers.push(states => {
+            let percent = 0
+            if (this.device.attributes && this.device.attributes.openDirection) {
+              // Only show percentage for primary direction
+              percent = states.openState[0].openPercent;
+            } else {
+              percent = states.openPercent;
+            }
+            if (percent > 0) {
+              // Change opacity based on how open it is
+              this.$.icon.style.color = '#673AB7';
+              this.$.icon.style.opacity = percent / 100;
+            } else {
+              // Not open at all
               this.$.icon.style.color = '#333333';
             }
           })
