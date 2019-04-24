@@ -23,6 +23,7 @@ import '@polymer/iron-icons/hardware-icons.js';
 import '@polymer/iron-icons/maps-icons.js';
 import '@polymer/iron-icons/notification-icons.js';
 import '@polymer/iron-icons/places-icons.js';
+import '@polymer/iron-icons/social-icons.js';
 import '@polymer/iron-list/iron-list.js';
 import '@polymer/paper-dialog/paper-dialog.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
@@ -181,7 +182,7 @@ export class MyApp extends PolymerElement {
         </button>
         <button dialog-confirm autofocus class="square" id="kettleSelector"
           on-tap="_addKettle">
-          <iron-icon icon="maps:local-drink"></iron-icon>
+          <iron-icon icon="image:filter-frames"></iron-icon>
           <p>Kettle</p>
         </button>
         <button dialog-confirm autofocus class="square" on-tap="_addCoffeeMaker">
@@ -213,6 +214,30 @@ export class MyApp extends PolymerElement {
         <button dialog-confirm autofocus class="square" on-tap="_addSprinkler">
           <iron-icon icon="image:filter-vintage"></iron-icon>
           <p>Sprinkler</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addAirFreshener">
+          <iron-icon icon="icons:hourglass-full"></iron-icon>
+          <p>Air Freshener</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addFireplace">
+          <iron-icon icon="social:whatshot"></iron-icon>
+          <p>Fireplace</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addDishwasher">
+          <iron-icon icon="maps:restaurant"></iron-icon>
+          <p>Dishwasher</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addDryer">
+          <iron-icon icon="places:casino"></iron-icon>
+          <p>Dryer</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addHeater">
+          <iron-icon icon="icons:account-balance-wallet"></iron-icon>
+          <p>Heater</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addWaterHeater">
+          <iron-icon icon="maps:local-drink"></iron-icon>
+          <p>Water Heater</p>
         </button>
       </div>
     </paper-dialog>
@@ -358,7 +383,7 @@ export class MyApp extends PolymerElement {
   _createDevice(device) {
     this._addDevice(device);
     // Push new device to database
-    fetch(`${API_ENDPOINT}/smarthome/create`, {
+    return fetch(`${API_ENDPOINT}/smarthome/create`, {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json'
@@ -1229,6 +1254,292 @@ export class MyApp extends PolymerElement {
       swVersion: '2.0.0',
       model: 'L',
       manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addAirFreshener() {
+    if (!this.airFreshenerValuesArray) {
+      this.airFreshenerValuesArray = [{
+        nicknames: ['Mr. Fresh'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.airFreshenerValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.AIRFRESHENER',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.Toggles',
+      ],
+      defaultNames: [`Smart Air Freshener ${this.devices.length}`],
+      name: `Smart Air Freshener ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        availableToggles: [{
+          name: 'intermittent spray',
+          name_values: [{
+            name_synonym: ['intermittent spray'],
+            lang: 'en'
+          }, {
+            name_synonym: ['intermittierender Spray'],
+            lang: 'de'
+          }]
+        }]
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addFireplace() {
+    if (!this.fireplaceValuesArray) {
+      this.fireplaceValuesArray = [{
+        nicknames: ['Downstairs Fireplace'],
+        roomHint: 'Living Room'
+      }, {
+        nicknames: ['firepit'],
+        roomHint: 'Garden'
+      }];
+    }
+    const element = this.fireplaceValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.FIREPLACE',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.Toggles',
+      ],
+      defaultNames: [`Smart Fireplace ${this.devices.length}`],
+      name: `Smart Fireplace ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        availableToggles: [{
+          name: 'backlight',
+          name_values: [{
+            name_synonym: ['backlight', 'mood light'],
+            lang: 'en',
+          }, {
+            name_synonym: ['Hintergrundbeleuchtung', 'Stimmungslicht'],
+            lang: 'de'
+          }]
+        }]
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addDishwasher() {
+    if (!this.dishwasherValuesArray) {
+      this.dishwasherValuesArray = [{
+        nicknames: ['dish cleaner'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.dishwasherValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.DISHWASHER',
+      traits: [
+        'action.devices.traits.RunCycle',
+        'action.devices.traits.StartStop',
+      ],
+      defaultNames: [`Smart Dishwasher ${this.devices.length}`],
+      name: `Smart Dishwasher ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        pausable: true,
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addDryer() {
+    if (!this.dryerValuesArray) {
+      this.dryerValuesArray = [{
+        nicknames: ['clothes dryer'],
+        roomHint: 'Laundry Room'
+      }];
+    }
+    const element = this.dryerValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.DRYER',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.StartStop',
+        'action.devices.traits.Modes',
+        'action.devices.traits.Toggles',
+        'action.devices.traits.RunCycle'
+      ],
+      defaultNames: [`Smart Dryer ${this.devices.length}`],
+      name: `Smart Dryer ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        pausable: true,
+        availableModes: [{
+          name: 'load',
+          name_values: [{
+            name_synonym: ['load', 'size', 'load size'],
+            lang: 'en'
+          }],
+          settings: [{
+              setting_name: 'small',
+              setting_values: [{
+                setting_synonym: ['small', 'half'],
+                lang: 'en'
+              }]
+            },
+            {
+              setting_name: 'large',
+              setting_values: [{
+                setting_synonym: ['large', 'full'],
+                lang: 'en'
+              }]
+            }
+          ],
+          ordered: true
+        }],
+        availableToggles: [{
+            name: 'Sterilization',
+            name_values: [{
+              name_synonym: ['Bio-clean', 'UltraSound'],
+              lang: 'en'
+            }]
+          },
+          {
+            name: 'Energy Saving',
+            name_values: [{
+              name_synonym: ['normal', 'medium', 'high'],
+              lang: 'en'
+            }]
+          }
+        ]
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addHeater() {
+    if (!this.heaterValuesArray) {
+      this.heaterValuesArray = [{
+        nicknames: ['upstairs heater'],
+        roomHint: 'Bedroom'
+      }];
+    }
+    const element = this.heaterValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.HEATER',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.FanSpeed'
+      ],
+      defaultNames: [`Smart Heater ${this.devices.length}`],
+      name: `Smart Heater ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        availableFanSpeeds: {
+          speeds: [{
+            speed_name: 'Low',
+            speed_values: [{
+              speed_synonym: ['low', 'slow'],
+              lang: 'en'
+            }]
+          }, {
+            speed_name: 'High',
+            speed_values: [{
+              speed_synonym: ['high'],
+              lang: 'en'
+            }]
+          }],
+          ordered: true
+        },
+        reversible: true
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addWaterHeater() {
+    if (!this.heaterValuesArray) {
+      this.heaterValuesArray = [{
+        nicknames: ['basement water heater'],
+        roomHint: 'Basement'
+      }];
+    }
+    const element = this.heaterValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.WATERHEATER',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.TemperatureControl'
+      ],
+      defaultNames: [`Smart Heater ${this.devices.length}`],
+      name: `Smart Heater ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        temperatureRange: {
+          minThresholdCelsius: 10,
+          maxThresholdCelsius: 50
+        },
+        temperatureUnitForUX: 'F'
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
     };
     this._createDevice(device);
   }

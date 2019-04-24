@@ -239,7 +239,7 @@ export class SmartDevice extends PolymerElement {
         icon = 'hardware:toys';
         break;
       case 'action.devices.types.KETTLE':
-        icon = 'maps:local-drink';
+        icon = 'image:filter-frames';
         break;
       case 'action.devices.types.COFFEE_MAKER':
         icon = 'maps:local-cafe';
@@ -261,6 +261,24 @@ export class SmartDevice extends PolymerElement {
         break;
       case 'action.devices.types.SPRINKLER':
         icon = 'image:filter-vintage';
+        break;
+      case 'action.devices.types.AIRFRESHENER':
+        icon = 'icons:hourglass-full';
+        break;
+      case 'action.devices.types.FIREPLACE':
+        icon = 'social:whatshot';
+        break;
+      case 'action.devices.types.DISHWASHER':
+        icon = 'maps:restaurant';
+        break;
+      case 'action.devices.types.DRYER':
+        icon = 'places:casino';
+        break;
+      case 'action.devices.types.HEATER':
+        icon = 'icons:account-balance-wallet';
+        break;
+      case 'action.devices.types.WATERHEATER':
+        icon = 'maps:local-drink';
         break;
     }
     this.$.icon.icon = icon;
