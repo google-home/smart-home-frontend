@@ -210,63 +210,29 @@ export class SmartDevice extends PolymerElement {
   _setIcon() {
     let icon = '';
     switch (this.device.type) {
-      case 'action.devices.types.LIGHT':
-        if (this.device.attributes.colorTemperatureRange) {
-          icon = 'image:wb-iridescent';
-        } else if (this.device.attributes.colorModel === 'rgb') {
-          icon = 'image:wb-incandescent';
-        }
-        break;
-      case 'action.devices.types.THERMOSTAT':
-        icon = 'image:brightness-7';
-        break;
-      case 'action.devices.types.SCENE':
-        icon = 'image:slideshow';
-        break;
-      case 'action.devices.types.CAMERA':
-        icon = 'image:camera-alt';
-        break;
-      case 'action.devices.types.VACUUM':
-        icon = 'hardware:router';
-        break;
-      case 'action.devices.types.WASHER':
-        icon = 'maps:local-laundry-service';
-        break;
-      case 'action.devices.types.REFRIGERATOR':
-        icon = 'places:kitchen';
-        break;
-      case 'action.devices.types.FAN':
-        icon = 'hardware:toys';
-        break;
-      case 'action.devices.types.KETTLE':
-        icon = 'image:filter-frames';
-        break;
-      case 'action.devices.types.COFFEE_MAKER':
-        icon = 'maps:local-cafe';
-        break;
-      case 'action.devices.types.OUTLET':
-        icon = 'notification:power';
-        break;
-      case 'action.devices.types.SWITCH':
-        icon = 'communication:call-merge';
-        break;
-      case 'action.devices.types.AIRPURIFIER':
-        icon = 'hardware:sim-card';
-        break;
       case 'action.devices.types.AC_UNIT':
         icon = 'places:ac-unit';
-        break;
-      case 'action.devices.types.OVEN':
-        icon = 'av:web';
-        break;
-      case 'action.devices.types.SPRINKLER':
-        icon = 'image:filter-vintage';
         break;
       case 'action.devices.types.AIRFRESHENER':
         icon = 'icons:hourglass-full';
         break;
-      case 'action.devices.types.FIREPLACE':
-        icon = 'social:whatshot';
+      case 'action.devices.types.AIRPURIFIER':
+        icon = 'hardware:sim-card';
+        break;
+      case 'action.devices.types.AWNING':
+        icon = 'maps:store-mall-directory';
+        break;
+      case 'action.devices.types.BLINDS':
+        icon = 'icons:view-week';
+        break;
+      case 'action.devices.types.CAMERA':
+        icon = 'image:camera-alt';
+        break;
+      case 'action.devices.types.COFFEE_MAKER':
+        icon = 'maps:local-cafe';
+        break;
+      case 'action.devices.types.CURTAIN':
+        icon = 'icons:flag';
         break;
       case 'action.devices.types.DISHWASHER':
         icon = 'maps:restaurant';
@@ -274,44 +240,78 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.DRYER':
         icon = 'places:casino';
         break;
-      case 'action.devices.types.HEATER':
-        icon = 'icons:account-balance-wallet';
+      case 'action.devices.types.FAN':
+        icon = 'hardware:toys';
         break;
-      case 'action.devices.types.WATERHEATER':
-        icon = 'maps:local-drink';
-        break;
-      case 'action.devices.types.BLINDS':
-        icon = 'icons:view-week';
-        break;
-      case 'action.devices.types.AWNING':
-        icon = 'maps:store-mall-directory';
-        break;
-      case 'action.devices.types.CURTAIN':
-        icon = 'icons:flag';
+      case 'action.devices.types.FIREPLACE':
+        icon = 'social:whatshot';
         break;
       case 'action.devices.types.GARAGE':
         icon = 'notification:drive-eta';
         break;
-      case 'action.devices.types.PERGOLA':
-        icon = 'maps:layers';
+      case 'action.devices.types.HEATER':
+        icon = 'icons:account-balance-wallet';
         break;
-      case 'action.devices.types.SHUTTER':
-        icon = 'maps:map';
-        break;
-      case 'action.devices.types.VALVE':
-        icon = 'icons:settings-input-component';
-        break;
-      case 'action.devices.types.WINDOW':
-        icon = 'device:wallpaper';
+      case 'action.devices.types.LIGHT':
+        if (this.device.attributes.colorTemperatureRange) {
+          icon = 'image:wb-iridescent';
+        } else if (this.device.attributes.colorModel === 'rgb') {
+          icon = 'image:wb-incandescent';
+        }
         break;
       case 'action.devices.types.LOCK':
         icon = 'icons:lock';
         break;
-      case 'action.devices.types.SECURITYSYSTEM':
-        icon = 'icons:verified-user';
+      case 'action.devices.types.KETTLE':
+        icon = 'image:filter-frames';
         break;
       case 'action.devices.types.MICROWAVE':
         icon = 'device:nfc';
+        break;
+      case 'action.devices.types.OUTLET':
+        icon = 'notification:power';
+        break;
+      case 'action.devices.types.OVEN':
+        icon = 'av:web';
+        break;
+      case 'action.devices.types.PERGOLA':
+        icon = 'maps:layers';
+        break;
+      case 'action.devices.types.REFRIGERATOR':
+        icon = 'places:kitchen';
+        break;
+      case 'action.devices.types.SCENE':
+        icon = 'image:slideshow';
+        break;
+      case 'action.devices.types.SECURITYSYSTEM':
+        icon = 'icons:verified-user';
+        break;
+      case 'action.devices.types.SHUTTER':
+        icon = 'maps:map';
+        break;
+      case 'action.devices.types.SPRINKLER':
+        icon = 'image:filter-vintage';
+        break;
+      case 'action.devices.types.SWITCH':
+        icon = 'communication:call-merge';
+        break;
+      case 'action.devices.types.THERMOSTAT':
+        icon = 'image:brightness-7';
+        break;
+      case 'action.devices.types.VACUUM':
+        icon = 'hardware:router';
+        break;
+      case 'action.devices.types.WASHER':
+        icon = 'maps:local-laundry-service';
+        break;
+      case 'action.devices.types.VALVE':
+        icon = 'icons:settings-input-component';
+        break;
+        case 'action.devices.types.WATERHEATER':
+        icon = 'maps:local-drink';
+        break;
+      case 'action.devices.types.WINDOW':
+        icon = 'device:wallpaper';
         break;
     }
     this.$.icon.icon = icon;

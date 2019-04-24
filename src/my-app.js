@@ -136,93 +136,38 @@ export class MyApp extends PolymerElement {
       </div>
       <div class="layout horizontal center-justified">
         <h1>Add a new device</h1>
-        <button dialog-confirm autofocus class="square" id="lightSelector"
-          on-tap="_addLight">
-          <iron-icon icon="image:wb-incandescent"></iron-icon>
-          <p>RGB Light</p>
+        <button dialog-confirm autofocus class="square" on-tap="_addAcUnit">
+          <iron-icon icon="places:ac-unit"></iron-icon>
+          <p>AC Unit</p>
         </button>
-        <button dialog-confirm autofocus class="square" id="lightSelector"
-          on-tap="_addMonochromeLight">
-          <iron-icon icon="image:wb-iridescent"></iron-icon>
-          <p>Monochrome Light</p>
+        <button dialog-confirm autofocus class="square" on-tap="_addAirFreshener">
+          <iron-icon icon="icons:hourglass-full"></iron-icon>
+          <p>Air Freshener</p>
         </button>
-        <button dialog-confirm autofocus class="square" id="thermostatSelector"
-          on-tap="_addThermostat">
-          <iron-icon icon="image:brightness-7"></iron-icon>
-          <p>Thermostat</p>
+        <button dialog-confirm autofocus class="square" on-tap="_addAirPurifier">
+          <iron-icon icon="hardware:sim-card"></iron-icon>
+          <p>Air Purifier</p>
         </button>
-        <button dialog-confirm autofocus class="square" id="sceneSelector"
-          on-tap="_addScene">
-          <iron-icon icon="image:slideshow"></iron-icon>
-          <p>Scene</p>
+        <button dialog-confirm autofocus class="square" on-tap="_addAwning">
+          <iron-icon icon="maps:store-mall-directory"></iron-icon>
+          <p>Awning</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addBlinds">
+          <iron-icon icon="icons:view-week"></iron-icon>
+          <p>Blinds</p>
         </button>
         <button dialog-confirm autofocus class="square" id="cameraSelector"
           on-tap="_addCamera">
           <iron-icon icon="image:camera-alt"></iron-icon>
           <p>Camera</p>
         </button>
-        <button dialog-confirm autofocus class="square" id="vacuumSelector"
-          on-tap="_addVacuum">
-          <iron-icon icon="hardware:router"></iron-icon>
-          <p>Vacuum</p>
-        </button>
-        <button dialog-confirm autofocus class="square" id="washerSelector"
-          on-tap="_addWasher">
-          <iron-icon icon="maps:local-laundry-service"></iron-icon>
-          <p>Washer</p>
-        </button>
-        <button dialog-confirm autofocus class="square" id="refrigeratorSelector"
-          on-tap="_addRefrigerator">
-          <iron-icon icon="places:kitchen"></iron-icon>
-          <p>Refrigerator</p>
-        </button>
-        <button dialog-confirm autofocus class="square" id="fanSelector"
-          on-tap="_addFan">
-          <iron-icon icon="hardware:toys"></iron-icon>
-          <p>Fan</p>
-        </button>
-        <button dialog-confirm autofocus class="square" id="kettleSelector"
-          on-tap="_addKettle">
-          <iron-icon icon="image:filter-frames"></iron-icon>
-          <p>Kettle</p>
-        </button>
         <button dialog-confirm autofocus class="square" on-tap="_addCoffeeMaker">
           <iron-icon icon="maps:local-cafe"></iron-icon>
           <p>Coffee Maker</p>
         </button>
-        <button dialog-confirm autofocus class="square" id="outletSelector"
-          on-tap="_addOutlet">
-          <iron-icon icon="notification:power"></iron-icon>
-          <p>Outlet</p>
-        </button>
-        <button dialog-confirm autofocus class="square" id="switchSelector"
-          on-tap="_addSwitch">
-          <iron-icon icon="communication:call-merge"></iron-icon>
-          <p>Switch</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addAirPurifier">
-          <iron-icon icon="hardware:sim-card"></iron-icon>
-          <p>Air Purifier</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addAcUnit">
-          <iron-icon icon="places:ac-unit"></iron-icon>
-          <p>AC Unit</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addOven">
-          <iron-icon icon="av:web"></iron-icon>
-          <p>Oven</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addSprinkler">
-          <iron-icon icon="image:filter-vintage"></iron-icon>
-          <p>Sprinkler</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addAirFreshener">
-          <iron-icon icon="icons:hourglass-full"></iron-icon>
-          <p>Air Freshener</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addFireplace">
-          <iron-icon icon="social:whatshot"></iron-icon>
-          <p>Fireplace</p>
+        <button dialog-confirm autofocus class="square" on-tap="_addCurtain">
+          <iron-icon icon="icons:flag"></iron-icon>
+          <p>Curtain</p>
         </button>
         <button dialog-confirm autofocus class="square" on-tap="_addDishwasher">
           <iron-icon icon="maps:restaurant"></iron-icon>
@@ -232,57 +177,112 @@ export class MyApp extends PolymerElement {
           <iron-icon icon="places:casino"></iron-icon>
           <p>Dryer</p>
         </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addHeater">
-          <iron-icon icon="icons:account-balance-wallet"></iron-icon>
-          <p>Heater</p>
+        <button dialog-confirm autofocus class="square" id="fanSelector"
+          on-tap="_addFan">
+          <iron-icon icon="hardware:toys"></iron-icon>
+          <p>Fan</p>
         </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addWaterHeater">
-          <iron-icon icon="maps:local-drink"></iron-icon>
-          <p>Water Heater</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addBlinds">
-          <iron-icon icon="icons:view-week"></iron-icon>
-          <p>Blinds</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addAwning">
-          <iron-icon icon="maps:store-mall-directory"></iron-icon>
-          <p>Awning</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addCurtain">
-          <iron-icon icon="icons:flag"></iron-icon>
-          <p>Curtain</p>
+        <button dialog-confirm autofocus class="square" on-tap="_addFireplace">
+          <iron-icon icon="social:whatshot"></iron-icon>
+          <p>Fireplace</p>
         </button>
         <button dialog-confirm autofocus class="square" on-tap="_addGarage">
           <iron-icon icon="notification:drive-eta"></iron-icon>
           <p>Garage Door</p>
         </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addPergola">
-          <iron-icon icon="maps:layers"></iron-icon>
-          <p>Pergola</p>
+        <button dialog-confirm autofocus class="square" on-tap="_addHeater">
+          <iron-icon icon="icons:account-balance-wallet"></iron-icon>
+          <p>Heater</p>
         </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addShutter">
-          <iron-icon icon="maps:map"></iron-icon>
-          <p>Shutter</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addValve">
-          <iron-icon icon="icons:settings-input-component"></iron-icon>
-          <p>Valve</p>
-        </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addWindow">
-          <iron-icon icon="device:wallpaper"></iron-icon>
-          <p>Window</p>
+        <button dialog-confirm autofocus class="square" id="kettleSelector"
+          on-tap="_addKettle">
+          <iron-icon icon="image:filter-frames"></iron-icon>
+          <p>Kettle</p>
         </button>
         <button dialog-confirm autofocus class="square" on-tap="_addLock">
           <iron-icon icon="icons:lock"></iron-icon>
           <p>Lock</p>
         </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addMicrowave">
+          <iron-icon icon="device:nfc"></iron-icon>
+          <p>Microwave</p>
+        </button>
+        <button dialog-confirm autofocus class="square" id="lightSelector"
+          on-tap="_addMonochromeLight">
+          <iron-icon icon="image:wb-iridescent"></iron-icon>
+          <p>Monochrome Light</p>
+        </button>
+        <button dialog-confirm autofocus class="square" id="outletSelector"
+          on-tap="_addOutlet">
+          <iron-icon icon="notification:power"></iron-icon>
+          <p>Outlet</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addOven">
+          <iron-icon icon="av:web"></iron-icon>
+          <p>Oven</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addPergola">
+          <iron-icon icon="maps:layers"></iron-icon>
+          <p>Pergola</p>
+        </button>
+        <button dialog-confirm autofocus class="square" id="lightSelector"
+          on-tap="_addLight">
+          <iron-icon icon="image:wb-incandescent"></iron-icon>
+          <p>RGB Light</p>
+        </button>
+        <button dialog-confirm autofocus class="square" id="refrigeratorSelector"
+          on-tap="_addRefrigerator">
+          <iron-icon icon="places:kitchen"></iron-icon>
+          <p>Refrigerator</p>
+        </button>
+        <button dialog-confirm autofocus class="square" id="sceneSelector"
+          on-tap="_addScene">
+          <iron-icon icon="image:slideshow"></iron-icon>
+          <p>Scene</p>
+        </button>
         <button dialog-confirm autofocus class="square" on-tap="_addSecuritySystem">
           <iron-icon icon="icons:verified-user"></iron-icon>
           <p>Security System</p>
         </button>
-        <button dialog-confirm autofocus class="square" on-tap="_addMicrowave">
-          <iron-icon icon="device:nfc"></iron-icon>
-          <p>Microwave</p>
+        <button dialog-confirm autofocus class="square" on-tap="_addShutter">
+          <iron-icon icon="maps:map"></iron-icon>
+          <p>Shutter</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addSprinkler">
+          <iron-icon icon="image:filter-vintage"></iron-icon>
+          <p>Sprinkler</p>
+        </button>
+        <button dialog-confirm autofocus class="square" id="switchSelector"
+          on-tap="_addSwitch">
+          <iron-icon icon="communication:call-merge"></iron-icon>
+          <p>Switch</p>
+        </button>
+        <button dialog-confirm autofocus class="square" id="thermostatSelector"
+          on-tap="_addThermostat">
+          <iron-icon icon="image:brightness-7"></iron-icon>
+          <p>Thermostat</p>
+        </button>
+        <button dialog-confirm autofocus class="square" id="vacuumSelector"
+          on-tap="_addVacuum">
+          <iron-icon icon="hardware:router"></iron-icon>
+          <p>Vacuum</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addValve">
+          <iron-icon icon="icons:settings-input-component"></iron-icon>
+          <p>Valve</p>
+        </button>
+        <button dialog-confirm autofocus class="square" id="washerSelector"
+          on-tap="_addWasher">
+          <iron-icon icon="maps:local-laundry-service"></iron-icon>
+          <p>Washer</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addWaterHeater">
+          <iron-icon icon="maps:local-drink"></iron-icon>
+          <p>Water Heater</p>
+        </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addWindow">
+          <iron-icon icon="device:wallpaper"></iron-icon>
+          <p>Window</p>
         </button>
       </div>
     </paper-dialog>
@@ -458,337 +458,60 @@ export class MyApp extends PolymerElement {
     return element.roomHint || '';
   }
 
-  _addLight() {
-    if (!this.lightValuesArray) {
-      this.lightValuesArray = [{
-        nicknames: ['table lamp'],
+  _addAcUnit() {
+    if (!this.acUnitValuesArray) {
+      this.acUnitValuesArray = [{
+        nicknames: ['ac unit'],
         roomHint: 'Living Room'
       }, {
-        nicknames: ['reading lamp'],
-        roomHint: 'Bedroom'
+        nicknames: ['temperature control system'],
+        roomHint: 'Master Bedroom'
       }, {
-        nicknames: ['doorway'],
-        roomHint: 'Hallway'
-      }, {
-        nicknames: ['stairway'],
-        roomHint: 'Hallway'
+        nicknames: ['hvac'],
+        roomHint: 'Basement'
       }];
     }
-    const element = this.lightValuesArray.shift();
+    const element = this.acUnitValuesArray.shift();
     const device = {
       id: this._genUuid(),
-      type: 'action.devices.types.LIGHT',
+      type: 'action.devices.types.AC_UNIT',
       traits: [
-        'action.devices.traits.Brightness',
         'action.devices.traits.OnOff',
-        'action.devices.traits.ColorSetting',
-      ],
-      defaultNames: [`Smart Light ${this.devices.length}`],
-      name: `Smart Light ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        colorModel: 'rgb'
-      },
-      willReportState: true,
-      states: {
-        on: false,
-        online: true,
-        brightness: 90,
-        color: {
-          spectrumRgb: 0
-        }
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addMonochromeLight() {
-    if (!this.monochromeLightValuesArray) {
-      this.monochromeLightValuesArray = [{
-        nicknames: ['ceiling lights'],
-        roomHint: 'Family Room'
-      }, {
-        nicknames: ['garden lights'],
-        roomHint: 'Front Yard'
-      }, {
-        nicknames: ['workshop light'],
-        roomHint: 'Shed'
-      }, {
-        nicknames: ['porch light'],
-        roomHint: 'Front Yard'
-      }];
-    }
-    const element = this.monochromeLightValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.LIGHT',
-      traits: [
-        'action.devices.traits.Brightness',
-        'action.devices.traits.OnOff',
-        'action.devices.traits.ColorSetting',
-      ],
-      defaultNames: [`Smart Lamp ${this.devices.length}`],
-      name: `Smart Lamp ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        colorModel: 'rgb',
-        colorTemperatureRange: {
-          temperatureMinK: 2000,
-          temperatureMaxK: 9000
-        }
-      },
-      willReportState: true,
-      states: {
-        on: false,
-        online: true,
-        brightness: 90,
-        color: {
-          temperatureK: 2000
-        }
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addThermostat() {
-    if (!this.thermostatValuesArray) {
-      this.thermostatValuesArray = [{
-        nicknames: ['wall thermostat'],
-        roomHint: 'Kitchen'
-      }, {
-        nicknames: ['upstairs thermostat'],
-        roomHint: 'hallway'
-      }];
-    }
-    const element = this.thermostatValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.THERMOSTAT',
-      traits: [
+        'action.devices.traits.Modes',
         'action.devices.traits.TemperatureSetting',
       ],
-      defaultNames: [`Smart Thermostat ${this.devices.length}`],
-      name: `Smart Thermostat ${this.devices.length}`,
+      defaultNames: [`Smart AC Unit ${this.devices.length}`],
+      name: `Smart AC Unit ${this.devices.length}`,
       nicknames: this._getNicknames(element),
       roomHint: this._getRoomHint(element),
       attributes: {
-        availableThermostatModes: 'off,heat,cool,on,heatcool',
-        temperatureTemperatureUnit: 'C'
-      },
-      willReportState: true,
-      states: {
-        online: true,
-        thermostatMode: 'off',
-        thermostatTemperatureSetpoint: 23,
-        thermostatTemperatureAmbient: 25.1,
-        thermostatHumidityAmbient: 45.3
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addScene() {
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.SCENE',
-      traits: [
-        'action.devices.traits.Scene',
-      ],
-      defaultNames: [`Smart Scene ${this.devices.length}`],
-      name: `Smart Scene ${this.devices.length}`,
-      nicknames: [`Party Mode`],
-      roomHint: '',
-      attributes: {
-        sceneReversible: true
-      },
-      willReportState: false,
-      states: {
-        online: true,
-        deactivate: true,
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addCamera() {
-    if (!this.cameraValuesArray) {
-      this.cameraValuesArray = [{
-        nicknames: ['backyard camera'],
-        roomHint: 'Backyard'
-      }, {
-        nicknames: ['security camera'],
-        roomHint: 'Entryway'
-      }];
-    }
-    const element = this.cameraValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.CAMERA',
-      traits: [
-        'action.devices.traits.CameraStream',
-      ],
-      defaultNames: [`Smart Camera ${this.devices.length}`],
-      name: `Smart Camera ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        cameraStreamSupportedProtocols: [
-          'hls',
-          'dash'
-        ],
-        cameraStreamNeedAuthToken: false,
-        cameraStreamNeedDrmEncryption: false,
-      },
-      willReportState: true,
-      states: {
-        online: true,
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addVacuum() {
-    if (!this.vacuumValuesArray) {
-      this.vacuumValuesArray = [{
-        nicknames: ['kitchen vacuum'],
-        roomHint: 'Kitchen'
-      }, {
-        nicknames: ['robo vacuum'],
-        roomHint: 'Master Bedroom'
-      }];
-    }
-    const element = this.vacuumValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.VACUUM',
-      traits: [
-        'action.devices.traits.StartStop',
-        'action.devices.traits.Toggles',
-        'action.devices.traits.Dock'
-      ],
-      defaultNames: [`Smart Vacuum ${this.devices.length}`],
-      name: `Smart Vacuum ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        pausable: true,
-        availableToggles: [{
-          name: 'quiet',
-          name_values: [{
-            name_synonym: ['quiet', 'silent'],
-            lang: 'en'
-          }]
-        }]
-      },
-      willReportState: true,
-      states: {
-        online: true,
-        isRunning: false,
-        isPaused: false,
-        isDocked: false,
-        currentToggleSettings: {
-          quiet: false
-        }
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addWasher() {
-    if (!this.washerValuesArray) {
-      this.washerValuesArray = [{
-        nicknames: ['washing machine'],
-        roomHint: 'Laundry Room'
-      }, {
-        nicknames: ['acme washer'],
-        roomHint: 'Laundry Room'
-      }];
-    }
-    const element = this.washerValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.WASHER',
-      traits: [
-        'action.devices.traits.RunCycle',
-        'action.devices.traits.Modes',
-        'action.devices.traits.Toggles',
-      ],
-      defaultNames: [`Smart Washer ${this.devices.length}`],
-      name: `Smart Washer ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        pausable: true,
+        availableThermostatModes: 'off,cool',
+        temperatureTemperatureUnit: 'C',
         availableModes: [{
-          name: 'load',
+          name: 'mode',
           name_values: [{
-            name_synonym: ['load', 'size'],
+            name_synonym: ['mode'],
             lang: 'en'
           }],
           settings: [{
-            setting_name: 'small',
+            setting_name: 'auto',
             setting_values: [{
-              setting_synonym: ['small'],
+              setting_synonym: ['auto'],
               lang: 'en'
             }]
           }, {
-            setting_name: 'large',
+            setting_name: 'manual',
             setting_values: [{
-              setting_synonym: ['large'],
+              setting_synonym: ['manual'],
               lang: 'en'
             }]
-          }]
-        }],
-        availableToggles: [{
-          name: 'quiet',
-          name_values: [{
-            name_synonym: ['quiet', 'silent'],
-            lang: 'en'
           }]
         }]
       },
       willReportState: true,
       states: {
         online: true,
-        currentModeSettings: {
-          load: 'small',
-        },
-        currentToggleSettings: {
-          quiet: false,
-        },
-        currentRunCycle: [{
-          currentCycle: "rinse",
-          nextCycle: "spin",
-          lang: "en"
-        }],
-        currentTotalRemainingTime: 1212,
-        currentCycleRemainingTime: 301,
+        thermostatTemperatureSetpoint: 20,
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -798,283 +521,45 @@ export class MyApp extends PolymerElement {
     this._createDevice(device);
   }
 
-  _addRefrigerator() {
-    if (!this.refrigeratorValuesArray) {
-      this.refrigeratorValuesArray = [{
-        nicknames: ['kitchen refrigerator'],
+  _addAirFreshener() {
+    if (!this.airFreshenerValuesArray) {
+      this.airFreshenerValuesArray = [{
+        nicknames: ['Mr. Fresh'],
         roomHint: 'Kitchen'
-      }, {
-        nicknames: ['mini fridge'],
-        roomHint: 'Office'
-      }, {
-        nicknames: ['garage freezer'],
-        roomHint: 'Garage'
       }];
     }
-    const element = this.refrigeratorValuesArray.shift();
+    const element = this.airFreshenerValuesArray.shift();
     const device = {
       id: this._genUuid(),
-      type: 'action.devices.types.REFRIGERATOR',
+      type: 'action.devices.types.AIRFRESHENER',
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.Toggles',
       ],
-      defaultNames: [`Smart Fridge ${this.devices.length}`],
-      name: `Smart Fridge ${this.devices.length}`,
+      defaultNames: [`Smart Air Freshener ${this.devices.length}`],
+      name: `Smart Air Freshener ${this.devices.length}`,
       nicknames: this._getNicknames(element),
       roomHint: this._getRoomHint(element),
       attributes: {
-        pausable: true,
         availableToggles: [{
-          name: 'quiet',
+          name: 'intermittent spray',
           name_values: [{
-            name_synonym: ['quiet', 'silent'],
+            name_synonym: ['intermittent spray'],
             lang: 'en'
+          }, {
+            name_synonym: ['intermittierender Spray'],
+            lang: 'de'
           }]
         }]
       },
       willReportState: true,
       states: {
         online: true,
-        on: false,
-        currentToggleSettings: {
-          quiet: false,
-        }
       },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addFan() {
-    if (!this.fanValuesArray) {
-      this.fanValuesArray = [{
-        nicknames: ['workshop fan'],
-        roomHint: 'Shed'
-      }, {
-        nicknames: ['kitchen ceiling fan'],
-        roomHint: 'Kitchen'
-      }, {
-        nicknames: ['patio fan'],
-        roomHint: 'Patio'
-      }, {
-        nicknames: ['air conditioner'],
-        roomHint: 'Den'
-      }];
-    }
-    const element = this.fanValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.FAN',
-      traits: [
-        'action.devices.traits.OnOff',
-        'action.devices.traits.FanSpeed',
-      ],
-      defaultNames: [`Smart Fan ${this.devices.length}`],
-      name: `Smart Fan ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        availableFanSpeeds: {
-          speeds: [{
-            speed_name: '0',
-            speed_values: [{
-              speed_synonym: ['off'],
-              lang: 'en'
-            }]
-          }, {
-            speed_name: '1',
-            speed_values: [{
-              speed_synonym: ['low'],
-              lang: 'en'
-            }]
-          }, {
-            speed_name: '2',
-            speed_values: [{
-              speed_synonym: ['medium'],
-              lang: 'en'
-            }]
-          }, {
-            speed_name: '3',
-            speed_values: [{
-              speed_synonym: ['high'],
-              lang: 'en'
-            }]
-          }],
-          ordered: true,
-        },
-        reversible: true
-      },
-      willReportState: true,
-      states: {
-        online: true,
-        currentFanSpeedSetting: '0',
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addKettle() {
-    if (!this.kettleValuesArray) {
-      this.kettleValuesArray = [{
-        nicknames: ['little teapot'],
-        roomHint: 'Kitchen'
-      }, {
-        nicknames: ['ramen cooker'],
-        roomHint: 'Bedroom'
-      }, {
-        nicknames: ['solder station'],
-        roomHint: 'Shed'
-      }];
-    }
-    const element = this.kettleValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.KETTLE',
-      traits: [
-        'action.devices.traits.OnOff',
-        'action.devices.traits.TemperatureControl',
-      ],
-      defaultNames: [`Smart Kettle ${this.devices.length}`],
-      name: `Smart Kettle ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        temperatureRange: {
-          minThresholdCelsius: 0.0,
-          maxThresholdCelsius: 100.0
-        },
-        temperatureUnitForUX: 'C'
-      },
-      willReportState: true,
-      states: {
-        online: true,
-        temperatureSetpointCelsius: 20,
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addCoffeeMaker() {
-    if (!this.coffeeMakerValuesArray) {
-      this.coffeeMakerValuesArray = [{
-        nicknames: ['little coffee pot'],
-        roomHint: 'Kitchen'
-      }, {
-        nicknames: ['coffee maker'],
-        roomHint: 'Kitchen'
-      }, {
-        nicknames: ['my coffee cup'],
-        roomHint: 'Office'
-      }, {
-        nicknames: ['desktop espresso machine'],
-        roomHint: 'Office'
-      }];
-    }
-    const element = this.coffeeMakerValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.COFFEE_MAKER',
-      traits: [
-        'action.devices.traits.OnOff',
-        'action.devices.traits.TemperatureControl',
-      ],
-      defaultNames: [`Smart Coffee Maker ${this.devices.length}`],
-      name: `Smart Coffee Maker ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        temperatureRange: {
-          minThresholdCelsius: 0.0,
-          maxThresholdCelsius: 100.0
-        },
-        temperatureUnitForUX: 'C'
-      },
-      willReportState: true,
-      states: {
-        online: true,
-        temperatureSetpointCelsius: 30,
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addOutlet() {
-    if (!this.outletValuesArray) {
-      this.outletValuesArray = [{
-        nicknames: ['smart plug'],
-        roomHint: 'Basement'
-      }, {
-        nicknames: ['wall outlet'],
-        roomHint: 'Family Room'
-      }];
-    }
-    const element = this.outletValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.OUTLET',
-      traits: [
-        'action.devices.traits.OnOff',
-      ],
-      defaultNames: [`Smart Outlet ${this.devices.length}`],
-      name: `Smart Outlet ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      willReportState: true,
-      states: {
-        online: true,
-        on: false
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addSwitch() {
-    if (!this.switchValuesArray) {
-      this.switchValuesArray = [{
-        nicknames: ['smart switch'],
-        roomHint: 'Living Room'
-      }];
-    }
-    const element = this.switchValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.SWITCH',
-      traits: [
-        'action.devices.traits.OnOff',
-      ],
-      defaultNames: [`Smart Switch ${this.devices.length}`],
-      name: `Smart Switch ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      willReportState: true,
-      states: {
-        online: true,
-        on: false
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
     };
     this._createDevice(device);
   }
@@ -1156,187 +641,37 @@ export class MyApp extends PolymerElement {
     this._createDevice(device);
   }
 
-  _addAcUnit() {
-    if (!this.acUnitValuesArray) {
-      this.acUnitValuesArray = [{
-        nicknames: ['ac unit'],
-        roomHint: 'Living Room'
-      }, {
-        nicknames: ['temperature control system'],
-        roomHint: 'Master Bedroom'
-      }, {
-        nicknames: ['hvac'],
-        roomHint: 'Basement'
+  _addAwning() {
+    if (!this.awningValuesArray) {
+      this.awningValuesArray = [{
+        nicknames: ['back window awning'],
+        roomHint: 'Patio'
       }];
     }
-    const element = this.acUnitValuesArray.shift();
+    const element = this.awningValuesArray.shift();
     const device = {
       id: this._genUuid(),
-      type: 'action.devices.types.AC_UNIT',
+      type: 'action.devices.types.AWNING',
       traits: [
-        'action.devices.traits.OnOff',
-        'action.devices.traits.Modes',
-        'action.devices.traits.TemperatureSetting',
+        'action.devices.traits.OpenClose'
       ],
-      defaultNames: [`Smart AC Unit ${this.devices.length}`],
-      name: `Smart AC Unit ${this.devices.length}`,
+      defaultNames: [`Smart Awning ${this.devices.length}`],
+      name: `Smart Awning ${this.devices.length}`,
       nicknames: this._getNicknames(element),
       roomHint: this._getRoomHint(element),
       attributes: {
-        availableThermostatModes: 'off,cool',
-        temperatureTemperatureUnit: 'C',
-        availableModes: [{
-          name: 'mode',
-          name_values: [{
-            name_synonym: ['mode'],
-            lang: 'en'
-          }],
-          settings: [{
-            setting_name: 'auto',
-            setting_values: [{
-              setting_synonym: ['auto'],
-              lang: 'en'
-            }]
-          }, {
-            setting_name: 'manual',
-            setting_values: [{
-              setting_synonym: ['manual'],
-              lang: 'en'
-            }]
-          }]
+        openDirection: ['UP', 'DOWN']
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        openState: [{
+          openPercent: 0,
+          openDirection: 'UP'
+        }, {
+          openPercent: 0,
+          openDirection: 'DOWN'
         }]
-      },
-      willReportState: true,
-      states: {
-        online: true,
-        thermostatTemperatureSetpoint: 20,
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addOven() {
-    if (!this.ovenValuesArray) {
-      this.ovenValuesArray = [{
-        nicknames: ['oven'],
-        roomHint: 'Kitchen'
-      }, {
-        nicknames: ['stove'],
-        roomHint: 'Kitchen'
-      }, {
-        nicknames: ['broiler'],
-        roomHint: 'Kitchen'
-      }, {
-        nicknames: ['microwave'],
-        roomHint: 'Kitchen'
-      }];
-    }
-    const element = this.ovenValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.OVEN',
-      traits: [
-        'action.devices.traits.OnOff',
-        'action.devices.traits.TemperatureControl',
-      ],
-      defaultNames: [`Smart Oven ${this.devices.length}`],
-      name: `Smart Oven ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        temperatureRange: {
-          minThresholdCelsius: 100.0,
-          maxThresholdCelsius: 300.0
-        },
-        temperatureUnitForUX: 'C'
-      },
-      willReportState: true,
-      states: {
-        online: true,
-        temperatureSetpointCelsius: 200,
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addSprinkler() {
-    if (!this.sprinklerValuesArray) {
-      this.sprinklerValuesArray = [{
-        nicknames: ['front yard sprinklers'],
-        roomHint: 'Front Yard'
-      }, {
-        nicknames: ['garage faucet'],
-        roomHint: 'Garage'
-      }];
-    }
-    const element = this.sprinklerValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.SPRINKLER',
-      traits: [
-        'action.devices.traits.StartStop',
-      ],
-      defaultNames: [`Smart Sprinkler ${this.devices.length}`],
-      name: `Smart Sprinkler ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        pausable: false
-      },
-      willReportState: true,
-      states: {
-        online: true,
-      },
-      hwVersion: '1.0.0',
-      swVersion: '2.0.0',
-      model: 'L',
-      manufacturer: 'L',
-    };
-    this._createDevice(device);
-  }
-
-  _addAirFreshener() {
-    if (!this.airFreshenerValuesArray) {
-      this.airFreshenerValuesArray = [{
-        nicknames: ['Mr. Fresh'],
-        roomHint: 'Kitchen'
-      }];
-    }
-    const element = this.airFreshenerValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.AIRFRESHENER',
-      traits: [
-        'action.devices.traits.OnOff',
-        'action.devices.traits.Toggles',
-      ],
-      defaultNames: [`Smart Air Freshener ${this.devices.length}`],
-      name: `Smart Air Freshener ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        availableToggles: [{
-          name: 'intermittent spray',
-          name_values: [{
-            name_synonym: ['intermittent spray'],
-            lang: 'en'
-          }, {
-            name_synonym: ['intermittierender Spray'],
-            lang: 'de'
-          }]
-        }]
-      },
-      willReportState: true,
-      states: {
-        online: true,
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -1346,43 +681,166 @@ export class MyApp extends PolymerElement {
     this._createDevice(device);
   }
 
-  _addFireplace() {
-    if (!this.fireplaceValuesArray) {
-      this.fireplaceValuesArray = [{
-        nicknames: ['Downstairs Fireplace'],
-        roomHint: 'Living Room'
-      }, {
-        nicknames: ['firepit'],
-        roomHint: 'Garden'
+  _addBlinds() {
+    if (!this.blindsValuesArray) {
+      this.blindsValuesArray = [{
+        nicknames: ['sink window'],
+        roomHint: 'Kitchen'
       }];
     }
-    const element = this.fireplaceValuesArray.shift();
+    const element = this.blindsValuesArray.shift();
     const device = {
       id: this._genUuid(),
-      type: 'action.devices.types.FIREPLACE',
+      type: 'action.devices.types.BLINDS',
       traits: [
-        'action.devices.traits.OnOff',
-        'action.devices.traits.Toggles',
+        'action.devices.traits.OpenClose'
       ],
-      defaultNames: [`Smart Fireplace ${this.devices.length}`],
-      name: `Smart Fireplace ${this.devices.length}`,
+      defaultNames: [`Smart Blinds ${this.devices.length}`],
+      name: `Smart Blinds ${this.devices.length}`,
       nicknames: this._getNicknames(element),
       roomHint: this._getRoomHint(element),
       attributes: {
-        availableToggles: [{
-          name: 'backlight',
-          name_values: [{
-            name_synonym: ['backlight', 'mood light'],
-            lang: 'en',
-          }, {
-            name_synonym: ['Hintergrundbeleuchtung', 'Stimmungslicht'],
-            lang: 'de'
-          }]
-        }]
+        openDirection: ['LEFT', 'RIGHT']
       },
       willReportState: true,
       states: {
         online: true,
+        openState: [{
+          openPercent: 0,
+          openDirection: 'LEFT'
+        }, {
+          openPercent: 0,
+          openDirection: 'RIGHT'
+        }]
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addCamera() {
+    if (!this.cameraValuesArray) {
+      this.cameraValuesArray = [{
+        nicknames: ['backyard camera'],
+        roomHint: 'Backyard'
+      }, {
+        nicknames: ['security camera'],
+        roomHint: 'Entryway'
+      }];
+    }
+    const element = this.cameraValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.CAMERA',
+      traits: [
+        'action.devices.traits.CameraStream',
+      ],
+      defaultNames: [`Smart Camera ${this.devices.length}`],
+      name: `Smart Camera ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        cameraStreamSupportedProtocols: [
+          'hls',
+          'dash'
+        ],
+        cameraStreamNeedAuthToken: false,
+        cameraStreamNeedDrmEncryption: false,
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addCoffeeMaker() {
+    if (!this.coffeeMakerValuesArray) {
+      this.coffeeMakerValuesArray = [{
+        nicknames: ['little coffee pot'],
+        roomHint: 'Kitchen'
+      }, {
+        nicknames: ['coffee maker'],
+        roomHint: 'Kitchen'
+      }, {
+        nicknames: ['my coffee cup'],
+        roomHint: 'Office'
+      }, {
+        nicknames: ['desktop espresso machine'],
+        roomHint: 'Office'
+      }];
+    }
+    const element = this.coffeeMakerValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.COFFEE_MAKER',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.TemperatureControl',
+      ],
+      defaultNames: [`Smart Coffee Maker ${this.devices.length}`],
+      name: `Smart Coffee Maker ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        temperatureRange: {
+          minThresholdCelsius: 0.0,
+          maxThresholdCelsius: 100.0
+        },
+        temperatureUnitForUX: 'C'
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        temperatureSetpointCelsius: 30,
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addCurtain() {
+    if (!this.curtainValuesArray) {
+      this.curtainValuesArray = [{
+        nicknames: ['living room curtain'],
+        roomHint: 'Living Room'
+      }];
+    }
+    const element = this.curtainValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.CURTAIN',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Curtain ${this.devices.length}`],
+      name: `Smart Curtain ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        openDirection: ['LEFT', 'RIGHT']
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        openState: [{
+          openPercent: 0,
+          openDirection: 'LEFT'
+        }, {
+          openPercent: 0,
+          openDirection: 'RIGHT'
+        }]
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -1501,6 +959,155 @@ export class MyApp extends PolymerElement {
     this._createDevice(device);
   }
 
+  _addFan() {
+    if (!this.fanValuesArray) {
+      this.fanValuesArray = [{
+        nicknames: ['workshop fan'],
+        roomHint: 'Shed'
+      }, {
+        nicknames: ['kitchen ceiling fan'],
+        roomHint: 'Kitchen'
+      }, {
+        nicknames: ['patio fan'],
+        roomHint: 'Patio'
+      }, {
+        nicknames: ['air conditioner'],
+        roomHint: 'Den'
+      }];
+    }
+    const element = this.fanValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.FAN',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.FanSpeed',
+      ],
+      defaultNames: [`Smart Fan ${this.devices.length}`],
+      name: `Smart Fan ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        availableFanSpeeds: {
+          speeds: [{
+            speed_name: '0',
+            speed_values: [{
+              speed_synonym: ['off'],
+              lang: 'en'
+            }]
+          }, {
+            speed_name: '1',
+            speed_values: [{
+              speed_synonym: ['low'],
+              lang: 'en'
+            }]
+          }, {
+            speed_name: '2',
+            speed_values: [{
+              speed_synonym: ['medium'],
+              lang: 'en'
+            }]
+          }, {
+            speed_name: '3',
+            speed_values: [{
+              speed_synonym: ['high'],
+              lang: 'en'
+            }]
+          }],
+          ordered: true,
+        },
+        reversible: true
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        currentFanSpeedSetting: '0',
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addFireplace() {
+    if (!this.fireplaceValuesArray) {
+      this.fireplaceValuesArray = [{
+        nicknames: ['Downstairs Fireplace'],
+        roomHint: 'Living Room'
+      }, {
+        nicknames: ['firepit'],
+        roomHint: 'Garden'
+      }];
+    }
+    const element = this.fireplaceValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.FIREPLACE',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.Toggles',
+      ],
+      defaultNames: [`Smart Fireplace ${this.devices.length}`],
+      name: `Smart Fireplace ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        availableToggles: [{
+          name: 'backlight',
+          name_values: [{
+            name_synonym: ['backlight', 'mood light'],
+            lang: 'en',
+          }, {
+            name_synonym: ['Hintergrundbeleuchtung', 'Stimmungslicht'],
+            lang: 'de'
+          }]
+        }]
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addGarage() {
+    if (!this.garageValuesArray) {
+      this.garageValuesArray = [{
+        nicknames: ['left entrance'],
+        roomHint: 'Garage'
+      }];
+    }
+    const element = this.garageValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.GARAGE',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Garage ${this.devices.length}`],
+      name: `Smart Garage ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      willReportState: true,
+      states: {
+        online: true,
+        openPercent: 0
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
   _addHeater() {
     if (!this.heaterValuesArray) {
       this.heaterValuesArray = [{
@@ -1551,191 +1158,305 @@ export class MyApp extends PolymerElement {
     this._createDevice(device);
   }
 
-  _addWaterHeater() {
-    if (!this.waterHeaterValuesArray) {
-      this.waterHeaterValuesArray = [{
-        nicknames: ['basement water heater'],
-        roomHint: 'Basement'
+  _addKettle() {
+    if (!this.kettleValuesArray) {
+      this.kettleValuesArray = [{
+        nicknames: ['little teapot'],
+        roomHint: 'Kitchen'
+      }, {
+        nicknames: ['ramen cooker'],
+        roomHint: 'Bedroom'
+      }, {
+        nicknames: ['solder station'],
+        roomHint: 'Shed'
       }];
     }
-    const element = this.waterHeaterValuesArray.shift();
+    const element = this.kettleValuesArray.shift();
     const device = {
       id: this._genUuid(),
-      type: 'action.devices.types.WATERHEATER',
+      type: 'action.devices.types.KETTLE',
       traits: [
         'action.devices.traits.OnOff',
-        'action.devices.traits.TemperatureControl'
+        'action.devices.traits.TemperatureControl',
       ],
-      defaultNames: [`Smart Water Heater ${this.devices.length}`],
-      name: `Smart Water Heater ${this.devices.length}`,
+      defaultNames: [`Smart Kettle ${this.devices.length}`],
+      name: `Smart Kettle ${this.devices.length}`,
       nicknames: this._getNicknames(element),
       roomHint: this._getRoomHint(element),
       attributes: {
         temperatureRange: {
-          minThresholdCelsius: 10,
-          maxThresholdCelsius: 50
+          minThresholdCelsius: 0.0,
+          maxThresholdCelsius: 100.0
         },
-        temperatureUnitForUX: 'F'
+        temperatureUnitForUX: 'C'
       },
       willReportState: true,
       states: {
         online: true,
+        temperatureSetpointCelsius: 20,
       },
-      hwVersion: '3.2',
-      swVersion: '11.4',
-      model: '442',
-      manufacturer: 'sirius',
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
     };
     this._createDevice(device);
   }
 
-  _addBlinds() {
-    if (!this.blindsValuesArray) {
-      this.blindsValuesArray = [{
-        nicknames: ['sink window'],
-        roomHint: 'Kitchen'
-      }];
-    }
-    const element = this.blindsValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.BLINDS',
-      traits: [
-        'action.devices.traits.OpenClose'
-      ],
-      defaultNames: [`Smart Blinds ${this.devices.length}`],
-      name: `Smart Blinds ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        openDirection: ['LEFT', 'RIGHT']
-      },
-      willReportState: true,
-      states: {
-        online: true,
-        openState: [{
-          openPercent: 0,
-          openDirection: 'LEFT'
-        }, {
-          openPercent: 0,
-          openDirection: 'RIGHT'
-        }]
-      },
-      hwVersion: '3.2',
-      swVersion: '11.4',
-      model: '442',
-      manufacturer: 'sirius',
-    };
-    this._createDevice(device);
-  }
-
-  _addAwning() {
-    if (!this.awningValuesArray) {
-      this.awningValuesArray = [{
-        nicknames: ['back window awning'],
-        roomHint: 'Patio'
-      }];
-    }
-    const element = this.awningValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.AWNING',
-      traits: [
-        'action.devices.traits.OpenClose'
-      ],
-      defaultNames: [`Smart Awning ${this.devices.length}`],
-      name: `Smart Awning ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        openDirection: ['UP', 'DOWN']
-      },
-      willReportState: true,
-      states: {
-        online: true,
-        openState: [{
-          openPercent: 0,
-          openDirection: 'UP'
-        }, {
-          openPercent: 0,
-          openDirection: 'DOWN'
-        }]
-      },
-      hwVersion: '3.2',
-      swVersion: '11.4',
-      model: '442',
-      manufacturer: 'sirius',
-    };
-    this._createDevice(device);
-  }
-
-  _addCurtain() {
-    if (!this.curtainValuesArray) {
-      this.curtainValuesArray = [{
-        nicknames: ['living room curtain'],
+  _addLight() {
+    if (!this.lightValuesArray) {
+      this.lightValuesArray = [{
+        nicknames: ['table lamp'],
         roomHint: 'Living Room'
+      }, {
+        nicknames: ['reading lamp'],
+        roomHint: 'Bedroom'
+      }, {
+        nicknames: ['doorway'],
+        roomHint: 'Hallway'
+      }, {
+        nicknames: ['stairway'],
+        roomHint: 'Hallway'
       }];
     }
-    const element = this.curtainValuesArray.shift();
+    const element = this.lightValuesArray.shift();
     const device = {
       id: this._genUuid(),
-      type: 'action.devices.types.CURTAIN',
+      type: 'action.devices.types.LIGHT',
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.Brightness',
+        'action.devices.traits.OnOff',
+        'action.devices.traits.ColorSetting',
       ],
-      defaultNames: [`Smart Curtain ${this.devices.length}`],
-      name: `Smart Curtain ${this.devices.length}`,
+      defaultNames: [`Smart Light ${this.devices.length}`],
+      name: `Smart Light ${this.devices.length}`,
       nicknames: this._getNicknames(element),
       roomHint: this._getRoomHint(element),
       attributes: {
-        openDirection: ['LEFT', 'RIGHT']
+        colorModel: 'rgb'
       },
       willReportState: true,
       states: {
+        on: false,
         online: true,
-        openState: [{
-          openPercent: 0,
-          openDirection: 'LEFT'
-        }, {
-          openPercent: 0,
-          openDirection: 'RIGHT'
-        }]
+        brightness: 90,
+        color: {
+          spectrumRgb: 0
+        }
       },
-      hwVersion: '3.2',
-      swVersion: '11.4',
-      model: '442',
-      manufacturer: 'sirius',
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
     };
     this._createDevice(device);
   }
 
-  _addGarage() {
-    if (!this.garageValuesArray) {
-      this.garageValuesArray = [{
-        nicknames: ['left entrance'],
+  _addLock() {
+    if (!this.lockValuesArray) {
+      this.lockValuesArray = [{
+        nicknames: ['front door'],
+        roomHint: 'Living Room'
+      }, {
+        nicknames: ['back door'],
         roomHint: 'Garage'
       }];
     }
-    const element = this.garageValuesArray.shift();
+    const element = this.lockValuesArray.shift();
     const device = {
       id: this._genUuid(),
-      type: 'action.devices.types.GARAGE',
+      type: 'action.devices.types.LOCK',
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.LockUnlock'
       ],
-      defaultNames: [`Smart Garage ${this.devices.length}`],
-      name: `Smart Garage ${this.devices.length}`,
+      defaultNames: [`Smart Lock ${this.devices.length}`],
+      name: `Smart Lock ${this.devices.length}`,
       nicknames: this._getNicknames(element),
       roomHint: this._getRoomHint(element),
       willReportState: true,
       states: {
         online: true,
-        openPercent: 0
+        isLocked: false,
+        isJammed: false
       },
       hwVersion: '3.2',
       swVersion: '11.4',
       model: '442',
       manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addMicrowave() {
+    if (!this.microwaveValuesArray) {
+      this.microwaveValuesArray = [{
+        nicknames: ['microwave'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.microwaveValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.MICROWAVE',
+      traits: [
+        'action.devices.traits.StartStop',
+        'action.devices.traits.Timer'
+      ],
+      defaultNames: [`Smart Microwave ${this.devices.length}`],
+      name: `Smart Microwave ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        maxTimerLimitSec: 60,
+        pausable: true
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        timerRemainingSec: -1,
+        timerPaused: false,
+        isRunning: false,
+        isPaused: false,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addMonochromeLight() {
+    if (!this.monochromeLightValuesArray) {
+      this.monochromeLightValuesArray = [{
+        nicknames: ['ceiling lights'],
+        roomHint: 'Family Room'
+      }, {
+        nicknames: ['garden lights'],
+        roomHint: 'Front Yard'
+      }, {
+        nicknames: ['workshop light'],
+        roomHint: 'Shed'
+      }, {
+        nicknames: ['porch light'],
+        roomHint: 'Front Yard'
+      }];
+    }
+    const element = this.monochromeLightValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.LIGHT',
+      traits: [
+        'action.devices.traits.Brightness',
+        'action.devices.traits.OnOff',
+        'action.devices.traits.ColorSetting',
+      ],
+      defaultNames: [`Smart Lamp ${this.devices.length}`],
+      name: `Smart Lamp ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        colorModel: 'rgb',
+        colorTemperatureRange: {
+          temperatureMinK: 2000,
+          temperatureMaxK: 9000
+        }
+      },
+      willReportState: true,
+      states: {
+        on: false,
+        online: true,
+        brightness: 90,
+        color: {
+          temperatureK: 2000
+        }
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addOutlet() {
+    if (!this.outletValuesArray) {
+      this.outletValuesArray = [{
+        nicknames: ['smart plug'],
+        roomHint: 'Basement'
+      }, {
+        nicknames: ['wall outlet'],
+        roomHint: 'Family Room'
+      }];
+    }
+    const element = this.outletValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.OUTLET',
+      traits: [
+        'action.devices.traits.OnOff',
+      ],
+      defaultNames: [`Smart Outlet ${this.devices.length}`],
+      name: `Smart Outlet ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      willReportState: true,
+      states: {
+        online: true,
+        on: false
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addOven() {
+    if (!this.ovenValuesArray) {
+      this.ovenValuesArray = [{
+        nicknames: ['oven'],
+        roomHint: 'Kitchen'
+      }, {
+        nicknames: ['stove'],
+        roomHint: 'Kitchen'
+      }, {
+        nicknames: ['broiler'],
+        roomHint: 'Kitchen'
+      }, {
+        nicknames: ['microwave'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.ovenValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.OVEN',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.TemperatureControl',
+      ],
+      defaultNames: [`Smart Oven ${this.devices.length}`],
+      name: `Smart Oven ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        temperatureRange: {
+          minThresholdCelsius: 100.0,
+          maxThresholdCelsius: 300.0
+        },
+        temperatureUnitForUX: 'C'
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        temperatureSetpointCelsius: 200,
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
     };
     this._createDevice(device);
   }
@@ -1780,140 +1501,80 @@ export class MyApp extends PolymerElement {
     this._createDevice(device);
   }
 
-  _addShutter() {
-    if (!this.shutterValuesArray) {
-      this.shutterValuesArray = [{
-        nicknames: ['back window shutter'],
+  _addRefrigerator() {
+    if (!this.refrigeratorValuesArray) {
+      this.refrigeratorValuesArray = [{
+        nicknames: ['kitchen refrigerator'],
         roomHint: 'Kitchen'
-      }];
-    }
-    const element = this.pergolshutterValuesArrayaValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.SHUTTER',
-      traits: [
-        'action.devices.traits.OpenClose'
-      ],
-      defaultNames: [`Smart Shutter ${this.devices.length}`],
-      name: `Smart Shutter ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      attributes: {
-        openDirection: ['LEFT', 'RIGHT']
-      },
-      willReportState: true,
-      states: {
-        online: true,
-        openState: [{
-          openPercent: 0,
-          openDirection: 'LEFT'
-        }, {
-          openPercent: 0,
-          openDirection: 'RIGHT'
-        }]
-      },
-      hwVersion: '3.2',
-      swVersion: '11.4',
-      model: '442',
-      manufacturer: 'sirius',
-    };
-    this._createDevice(device);
-  }
-
-  _addValve() {
-    if (!this.valveValuesArray) {
-      this.valveValuesArray = [{
-        nicknames: ['water valve'],
-        roomHint: 'Laundry Room'
-      }];
-    }
-    const element = this.valveValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.VALVE',
-      traits: [
-        'action.devices.traits.OpenClose'
-      ],
-      defaultNames: [`Smart Valve ${this.devices.length}`],
-      name: `Smart Valve ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      willReportState: true,
-      states: {
-        online: true,
-        openPercent: 0
-      },
-      hwVersion: '3.2',
-      swVersion: '11.4',
-      model: '442',
-      manufacturer: 'sirius',
-    };
-    this._createDevice(device);
-  }
-
-  _addWindow() {
-    if (!this.windowValuesArray) {
-      this.windowValuesArray = [{
-        nicknames: ['sink window'],
-        roomHint: 'Kitchen'
-      }];
-    }
-    const element = this.windowValuesArray.shift();
-    const device = {
-      id: this._genUuid(),
-      type: 'action.devices.types.WINDOW',
-      traits: [
-        'action.devices.traits.LockUnlock',
-        'action.devices.traits.OpenClose'
-      ],
-      defaultNames: [`Smart Window ${this.devices.length}`],
-      name: `Smart Window ${this.devices.length}`,
-      nicknames: this._getNicknames(element),
-      roomHint: this._getRoomHint(element),
-      willReportState: true,
-      states: {
-        online: true,
-        openPercent: 0
-      },
-      hwVersion: '3.2',
-      swVersion: '11.4',
-      model: '442',
-      manufacturer: 'sirius',
-    };
-    this._createDevice(device);
-  }
-
-  _addLock() {
-    if (!this.lockValuesArray) {
-      this.lockValuesArray = [{
-        nicknames: ['front door'],
-        roomHint: 'Living Room'
       }, {
-        nicknames: ['back door'],
+        nicknames: ['mini fridge'],
+        roomHint: 'Office'
+      }, {
+        nicknames: ['garage freezer'],
         roomHint: 'Garage'
       }];
     }
-    const element = this.lockValuesArray.shift();
+    const element = this.refrigeratorValuesArray.shift();
     const device = {
       id: this._genUuid(),
-      type: 'action.devices.types.LOCK',
+      type: 'action.devices.types.REFRIGERATOR',
       traits: [
-        'action.devices.traits.LockUnlock'
+        'action.devices.traits.OnOff',
+        'action.devices.traits.Toggles',
       ],
-      defaultNames: [`Smart Lock ${this.devices.length}`],
-      name: `Smart Lock ${this.devices.length}`,
+      defaultNames: [`Smart Fridge ${this.devices.length}`],
+      name: `Smart Fridge ${this.devices.length}`,
       nicknames: this._getNicknames(element),
       roomHint: this._getRoomHint(element),
+      attributes: {
+        pausable: true,
+        availableToggles: [{
+          name: 'quiet',
+          name_values: [{
+            name_synonym: ['quiet', 'silent'],
+            lang: 'en'
+          }]
+        }]
+      },
       willReportState: true,
       states: {
         online: true,
-        isLocked: false,
-        isJammed: false
+        on: false,
+        currentToggleSettings: {
+          quiet: false,
+        }
       },
-      hwVersion: '3.2',
-      swVersion: '11.4',
-      model: '442',
-      manufacturer: 'sirius',
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addScene() {
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.SCENE',
+      traits: [
+        'action.devices.traits.Scene',
+      ],
+      defaultNames: [`Smart Scene ${this.devices.length}`],
+      name: `Smart Scene ${this.devices.length}`,
+      nicknames: [`Party Mode`],
+      roomHint: '',
+      attributes: {
+        sceneReversible: true
+      },
+      willReportState: false,
+      states: {
+        online: true,
+        deactivate: true,
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
     };
     this._createDevice(device);
   }
@@ -1974,36 +1635,375 @@ export class MyApp extends PolymerElement {
     this._createDevice(device);
   }
 
-  _addMicrowave() {
-    if (!this.microwaveValuesArray) {
-      this.microwaveValuesArray = [{
-        nicknames: ['microwave'],
+  _addShutter() {
+    if (!this.shutterValuesArray) {
+      this.shutterValuesArray = [{
+        nicknames: ['back window shutter'],
         roomHint: 'Kitchen'
       }];
     }
-    const element = this.microwaveValuesArray.shift();
+    const element = this.pergolshutterValuesArrayaValuesArray.shift();
     const device = {
       id: this._genUuid(),
-      type: 'action.devices.types.MICROWAVE',
+      type: 'action.devices.types.SHUTTER',
       traits: [
-        'action.devices.traits.StartStop',
-        'action.devices.traits.Timer'
+        'action.devices.traits.OpenClose'
       ],
-      defaultNames: [`Smart Microwave ${this.devices.length}`],
-      name: `Smart Microwave ${this.devices.length}`,
+      defaultNames: [`Smart Shutter ${this.devices.length}`],
+      name: `Smart Shutter ${this.devices.length}`,
       nicknames: this._getNicknames(element),
       roomHint: this._getRoomHint(element),
       attributes: {
-        maxTimerLimitSec: 60,
-        pausable: true
+        openDirection: ['LEFT', 'RIGHT']
       },
       willReportState: true,
       states: {
         online: true,
-        timerRemainingSec: -1,
-        timerPaused: false,
+        openState: [{
+          openPercent: 0,
+          openDirection: 'LEFT'
+        }, {
+          openPercent: 0,
+          openDirection: 'RIGHT'
+        }]
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addSprinkler() {
+    if (!this.sprinklerValuesArray) {
+      this.sprinklerValuesArray = [{
+        nicknames: ['front yard sprinklers'],
+        roomHint: 'Front Yard'
+      }, {
+        nicknames: ['garage faucet'],
+        roomHint: 'Garage'
+      }];
+    }
+    const element = this.sprinklerValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.SPRINKLER',
+      traits: [
+        'action.devices.traits.StartStop',
+      ],
+      defaultNames: [`Smart Sprinkler ${this.devices.length}`],
+      name: `Smart Sprinkler ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        pausable: false
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addSwitch() {
+    if (!this.switchValuesArray) {
+      this.switchValuesArray = [{
+        nicknames: ['smart switch'],
+        roomHint: 'Living Room'
+      }];
+    }
+    const element = this.switchValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.SWITCH',
+      traits: [
+        'action.devices.traits.OnOff',
+      ],
+      defaultNames: [`Smart Switch ${this.devices.length}`],
+      name: `Smart Switch ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      willReportState: true,
+      states: {
+        online: true,
+        on: false
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addThermostat() {
+    if (!this.thermostatValuesArray) {
+      this.thermostatValuesArray = [{
+        nicknames: ['wall thermostat'],
+        roomHint: 'Kitchen'
+      }, {
+        nicknames: ['upstairs thermostat'],
+        roomHint: 'hallway'
+      }];
+    }
+    const element = this.thermostatValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.THERMOSTAT',
+      traits: [
+        'action.devices.traits.TemperatureSetting',
+      ],
+      defaultNames: [`Smart Thermostat ${this.devices.length}`],
+      name: `Smart Thermostat ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        availableThermostatModes: 'off,heat,cool,on,heatcool',
+        temperatureTemperatureUnit: 'C'
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        thermostatMode: 'off',
+        thermostatTemperatureSetpoint: 23,
+        thermostatTemperatureAmbient: 25.1,
+        thermostatHumidityAmbient: 45.3
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addVacuum() {
+    if (!this.vacuumValuesArray) {
+      this.vacuumValuesArray = [{
+        nicknames: ['kitchen vacuum'],
+        roomHint: 'Kitchen'
+      }, {
+        nicknames: ['robo vacuum'],
+        roomHint: 'Master Bedroom'
+      }];
+    }
+    const element = this.vacuumValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.VACUUM',
+      traits: [
+        'action.devices.traits.StartStop',
+        'action.devices.traits.Toggles',
+        'action.devices.traits.Dock'
+      ],
+      defaultNames: [`Smart Vacuum ${this.devices.length}`],
+      name: `Smart Vacuum ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        pausable: true,
+        availableToggles: [{
+          name: 'quiet',
+          name_values: [{
+            name_synonym: ['quiet', 'silent'],
+            lang: 'en'
+          }]
+        }]
+      },
+      willReportState: true,
+      states: {
+        online: true,
         isRunning: false,
         isPaused: false,
+        isDocked: false,
+        currentToggleSettings: {
+          quiet: false
+        }
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addValve() {
+    if (!this.valveValuesArray) {
+      this.valveValuesArray = [{
+        nicknames: ['water valve'],
+        roomHint: 'Laundry Room'
+      }];
+    }
+    const element = this.valveValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.VALVE',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Valve ${this.devices.length}`],
+      name: `Smart Valve ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      willReportState: true,
+      states: {
+        online: true,
+        openPercent: 0
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addWasher() {
+    if (!this.washerValuesArray) {
+      this.washerValuesArray = [{
+        nicknames: ['washing machine'],
+        roomHint: 'Laundry Room'
+      }, {
+        nicknames: ['acme washer'],
+        roomHint: 'Laundry Room'
+      }];
+    }
+    const element = this.washerValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.WASHER',
+      traits: [
+        'action.devices.traits.RunCycle',
+        'action.devices.traits.Modes',
+        'action.devices.traits.Toggles',
+      ],
+      defaultNames: [`Smart Washer ${this.devices.length}`],
+      name: `Smart Washer ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        pausable: true,
+        availableModes: [{
+          name: 'load',
+          name_values: [{
+            name_synonym: ['load', 'size'],
+            lang: 'en'
+          }],
+          settings: [{
+            setting_name: 'small',
+            setting_values: [{
+              setting_synonym: ['small'],
+              lang: 'en'
+            }]
+          }, {
+            setting_name: 'large',
+            setting_values: [{
+              setting_synonym: ['large'],
+              lang: 'en'
+            }]
+          }]
+        }],
+        availableToggles: [{
+          name: 'quiet',
+          name_values: [{
+            name_synonym: ['quiet', 'silent'],
+            lang: 'en'
+          }]
+        }]
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        currentModeSettings: {
+          load: 'small',
+        },
+        currentToggleSettings: {
+          quiet: false,
+        },
+        currentRunCycle: [{
+          currentCycle: "rinse",
+          nextCycle: "spin",
+          lang: "en"
+        }],
+        currentTotalRemainingTime: 1212,
+        currentCycleRemainingTime: 301,
+      },
+      hwVersion: '1.0.0',
+      swVersion: '2.0.0',
+      model: 'L',
+      manufacturer: 'L',
+    };
+    this._createDevice(device);
+  }
+
+  _addWaterHeater() {
+    if (!this.waterHeaterValuesArray) {
+      this.waterHeaterValuesArray = [{
+        nicknames: ['basement water heater'],
+        roomHint: 'Basement'
+      }];
+    }
+    const element = this.waterHeaterValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.WATERHEATER',
+      traits: [
+        'action.devices.traits.OnOff',
+        'action.devices.traits.TemperatureControl'
+      ],
+      defaultNames: [`Smart Water Heater ${this.devices.length}`],
+      name: `Smart Water Heater ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        temperatureRange: {
+          minThresholdCelsius: 10,
+          maxThresholdCelsius: 50
+        },
+        temperatureUnitForUX: 'F'
+      },
+      willReportState: true,
+      states: {
+        online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addWindow() {
+    if (!this.windowValuesArray) {
+      this.windowValuesArray = [{
+        nicknames: ['sink window'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.windowValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.WINDOW',
+      traits: [
+        'action.devices.traits.LockUnlock',
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Window ${this.devices.length}`],
+      name: `Smart Window ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      willReportState: true,
+      states: {
+        online: true,
+        openPercent: 0
       },
       hwVersion: '3.2',
       swVersion: '11.4',
