@@ -307,6 +307,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.LOCK':
         icon = 'icons:lock';
         break;
+      case 'action.devices.types.SECURITYSYSTEM':
+        icon = 'icons:verified-user';
+        break;
     }
     this.$.icon.icon = icon;
   }
@@ -362,6 +365,19 @@ export class SmartDevice extends PolymerElement {
     const {traits} = this.device;
     traits.forEach(trait => {
       switch (trait) {
+        case 'action.devices.traits.ArmDisarm':
+          this.traitHandlers.push(states => {
+            switch (states.currentArmLevel) {
+              case 'L1':
+                this.$.icon.style.color = '#555555';
+                break;
+              case 'L2':
+                this.$.icon.style.color = '#FF9800';
+                break;
+            }
+          });
+          break;
+
         case 'action.devices.traits.Brightness':
           this.$.brightness.style.display = 'block';
           this.$.brightness.addEventListener('value-change', event => {

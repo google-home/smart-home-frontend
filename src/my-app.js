@@ -276,6 +276,10 @@ export class MyApp extends PolymerElement {
           <iron-icon icon="icons:lock"></iron-icon>
           <p>Lock</p>
         </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addSecuritySystem">
+          <iron-icon icon="icons:verified-user"></iron-icon>
+          <p>Security System</p>
+        </button>
       </div>
     </paper-dialog>
 
@@ -1901,6 +1905,62 @@ export class MyApp extends PolymerElement {
         online: true,
         isLocked: false,
         isJammed: false
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addSecuritySystem() {
+    if (!this.securitySystemValuesArray) {
+      this.securitySystemValuesArray = [{
+        nicknames: ['security panel'],
+        roomHint: 'Hallway'
+      }];
+    }
+    const element = this.securitySystemValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.SECURITYSYSTEM',
+      traits: [
+        'action.devices.traits.ArmDisarm'
+      ],
+      defaultNames: [`Smart Lock ${this.devices.length}`],
+      name: `Smart Lock ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        availableArmLevels: {
+          levels: [{
+            level_name: 'L1',
+            level_values: [{
+              level_synonym: ['home and guarding', 'SL1'],
+              lang: 'en'
+            }, {
+              level_synonym: ['zuhause und bewachen', 'SL1'],
+              lang: 'de'
+            }]
+          }, {
+            level_name: 'L2',
+            level_values: [{
+              level_synonym: ['away and guarding', 'SL2'],
+              lang: 'en'
+            }, {
+              level_synonym: ['weg und bewachen', 'SL2'],
+              lang: 'de'
+            }]
+          }],
+          ordered: true
+        }
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        currentArmLevel: 'L1',
+        isArmed: false
       },
       hwVersion: '3.2',
       swVersion: '11.4',
