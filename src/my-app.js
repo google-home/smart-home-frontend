@@ -173,6 +173,10 @@ export class MyApp extends PolymerElement {
           <iron-icon icon="maps:restaurant"></iron-icon>
           <p>Dishwasher</p>
         </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addDoor">
+          <iron-icon icon="icons:open-in-new"></iron-icon>
+          <p>Door</p>
+        </button>
         <button dialog-confirm autofocus class="square" on-tap="_addDryer">
           <iron-icon icon="places:casino"></iron-icon>
           <p>Dryer</p>
@@ -883,6 +887,46 @@ export class MyApp extends PolymerElement {
       willReportState: true,
       states: {
         online: true,
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addDoor() {
+    if (!this.doorValuesArray) {
+      this.doorValuesArray = [{
+        nicknames: ['Back door'],
+        roomHint: 'Kitchen'
+      }];
+    }
+    const element = this.doorValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.DOOR',
+      traits: [
+        'action.devices.traits.OpenClose'
+      ],
+      defaultNames: [`Smart Door ${this.devices.length}`],
+      name: `Smart Door ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        openDirection: ['IN', 'OUT']
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        openState: [{
+          openDirection: 'IN',
+          openPercent: 0
+        }, {
+          openDirection: 'OUT',
+          openPercent: 0
+        }]
       },
       hwVersion: '3.2',
       swVersion: '11.4',

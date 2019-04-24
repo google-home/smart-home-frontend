@@ -237,6 +237,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.DISHWASHER':
         icon = 'maps:restaurant';
         break;
+      case 'action.devices.types.DOOR':
+        icon = 'icons:open-in-new';
+        break;
       case 'action.devices.types.DRYER':
         icon = 'places:casino';
         break;
