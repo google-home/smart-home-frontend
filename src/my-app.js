@@ -272,6 +272,10 @@ export class MyApp extends PolymerElement {
           <iron-icon icon="device:wallpaper"></iron-icon>
           <p>Window</p>
         </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addLock">
+          <iron-icon icon="icons:lock"></iron-icon>
+          <p>Lock</p>
+        </button>
       </div>
     </paper-dialog>
 
@@ -1862,6 +1866,41 @@ export class MyApp extends PolymerElement {
       states: {
         online: true,
         openPercent: 0
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addLock() {
+    if (!this.lockValuesArray) {
+      this.lockValuesArray = [{
+        nicknames: ['front door'],
+        roomHint: 'Living Room'
+      }, {
+        nicknames: ['back door'],
+        roomHint: 'Garage'
+      }];
+    }
+    const element = this.lockValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.LOCK',
+      traits: [
+        'action.devices.traits.LockUnlock'
+      ],
+      defaultNames: [`Smart Lock ${this.devices.length}`],
+      name: `Smart Lock ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      willReportState: true,
+      states: {
+        online: true,
+        isLocked: false,
+        isJammed: false
       },
       hwVersion: '3.2',
       swVersion: '11.4',

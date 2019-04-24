@@ -304,6 +304,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.WINDOW':
         icon = 'device:wallpaper';
         break;
+      case 'action.devices.types.LOCK':
+        icon = 'icons:lock';
+        break;
     }
     this.$.icon.icon = icon;
   }
@@ -435,6 +438,26 @@ export class SmartDevice extends PolymerElement {
               }
               this.states.generatedAlert = false;
               this._updateState();
+            }
+          });
+          break;
+
+        case 'action.devices.traits.LockUnlock':
+          this.traitHandlers.push(states => {
+            if (states.isJammed) {
+              this.$.icon.style.color = '#F44336';
+            } else if (states.isLocked) {
+              this.$.icon.style.color = '#FF9800';
+            } else {
+              this.$.icon.style.color = '#555555';
+            }
+
+            if (this.device.type = 'action.devices.types.LOCK') {
+              if (states.isLocked) {
+                this.$.icon.icon = 'icons:lock';
+              } else {
+                this.$.icon.icon = 'icons:lock-open';
+              }
             }
           });
           break;
