@@ -190,6 +190,10 @@ export class MyApp extends PolymerElement {
           <iron-icon icon="notification:drive-eta"></iron-icon>
           <p>Garage Door</p>
         </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addGate">
+          <iron-icon icon="device:storage"></iron-icon>
+          <p>Gate</p>
+        </button>
         <button dialog-confirm autofocus class="square" on-tap="_addHeater">
           <iron-icon icon="icons:account-balance-wallet"></iron-icon>
           <p>Heater</p>
@@ -1103,6 +1107,46 @@ export class MyApp extends PolymerElement {
       states: {
         online: true,
         openPercent: 0
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addGate() {
+    if (!this.gateValuesArray) {
+      this.gateValuesArray = [{
+        nicknames: ['driveway gate'],
+        roomHint: 'Patio'
+      }];
+    }
+    const element = this.gateValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.GATE',
+      traits: [
+        'action.devices.traits.OpenClose',
+      ],
+      defaultNames: [`Smart Garage ${this.devices.length}`],
+      name: `Smart Garage ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        openDirection: ['IN', 'OUT']
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        openState: [{
+          openPercent: 0,
+          openDirection: 'IN'
+        }, {
+          openPercent: 0,
+          openDirection: 'OUT'
+        }]
       },
       hwVersion: '3.2',
       swVersion: '11.4',

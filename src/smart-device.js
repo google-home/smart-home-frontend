@@ -249,6 +249,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.GARAGE':
         icon = 'notification:drive-eta';
         break;
+      case 'action.devices.types.GATE':
+        icon = 'device:storage';
+        break;
       case 'action.devices.types.HEATER':
         icon = 'icons:account-balance-wallet';
         break;
