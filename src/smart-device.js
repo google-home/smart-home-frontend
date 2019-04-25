@@ -295,6 +295,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.SECURITYSYSTEM':
         icon = 'icons:verified-user';
         break;
+      case 'action.devices.types.SHOWER':
+        icon = 'maps:local-car-wash';
+        break;
       case 'action.devices.types.SHUTTER':
         icon = 'maps:map';
         break;

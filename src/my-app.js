@@ -256,6 +256,10 @@ export class MyApp extends PolymerElement {
           <iron-icon icon="icons:verified-user"></iron-icon>
           <p>Security System</p>
         </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addShower">
+          <iron-icon icon="maps:local-car-wash"></iron-icon>
+          <p>Shower</p>
+        </button>
         <button dialog-confirm autofocus class="square" on-tap="_addShutter">
           <iron-icon icon="maps:map"></iron-icon>
           <p>Shutter</p>
@@ -1785,6 +1789,68 @@ export class MyApp extends PolymerElement {
         online: true,
         currentArmLevel: 'L1',
         isArmed: false
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addShower() {
+    if (!this.showerValuesArray) {
+      this.showerValuesArray = [{
+        nicknames: ['guest shower'],
+        roomHint: 'Bathroom'
+      }];
+    }
+    const element = this.showerValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.SHOWER',
+      traits: [
+        'action.devices.traits.StartStop',
+        'action.devices.traits.OnOff',
+        'action.devices.traits.Modes'
+      ],
+      defaultNames: [`Smart Shower ${this.devices.length}`],
+      name: `Smart Shower ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        availableModes: [{
+          name: 'monsoon',
+          name_values: [{
+            name_synonym: [
+              'monsoon',
+              'heavy rain',
+              'waterfall'
+            ],
+            lang: 'en'
+          }],
+          settings: [{
+            setting_name: 'trickle',
+            setting_values: [{
+              setting_synonym: [
+                "trickle",
+                "gentle"
+              ],
+              lang: 'en'
+            }]
+          }]
+        }],
+        ordered: true
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        on: false,
+        isRunning: false,
+        isPaused: false,
+        currentModeSettings: {
+          monsoon: 'trickle'
+        }
       },
       hwVersion: '3.2',
       swVersion: '11.4',
