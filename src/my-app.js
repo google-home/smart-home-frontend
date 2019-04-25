@@ -156,6 +156,10 @@ export class MyApp extends PolymerElement {
           <iron-icon icon="icons:view-week"></iron-icon>
           <p>Blinds</p>
         </button>
+        <button dialog-confirm autofocus class="square" on-tap="_addBoiler">
+          <iron-icon icon="icons:invert-colors"></iron-icon>
+          <p>Boiler</p>
+        </button>
         <button dialog-confirm autofocus class="square" id="cameraSelector"
           on-tap="_addCamera">
           <iron-icon icon="image:camera-alt"></iron-icon>
@@ -728,6 +732,47 @@ export class MyApp extends PolymerElement {
           openPercent: 0,
           openDirection: 'RIGHT'
         }]
+      },
+      hwVersion: '3.2',
+      swVersion: '11.4',
+      model: '442',
+      manufacturer: 'sirius',
+    };
+    this._createDevice(device);
+  }
+
+  _addBoiler() {
+    if (!this.boilerValuesArray) {
+      this.boilerValuesArray = [{
+        nicknames: ['my boiler'],
+        roomHint: 'Laundry Room'
+      }];
+    }
+    const element = this.boilerValuesArray.shift();
+    const device = {
+      id: this._genUuid(),
+      type: 'action.devices.types.BOILER',
+      traits: [
+        'action.devices.traits.TemperatureControl',
+        'action.devices.traits.OnOff'
+      ],
+      defaultNames: [`Smart Boiler ${this.devices.length}`],
+      name: `Smart Boiler ${this.devices.length}`,
+      nicknames: this._getNicknames(element),
+      roomHint: this._getRoomHint(element),
+      attributes: {
+        temperatureRange: {
+          minThresholdCelsius: 50,
+          maxThresholdCelsius: 125
+        },
+        temperatureUnitForUX: 'C'
+      },
+      willReportState: true,
+      states: {
+        online: true,
+        on: false,
+        temperatureSetpointCelsius: 105,
+        temperatureAmbientCelsius: 110
       },
       hwVersion: '3.2',
       swVersion: '11.4',

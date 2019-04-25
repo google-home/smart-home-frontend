@@ -225,6 +225,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.BLINDS':
         icon = 'icons:view-week';
         break;
+      case 'action.devices.types.BOILER':
+        icon = 'icons:invert-colors';
+        break;
       case 'action.devices.types.CAMERA':
         icon = 'image:camera-alt';
         break;
