@@ -14,6 +14,8 @@ import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-flex-layout/iron-flex-layout-classes.js'
 import '@polymer/paper-input/paper-input.js'
 import '@polymer/paper-slider/paper-slider.js'
+import '@polymer/paper-toggle-button/paper-toggle-button.js';
+
 
 const ENTERKEY = 13;
 
@@ -123,6 +125,12 @@ export class SmartDevice extends PolymerElement {
         <paper-input id="name" label="Name" value$="{{device.name}}"></paper-input>
         <div>Default Name:
           <span id='defaultName'>{{device.defaultNames.0}}</span>
+        </div>
+
+        <!-- local execution -->
+        <div>
+          <paper-toggle-button id="localExecution" on-checked-changed="_handleLocalExecution">Local Execution</paper-toggle-button>
+          <paper-input id="localDeviceId" label="Local Device ID" on-blur="_handleLocalExecution"></paper-input>
         </div>
       </div>
     `
@@ -347,6 +355,11 @@ export class SmartDevice extends PolymerElement {
     // Disable button to prevent multiple delete operations
     this.$.delete.disabled = true;
     app.removeDevice(this.deviceid);
+  }
+
+  _handleLocalExecution() {
+    const app = document.querySelector('my-app');
+    app.updateLocationExecution(this.deviceid, this.$.localExecution.checked, this.$.localDeviceId.value);
   }
 
   _deviceChanged() {

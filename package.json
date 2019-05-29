@@ -23,11 +23,13 @@
     "@polymer/paper-input": "^3.0.1",
     "@polymer/paper-slider": "^3.0.1",
     "@polymer/paper-toast": "^3.0.1",
+    "@polymer/paper-toggle-button": "^3.0.1",
     "@polymer/polymer": "^3.1.0"
   },
   "devDependencies": {
+    "firebase-tools": "^6.0.0",
     "polymer-cli": "^1.8.1",
-    "firebase-tools": "^6.0.0"
+    "yarn": "^1.16.0"
   },
   "author": "Google"
 }
