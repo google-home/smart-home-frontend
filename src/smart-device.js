@@ -359,7 +359,7 @@ export class SmartDevice extends PolymerElement {
 
   _handleLocalExecution() {
     const app = document.querySelector('my-app');
-    app.updateLocationExecution(this.deviceid, this.$.localExecution.checked, this.$.localDeviceId.value);
+    app.updateLocalExecution(this.deviceid, this.$.localExecution.checked, this.$.localDeviceId.value);
   }
 
   _deviceChanged() {

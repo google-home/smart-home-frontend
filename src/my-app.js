@@ -424,7 +424,7 @@ export class MyApp extends PolymerElement {
     })
   }
 
-  updateLocationExecution(deviceId, localExecution, localDeviceId) {
+  updateLocalExecution(deviceId, localExecution, localDeviceId) {
     const deviceRef  = this.db.collection('users').doc('1234').collection('devices').doc(deviceId);
     let otherDeviceIds;
     if (localExecution && localDeviceId) {
