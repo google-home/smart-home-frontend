@@ -26,6 +26,7 @@ import '@polymer/iron-icons/notification-icons.js';
 import '@polymer/iron-icons/places-icons.js';
 import '@polymer/iron-icons/social-icons.js';
 import '@polymer/iron-list/iron-list.js';
+import '@polymer/paper-button/paper-button.js';
 import '@polymer/paper-dialog/paper-dialog.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/paper-toast/paper-toast.js';
@@ -69,6 +70,7 @@ import './device-types/valve.js';
 import './device-types/washer.js';
 import './device-types/water-heater.js';
 import './device-types/window.js';
+import './device-types/importer.js';
 
 export class MyApp extends PolymerElement {
   static get template() {
@@ -101,6 +103,11 @@ export class MyApp extends PolymerElement {
         padding: 24px 0px;
       }
 
+      #insert-json-textarea {
+        width: 40em;
+        height: 20em;
+      }
+
       .square {
         height: 180px;
         width: 180px;
@@ -120,14 +127,14 @@ export class MyApp extends PolymerElement {
         color: #757575;
       }
 
-      #close {
+      .close {
         height: 30px;
         width: 80px;
         margin-top: 0px;
         float: right;
       }
 
-      #close>iron-icon {
+      .close > iron-icon {
         height: 100%;
         width: 100%;
         cursor: pointer;
@@ -169,7 +176,7 @@ export class MyApp extends PolymerElement {
     </app-header>
 
     <paper-dialog id="modal" modal>
-      <div id="close">
+      <div class="close">
         <iron-icon icon="icons:close" dialog-confirm autofocus></iron-icon>
       </div>
       <div class="layout horizontal center-justified">
@@ -180,6 +187,18 @@ export class MyApp extends PolymerElement {
             <p>{{item.label}}</p>
           </button>
         </template>
+      </div>
+    </paper-dialog>
+
+    <paper-dialog id="insert-json" modal>
+      <div class="close">
+        <iron-icon icon="icons:close" dialog-confirm autofocus></iron-icon>
+      </div>
+      <div>
+        <p>Paste the JSON SYNC response for a single device to recreate it</p>
+        <textarea id="insert-json-textarea"></textarea><br>
+        <div id="insert-json-message"></div>
+        <paper-button raised id="insert-json-import">Import</paper-button>
       </div>
     </paper-dialog>
 
