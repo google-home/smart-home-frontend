@@ -6,12 +6,12 @@
     "test": "test"
   },
   "scripts": {
-    "build": "yarn build:polymer",
+    "build": "npm run build:polymer",
     "build:polymer": "./node_modules/.bin/polymer build",
     "clean": "rm -rf ./build/",
     "create-firebase-config": "./node_modules/.bin/firebase setup:web > ./src/firebase-setup.js",
     "start": "./node_modules/.bin/polymer serve",
-    "serve": "yarn start"
+    "serve": "npm run start"
   },
   "dependencies": {
     "@polymer/app-layout": "^3.0.1",
@@ -29,7 +29,6 @@
   "devDependencies": {
     "firebase-tools": "^6.0.0",
     "polymer-cli": "^1.8.1",
-    "yarn": "^1.16.0"
   },
   "author": "Google"
 }
