@@ -486,11 +486,11 @@ export class MyApp extends PolymerElement {
   }
 
   _getNicknames(element, type) {
-    return element.nicknames || [`Smart ${type} ${this.devices.length}`];
+    return element ? element.nicknames : [`Smart ${type} ${this.devices.length}`];
   }
 
   _getRoomHint(element) {
-    return element.roomHint || '';
+    return element ? element.roomHint : '';
   }
 
   _addAcUnit() {
@@ -1927,7 +1927,7 @@ export class MyApp extends PolymerElement {
         roomHint: 'Kitchen'
       }];
     }
-    const element = this.pergolshutterValuesArrayaValuesArray.shift();
+    const element = this.shutterValuesArray.shift();
     const device = {
       id: this._genUuid(),
       type: 'action.devices.types.SHUTTER',
