@@ -129,8 +129,8 @@ export class SmartDevice extends PolymerElement {
 
         <!-- local execution -->
         <div>
-          <paper-toggle-button id="localExecution" on-checked-changed="_handleLocalExecution">Local Execution</paper-toggle-button>
-          <paper-input id="localDeviceId" label="Local Device ID" on-blur="_handleLocalExecution"></paper-input>
+          <paper-toggle-button id="localExecution" checked="{{localexecution}}">Local Execution</paper-toggle-button>
+          <paper-input id="localDeviceId" label="Local Device ID" value="{{localdeviceid}}" disabled="[[!localexecution]]"></paper-input>
         </div>
       </div>
     `
@@ -146,8 +146,20 @@ export class SmartDevice extends PolymerElement {
       },
       deviceid: {
         type: String
+      },
+      localexecution: {
+        type: Boolean,
+      },
+      localdeviceid: {
+        type: String,
       }
     }
+  }
+
+  static get observers() {
+    return [
+      '_handleLocalExecution(localexecution, localdeviceid)'
+    ]
   }
 
   ready() {
@@ -357,9 +369,9 @@ export class SmartDevice extends PolymerElement {
     app.removeDevice(this.deviceid);
   }
 
-  _handleLocalExecution() {
+  _handleLocalExecution(localexecution, localdeviceid) {
     const app = document.querySelector('my-app');
-    app.updateLocalExecution(this.deviceid, this.$.localExecution.checked, this.$.localDeviceId.value);
+    app.updateLocalExecution(this.deviceid, localexecution, localdeviceid);
   }
 
   _deviceChanged() {

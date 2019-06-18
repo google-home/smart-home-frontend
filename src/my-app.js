@@ -320,7 +320,10 @@ export class MyApp extends PolymerElement {
           <smart-device device=[[item]]
             index=[[index]]
             deviceid=[[item.deviceId]]
-            id="d-[[item.deviceId]]"></smart-device>
+            id="d-[[item.deviceId]]"
+            localexecution=[[item.localDeviceExecution]]
+            localdeviceid=[[item.localDeviceId]]>
+          </smart-device>
         </div>
       </template>
     </div>
@@ -481,6 +484,11 @@ export class MyApp extends PolymerElement {
 
   _addDevice(device) {
     device.deviceId = device.id;
+    device.localDeviceExecution = (device.otherDeviceIds !== undefined &&
+                                   device.otherDeviceIds.length > 0);
+    if (device.localDeviceExecution) {
+      device.localDeviceId = device.otherDeviceIds[0].deviceId;
+    }
     this.push('devices', device);
     this.hide = true;
   }
