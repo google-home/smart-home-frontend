@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "firebase-tools": "^6.0.0",
-    "polymer-cli": "^1.8.1",
+    "polymer-cli": "^1.8.1"
   },
   "author": "Google"
 }
