@@ -256,19 +256,17 @@ export class MyApp extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
 
-    window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(async () => {
       this.$.add.addEventListener('click', () => this.$.modal.open());
 
       // Read from database to get current devices
-      this.db.collection('users').doc('1234').collection('devices').get()
-        .then(querySnapshot => {
-          querySnapshot.forEach(doc => {
-            const data = doc.data();
-            data.deviceId = doc.id;
-            this._addDevice(data);
-            this.addDbListener(doc.id);
-          })
-        })
+      const querySnapshot = await this.db.collection('users').doc('1234').collection('devices').get()
+      querySnapshot.forEach(doc => {
+        const data = doc.data();
+        data.deviceId = doc.id;
+        this._addDevice(data);
+        this.addDbListener(doc.id);
+      })
 
       this.deviceTypes.forEach(type => {
         const element = this.$.modal.querySelector(`#${type.identifier}`)
@@ -334,7 +332,7 @@ export class MyApp extends PolymerElement {
     })
   }
 
-  updateLocalExecution(deviceId, localExecution, localDeviceId) {
+  async updateLocalExecution(deviceId, localExecution, localDeviceId) {
     const deviceRef  = this.db.collection('users').doc('1234').collection('devices').doc(deviceId);
     let otherDeviceIds;
     if (localExecution && localDeviceId) {
@@ -342,11 +340,11 @@ export class MyApp extends PolymerElement {
     } else {
       otherDeviceIds = firebase.firestore.FieldValue.delete();
     }
-    deviceRef.update({
-      otherDeviceIds
-    }).catch(e => {
+    try {
+      await deviceRef.update({ otherDeviceIds });
+    } catch (e) {
       console.error('failed to update device entity', e);
-    })
+    }
   }
 
   /**
@@ -366,23 +364,24 @@ export class MyApp extends PolymerElement {
     this.$.toast.open();
   }
 
-  _createDevice(device) {
+  async _createDevice(device) {
     this._addDevice(device);
     // Push new device to database
-    return fetch(`${API_ENDPOINT}/smarthome/create`, {
-      method: 'POST',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
-      body: JSON.stringify({
-        userId: '1234',
-        data: device
+    try {
+      await fetch(`${API_ENDPOINT}/smarthome/create`, {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify({
+          userId: '1234',
+          data: device
+        })
       })
-    }).then(() => {
       this.addDbListener(device.id);
-    }).catch(e => {
+    } catch (e) {
       console.error(e);
-    })
+    }
   }
 
   _addDevice(device) {
