@@ -12,7 +12,9 @@
  */
 
 export class DeviceType {
-  valuesArray;
+  constructor() {
+    this.valuesArray = []
+  }
 
   genUuid() {
     return Math.floor((Math.random()) * 100000).toString(36)
