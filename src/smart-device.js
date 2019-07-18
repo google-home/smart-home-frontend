@@ -158,7 +158,7 @@ export class SmartDevice extends PolymerElement {
 
   static get observers() {
     return [
-      '_handleLocalExecution(localexecution, localdeviceid)'
+      '_localExecutionChanged(localexecution, localdeviceid)'
     ]
   }
 
@@ -369,9 +369,20 @@ export class SmartDevice extends PolymerElement {
     app.removeDevice(this.deviceid);
   }
 
-  _handleLocalExecution(localexecution, localdeviceid) {
-    const app = document.querySelector('my-app');
-    app.updateLocalExecution(this.deviceid, localexecution, localdeviceid);
+  _localExecutionChanged(localexecution, localdeviceid) {
+    return fetch(`${API_ENDPOINT}/smarthome/update`, {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify({
+        userId: '1234',
+        deviceId: this.deviceid,
+        localDeviceId: localexecution ? localdeviceid : null
+      })
+    }).catch(e => {
+      console.error('failed to update device', e);
+    });
   }
 
   _deviceChanged() {

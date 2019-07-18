@@ -332,21 +332,6 @@ export class MyApp extends PolymerElement {
     })
   }
 
-  async updateLocalExecution(deviceId, localExecution, localDeviceId) {
-    const deviceRef  = this.db.collection('users').doc('1234').collection('devices').doc(deviceId);
-    let otherDeviceIds;
-    if (localExecution && localDeviceId) {
-      otherDeviceIds = [{deviceId: localDeviceId}];
-    } else {
-      otherDeviceIds = firebase.firestore.FieldValue.delete();
-    }
-    try {
-      await deviceRef.update({ otherDeviceIds });
-    } catch (e) {
-      console.error('failed to update device entity', e);
-    }
-  }
-
   /**
    * Displays a toast message.
    * @param {string} toastmsg The message to be displayed.
