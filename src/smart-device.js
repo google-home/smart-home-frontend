@@ -104,6 +104,7 @@ export class SmartDevice extends PolymerElement {
           <div class="flex"></div>
 
           <paper-icon-button id="reportState" icon="arrow-downward" on-tap="_handleReportState"></paper-icon-button>
+          <paper-icon-button id="tfa" icon="lock" on-tap="_handleTfa"></paper-icon-button>
           <paper-icon-button id="cloud" icon="cloud-off" on-tap="_handleCloud"></paper-icon-button>
           <paper-icon-button id="delete" icon="delete" on-tap="_handleDelete"></paper-icon-button>
         </div>
@@ -370,6 +371,22 @@ export class SmartDevice extends PolymerElement {
     }
   }
 
+  _handleTfa() {
+    const app = document.querySelector('my-app');
+    app.$['two-factor'].open();
+    app.twoFactorAck = this.device.tfa === 'ack';
+    app.twoFactorPin = this.device.tfa === 'ack' ? '' : this.device.tfa;
+    app.$['two-factor-submit'].onclick = () => {
+      if (app.$['two-factor-ack'].checked) {
+        this.device.tfa = 'ack';
+      } else {
+        this.device.tfa = app.$['two-factor-input'].value;
+      }
+      app.$['two-factor'].close();
+      this._updateState();
+    }
+  }
+
   _handleDelete() {
     const app = document.querySelector('my-app');
     // Disable button to prevent multiple delete operations
@@ -393,6 +410,8 @@ export class SmartDevice extends PolymerElement {
       this.$.cloud.style.color = 'inherit';
       this.$.cloud.title = '';
     }
+    this.$.tfa.icon = this.device.tfa ? 'lock' : 'lock-open';
+    this.$.tfa.title = this.device.tfa;
     window.requestAnimationFrame(() => {
       this.traitHandlers.forEach(fun => {
         fun(this.device.states);
@@ -414,7 +433,8 @@ export class SmartDevice extends PolymerElement {
         userId: '1234',
         deviceId: this.deviceid,
         errorCode: this.device.errorCode,
-        states: this.device.states
+        states: this.device.states,
+        tfa: this.device.tfa
       })
     })
   }
