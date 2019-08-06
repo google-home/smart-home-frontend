@@ -30,6 +30,7 @@ import '@polymer/paper-button/paper-button.js';
 import '@polymer/paper-dialog/paper-dialog.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/paper-toast/paper-toast.js';
+import '@polymer/paper-toggle-button/paper-toggle-button.js';
 
 import './smart-device.js';
 import './device-types/ac-unit.js';
@@ -164,6 +165,11 @@ export class MyApp extends PolymerElement {
         display: inline-block;
         vertical-align: top;
       }
+
+      paper-dialog paper-button {
+        background-color: red;
+        color: white;
+      }
     </style>
 
     <!-- Main content -->
@@ -200,6 +206,16 @@ export class MyApp extends PolymerElement {
         <div id="insert-json-message"></div>
         <paper-button raised id="insert-json-import">Import</paper-button>
       </div>
+    </paper-dialog>
+
+    <paper-dialog id="error-code" modal>
+      <paper-toggle-button id="error-code-offline" checked="{{errorCodeOffline}}">Offline</paper-toggle-button>
+      <paper-input id="error-code-input" label="Error Code" value$="{{errorCode}}" disabled="[[errorCodeOffline]]"></paper-input>
+      <a href="https://developers.google.com/actions/smarthome/reference/errors-exceptions#error_list" target="_blank">
+        Full list of error codes
+      </a>
+      <br>
+      <paper-button raised id="error-code-submit">Okay</paper-button>
     </paper-dialog>
 
     <div id="no-devices-msg" hidden="[[hide]]">
