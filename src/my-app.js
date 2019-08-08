@@ -218,6 +218,12 @@ export class MyApp extends PolymerElement {
       <paper-button raised id="error-code-submit">Okay</paper-button>
     </paper-dialog>
 
+    <paper-dialog id="two-factor" modal>
+      <paper-toggle-button id="two-factor-ack" checked="{{twoFactorAck}}">Ack</paper-toggle-button>
+      <paper-input id="two-factor-input" label="PIN" value$="{{twoFactorPin}}" disabled="[[twoFactorAck]]"></paper-input>
+      <paper-button raised id="two-factor-submit">Okay</paper-button>
+    </paper-dialog>
+
     <div id="no-devices-msg" hidden="[[hide]]">
       <p class="layout horizontal center-justified">
         You currently don't have any devices set up. To set up a device,
