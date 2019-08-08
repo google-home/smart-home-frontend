@@ -358,8 +358,16 @@ export class SmartDevice extends PolymerElement {
   }
 
   _handleCloud() {
-    this.device.states.online = !this.device.states.online;
-    this._updateState();
+    const app = document.querySelector('my-app');
+    app.$['error-code'].open();
+    app.errorCodeOffline = !this.device.states.online;
+    app.errorCode = this.device.states.errorCode;
+    app.$['error-code-submit'].onclick = () => {
+      this.device.states.online = !app.$['error-code-offline'].checked;
+      this.device.errorCode = app.$['error-code-input'].value;
+      app.$['error-code'].close();
+      this._updateState();
+    }
   }
 
   _handleDelete() {
@@ -389,6 +397,13 @@ export class SmartDevice extends PolymerElement {
     this.$.reportState.style.color = this.device.willReportState ? '#4CAF50' : '#757575';
     this.$.reportState.icon = this.device.willReportState ? 'arrow-upward' : 'arrow-downward';
     this.$.cloud.icon = this.device.states.online ? 'cloud' : 'cloud-off';
+    if (this.device.errorCode) {
+      this.$.cloud.style.color = '#E64A19';
+      this.$.cloud.title = this.device.errorCode;
+    } else {
+      this.$.cloud.style.color = 'inherit';
+      this.$.cloud.title = '';
+    }
     window.requestAnimationFrame(() => {
       this.traitHandlers.forEach(fun => {
         fun(this.device.states);
@@ -409,6 +424,7 @@ export class SmartDevice extends PolymerElement {
       body: JSON.stringify({
         userId: '1234',
         deviceId: this.deviceid,
+        errorCode: this.device.errorCode,
         states: this.device.states
       })
     })
