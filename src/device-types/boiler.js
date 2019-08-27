@@ -63,7 +63,7 @@ class Boiler extends DeviceType {
 }
 
 window.deviceTypes.push({
-  identifer: '_addBoiler',
+  identifier: '_addBoiler',
   icon: 'icons:invert-colors',
   label: 'Boiler',
   function: (app) => { app._createDevice(Boiler.createDevice()); }
