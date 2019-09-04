@@ -6,3 +6,4 @@ node_modules/
 src/firebase-setup.js
 yarn-error.log
 .firebaserc
+yarn.lock
