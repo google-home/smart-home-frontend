@@ -648,6 +648,10 @@ export class SmartDevice extends PolymerElement {
           })
           break;
 
+        // 'action.devices.traits.Reboot'
+        // As this trait does not have its own state, the online state will be turned off.
+        // The field will need to be manually turned back on.
+
         case 'action.devices.traits.Rotation':
           this.traitHandlers.push(states => {
             this.$.icon.style.transform = `rotate(${states.rotationDegrees}deg)`;
