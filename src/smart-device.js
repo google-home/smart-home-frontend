@@ -42,6 +42,7 @@ export class SmartDevice extends PolymerElement {
           width: 96px;
           margin-top: 8px;
           margin-bottom: 8px;
+          transition-duration: 300ms;
         }
 
         ::slotted(iron-icon) {
@@ -644,6 +645,12 @@ export class SmartDevice extends PolymerElement {
               // Not open at all
               this.$.icon.style.color = '#333333';
             }
+          })
+          break;
+
+        case 'action.devices.traits.Rotation':
+          this.traitHandlers.push(states => {
+            this.$.icon.style.transform = `rotate(${states.rotationDegrees}deg)`;
           })
           break;
 
