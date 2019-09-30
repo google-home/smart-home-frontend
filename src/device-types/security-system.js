@@ -13,6 +13,8 @@
 import { DeviceType } from './device-type';
 
 let instance;
+const LAST_WEEK = new Date();
+LAST_WEEK.setDate(LAST_WEEK.getDate() - 7);
 
 class SecuritySystem extends DeviceType {
   constructor() {
@@ -35,6 +37,7 @@ class SecuritySystem extends DeviceType {
       traits: [
         'action.devices.traits.ArmDisarm',
         'action.devices.traits.Reboot',
+        'action.devices.traits.SoftwareUpdate'
       ],
       defaultNames: [`Smart Security System`],
       name: `Smart Security System`,
@@ -68,7 +71,9 @@ class SecuritySystem extends DeviceType {
       states: {
         online: true,
         currentArmLevel: 'L1',
-        isArmed: false
+        isArmed: false,
+        // Timestamp state should be in seconds
+        lastSoftwareUpdateUnixTimestampSec: Math.floor(LAST_WEEK.getTime() / 1000)
       },
       hwVersion: '3.2',
       swVersion: '11.4',
