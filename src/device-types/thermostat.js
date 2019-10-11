@@ -44,13 +44,15 @@ class Thermostat extends DeviceType {
       roomHint: instance.getRoomHint(element),
       attributes: {
         availableThermostatModes: 'off,heat,cool,on,heatcool',
-        temperatureTemperatureUnit: 'C'
+        thermostatTemperatureUnit: 'C'
       },
       willReportState: true,
       states: {
         online: true,
         thermostatMode: 'off',
         thermostatTemperatureSetpoint: 23,
+        thermostatTemperatureSetpointHigh: 28,
+        thermostatTemperatureSetpointLow: 22,
         thermostatTemperatureAmbient: 25.1,
         thermostatHumidityAmbient: 45.3
       },
