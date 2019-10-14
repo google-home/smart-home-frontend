@@ -301,6 +301,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.MICROWAVE':
         icon = 'device:nfc';
         break;
+      case 'action.devices.types.MOP':
+        icon = 'image:brush';
+        break;
       case 'action.devices.types.OUTLET':
         icon = 'notification:power';
         break;
