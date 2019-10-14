@@ -33,14 +33,21 @@ class Blinds extends DeviceType {
       id: instance.genUuid(),
       type: 'action.devices.types.BLINDS',
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.OpenClose',
+        'action.devices.traits.Rotation'
       ],
       defaultNames: [`Smart Blinds`],
       name: `Smart Blinds`,
       nicknames: instance.getNicknames(element),
       roomHint: instance.getRoomHint(element),
       attributes: {
-        openDirection: ['LEFT', 'RIGHT']
+        openDirection: ['LEFT', 'RIGHT'],
+        supportsDegrees: true,
+        supportsPercent: false,
+        rotationDegreesRange: {
+          rotationDegreesMin: 0,
+          rotationDegreesMax: 360
+        }
       },
       willReportState: true,
       states: {
@@ -51,7 +58,8 @@ class Blinds extends DeviceType {
         }, {
           openPercent: 0,
           openDirection: 'RIGHT'
-        }]
+        }],
+        rotationDegrees: 0,
       },
       hwVersion: '3.2',
       swVersion: '11.4',
