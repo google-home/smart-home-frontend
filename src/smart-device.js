@@ -693,6 +693,10 @@ export class SmartDevice extends PolymerElement {
           });
           break;
 
+        // 'action.devices.traits.SoftwareUpdate'
+        // The online state will be turned off.
+        // The field will need to be manually turned back on.
+
         case 'action.devices.traits.StartStop':
           this.traitHandlers.push(states => {
             if (states.isRunning) {
