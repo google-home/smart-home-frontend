@@ -33,7 +33,8 @@ class SecuritySystem extends DeviceType {
       id: instance.genUuid(),
       type: 'action.devices.types.SECURITYSYSTEM',
       traits: [
-        'action.devices.traits.ArmDisarm'
+        'action.devices.traits.ArmDisarm',
+        'action.devices.traits.Reboot',
       ],
       defaultNames: [`Smart Security System`],
       name: `Smart Security System`,
