@@ -74,6 +74,10 @@ class AcUnit extends DeviceType {
       willReportState: true,
       states: {
         online: true,
+        currentModeSettings: {
+          mode: 'auto'
+        },
+        on: false,
         thermostatTemperatureSetpoint: 20,
       },
       hwVersion: '1.0.0',

@@ -87,6 +87,21 @@ class Dryer extends DeviceType {
       willReportState: true,
       states: {
         online: true,
+        currentModeSettings: {
+          load: 'small'
+        },
+        currentToggleSettings: {
+          Sterilization: false,
+          'Energy Saving': false,
+        },
+        currentRunCycle: [{
+          currentCycle: "rinse",
+          nextCycle: "spin",
+          lang: "en"
+        }],
+        currentTotalRemainingTime: 1212,
+        currentCycleRemainingTime: 301,
+        on: false,
       },
       hwVersion: '3.2',
       swVersion: '11.4',
