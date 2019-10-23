@@ -118,6 +118,8 @@ export class SmartDevice extends PolymerElement {
             value="{{device.states.temperatureSetpointCelsius}}"></paper-slider>
           <paper-slider id="thermostatTemperatureSetpoint" title="Setpoint" pin min="18" max="35"
             value="{{device.states.thermostatTemperatureSetpoint}}"></paper-slider>
+          <paper-slider id="humiditySetpointPercent" title="Setpoint" pin min="0" max="100"
+            value="{{device.states.humiditySetpointPercent}}"></paper-slider>
           <iron-icon id="icon"></iron-icon>
           <div id="states"></div>
         </div>
@@ -262,6 +264,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.CURTAIN':
         icon = 'icons:flag';
         break;
+      case 'action.devices.types.DEHUMIDIFIER':
+        icon = 'av:volume-off';
+        break;
       case 'action.devices.types.DISHWASHER':
         icon = 'maps:restaurant';
         break;
@@ -291,6 +296,9 @@ export class SmartDevice extends PolymerElement {
         break;
       case 'action.devices.types.HEATER':
         icon = 'icons:view-day';
+        break;
+      case 'action.devices.types.HUMIDIFIER':
+        icon = 'av:volume-up';
         break;
       case 'action.devices.types.LIGHT':
         if (this.device.attributes.colorTemperatureRange) {
@@ -565,24 +573,36 @@ export class SmartDevice extends PolymerElement {
           });
           break;
 
-      case 'action.devices.traits.Fill':
-        const fillElement = document.createElement('div');
-        fillElement.appendChild(document.createTextNode(`Fill: `))
-        fillElement.id = `states-fill`;
-        const fillValue = document.createElement('span');
-        fillElement.appendChild(fillValue);
-        this.$.states.appendChild(fillElement);
-        this.traitHandlers.push(states => {
-          if (states.isFilled) {
-            this.$.icon.style.color = '#2196F3';
-          } else {
-            this.$.icon.style.color = '#333333';
-          }
-          const elementValue = this.$.states.querySelector(`#states-fill span`);
-          if (!elementValue) return;
-          elementValue.innerText = states.currentFillLevel;
-        })
-        break;
+        case 'action.devices.traits.Fill':
+          const fillElement = document.createElement('div');
+          fillElement.appendChild(document.createTextNode(`Fill: `))
+          fillElement.id = `states-fill`;
+          const fillValue = document.createElement('span');
+          fillElement.appendChild(fillValue);
+          this.$.states.appendChild(fillElement);
+          this.traitHandlers.push(states => {
+            if (states.isFilled) {
+              this.$.icon.style.color = '#2196F3';
+            } else {
+              this.$.icon.style.color = '#333333';
+            }
+            const elementValue = this.$.states.querySelector(`#states-fill span`);
+            if (!elementValue) return;
+            elementValue.innerText = states.currentFillLevel;
+          })
+          break;
+
+        case 'action.devices.traits.HumiditySetting':
+          this.$.humiditySetpointPercent.style.display = 'block';
+          this.$.humiditySetpointPercent.addEventListener('input', _ => {
+            this.device.states.humiditySetpointPercent = this.$.humiditySetpointPercent.value;
+            this._updateState();
+          });
+
+          this.traitHandlers.push(states => {
+            this.$.humiditySetpointPercent.value = states.humiditySetpointPercent
+          })
+          break;
 
         case 'action.devices.traits.Locator':
           this.traitHandlers.push(states => {
