@@ -274,6 +274,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.FAN':
         icon = 'hardware:toys';
         break;
+      case 'action.devices.types.FAUCET':
+        icon = 'communication:voicemail';
+        break;
       case 'action.devices.types.FIREPLACE':
         icon = 'social:whatshot';
         break;
@@ -505,6 +508,27 @@ export class SmartDevice extends PolymerElement {
           })
           break;
 
+        case 'action.devices.traits.Dispense':
+          const dispenseElement = document.createElement('div');
+          dispenseElement.appendChild(document.createTextNode(`Dispensed: `))
+          dispenseElement.id = `states-dispense`;
+          const dispenseValue = document.createElement('span');
+          dispenseElement.appendChild(dispenseValue);
+          this.$.states.appendChild(dispenseElement);
+
+          this.traitHandlers.push(states => {
+            if (states.isCurrentlyDispensing) {
+              this.$.icon.style.color = '#2196F3';
+            } else {
+              this.$.icon.style.color = '#333333';
+            }
+            const elementValue = this.$.states.querySelector(`#states-dispense span`);
+            if (!elementValue) return;
+            elementValue.innerText = `${states.dispenseItems[0].amountLastDispensed.amount} ` +
+              states.dispenseItems[0].amountLastDispensed.unit;
+          })
+          break;
+
         case 'action.devices.traits.Dock':
           // Create a 'Dock' element
           const dockElement = document.createElement('span');
@@ -542,7 +566,6 @@ export class SmartDevice extends PolymerElement {
           break;
 
       case 'action.devices.traits.Fill':
-        // Add a block for each mode
         const fillElement = document.createElement('div');
         fillElement.appendChild(document.createTextNode(`Fill: `))
         fillElement.id = `states-fill`;

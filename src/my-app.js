@@ -47,6 +47,7 @@ import './device-types/dishwasher.js';
 import './device-types/door.js';
 import './device-types/dryer.js';
 import './device-types/fan.js';
+import './device-types/faucet.js';
 import './device-types/fireplace.js';
 import './device-types/garage.js';
 import './device-types/gate.js';
