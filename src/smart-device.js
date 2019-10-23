@@ -244,6 +244,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.AWNING':
         icon = 'maps:store-mall-directory';
         break;
+      case 'action.devices.types.BATHTUB':
+        icon = 'places:hot-tub';
+        break;
       case 'action.devices.types.BLINDS':
         icon = 'icons:view-week';
         break;
@@ -289,7 +292,7 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.LIGHT':
         if (this.device.attributes.colorTemperatureRange) {
           icon = 'image:wb-iridescent';
-        } else if (this.device.attributes.colorModel === 'rgb') {
+        } else {
           icon = 'image:wb-incandescent';
         }
         break;
@@ -486,15 +489,15 @@ export class SmartDevice extends PolymerElement {
         case 'action.devices.traits.ColorSetting':
           this.traitHandlers.push(states => {
             if (!states.on) return;
-            if (states.color.spectrumRGB) {
-              let rgb = states.color.spectrumRGB;
+            if (states.color.spectrumRgb) {
+              let rgb = states.color.spectrumRgb;
               rgb = rgb.toString(16);
               while (rgb.length < 6) {
                 rgb = '0' + rgb;
               }
               rgb = '#' + rgb;
               this.$.icon.style.color = rgb;
-            } else if (states.color.spectrumHSV) {
+            } else if (states.color.spectrumHsv) {
               this.$.icon.style.color = 'blue'
             } else if (states.color.temperatureK) {
               this.$.icon.style.color = '#fffacd';
@@ -537,6 +540,26 @@ export class SmartDevice extends PolymerElement {
             }
           });
           break;
+
+      case 'action.devices.traits.Fill':
+        // Add a block for each mode
+        const fillElement = document.createElement('div');
+        fillElement.appendChild(document.createTextNode(`Fill: `))
+        fillElement.id = `states-fill`;
+        const fillValue = document.createElement('span');
+        fillElement.appendChild(fillValue);
+        this.$.states.appendChild(fillElement);
+        this.traitHandlers.push(states => {
+          if (states.isFilled) {
+            this.$.icon.style.color = '#2196F3';
+          } else {
+            this.$.icon.style.color = '#333333';
+          }
+          const elementValue = this.$.states.querySelector(`#states-fill span`);
+          if (!elementValue) return;
+          elementValue.innerText = states.currentFillLevel;
+        })
+        break;
 
         case 'action.devices.traits.Locator':
           this.traitHandlers.push(states => {
