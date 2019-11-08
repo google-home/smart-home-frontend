@@ -48,6 +48,8 @@ class Sprinkler extends DeviceType {
       willReportState: true,
       states: {
         online: true,
+        isRunning: false,
+        isPaused: false,
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',

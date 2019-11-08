@@ -46,6 +46,15 @@ class Dishwasher extends DeviceType {
       willReportState: true,
       states: {
         online: true,
+        currentRunCycle: [{
+          currentCycle: "rinse",
+          nextCycle: "soap",
+          lang: "en"
+        }],
+        currentTotalRemainingTime: 1212,
+        currentCycleRemainingTime: 301,
+        isRunning: false,
+        isPaused: false,
       },
       hwVersion: '3.2',
       swVersion: '11.4',

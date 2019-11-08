@@ -101,6 +101,8 @@ class Dryer extends DeviceType {
         }],
         currentTotalRemainingTime: 1212,
         currentCycleRemainingTime: 301,
+        isRunning: false,
+        isPaused: false,
         on: false,
       },
       hwVersion: '3.2',
