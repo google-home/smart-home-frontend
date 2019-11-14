@@ -346,6 +346,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.SPRINKLER':
         icon = 'image:filter-vintage';
         break;
+      case 'action.devices.types.STANDMIXER':
+        icon = 'icons:settings-backup-restore';
+        break;
       case 'action.devices.types.SWITCH':
         icon = 'communication:call-merge';
         break;

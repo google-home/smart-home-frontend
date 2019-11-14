@@ -69,6 +69,7 @@ import './device-types/security-system.js';
 import './device-types/shower.js';
 import './device-types/shutter.js';
 import './device-types/sprinkler.js';
+import './device-types/standmixer';
 import './device-types/switch.js';
 import './device-types/thermostat.js';
 import './device-types/vacuum.js';
