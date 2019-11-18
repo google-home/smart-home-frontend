@@ -249,6 +249,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.BATHTUB':
         icon = 'places:hot-tub';
         break;
+      case 'action.devices.type.BED':
+        icon = 'notification:airline-seat-individual-suite';
+        break;
       case 'action.devices.types.BLINDS':
         icon = 'icons:view-week';
         break;
