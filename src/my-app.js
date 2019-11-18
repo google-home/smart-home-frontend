@@ -48,6 +48,7 @@ import './device-types/curtain.js';
 import './device-types/dehumidifier.js';
 import './device-types/dishwasher.js';
 import './device-types/door.js';
+import './device-types/drawer.js';
 import './device-types/dryer.js';
 import './device-types/fan.js';
 import './device-types/faucet.js';
