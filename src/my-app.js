@@ -60,6 +60,7 @@ import './device-types/kettle.js';
 import './device-types/lock.js';
 import './device-types/microwave.js';
 import './device-types/mop.js';
+import './device-types/mower.js';
 import './device-types/light.js';
 import './device-types/outlet.js';
 import './device-types/oven.js';

@@ -322,6 +322,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.MOP':
         icon = 'image:brush';
         break;
+      case 'action.devices.types.MOWER':
+        icon = 'maps:local-grocery-store';
+        break;
       case 'action.devices.types.OUTLET':
         icon = 'notification:power';
         break;
