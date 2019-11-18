@@ -42,6 +42,7 @@ import './device-types/bed.js';
 import './device-types/blinds.js';
 import './device-types/boiler.js';
 import './device-types/camera.js';
+import './device-types/closet.js';
 import './device-types/coffee-maker.js';
 import './device-types/curtain.js';
 import './device-types/dehumidifier.js';

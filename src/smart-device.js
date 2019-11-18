@@ -261,6 +261,9 @@ export class SmartDevice extends PolymerElement {
       case 'action.devices.types.CAMERA':
         icon = 'image:camera-alt';
         break;
+      case 'action.devices.types.CLOSET':
+        icon = 'icons:view-array';
+        break;
       case 'action.devices.types.COFFEE_MAKER':
         icon = 'maps:local-cafe';
         break;
