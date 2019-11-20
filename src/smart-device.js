@@ -90,7 +90,7 @@ export class SmartDevice extends PolymerElement {
           text-align: right;
         }
 
-        #brightness, #temperatureSetpointCelsius, #thermostatTemperatureSetpoint {
+        paper-slider {
           display: none;
         }
 
@@ -527,6 +527,26 @@ export class SmartDevice extends PolymerElement {
               this.$.icon.style.color = 'blue'
             } else if (states.color.temperatureK) {
               this.$.icon.style.color = '#fffacd';
+            }
+          })
+          break;
+
+        case 'action.devices.traits.Cook':
+          const cookElement = document.createElement('div');
+          cookElement.appendChild(document.createTextNode(`Cooking: `))
+          cookElement.id = `states-cook`;
+          const cookValue = document.createElement('span');
+          cookElement.appendChild(cookValue);
+          this.$.states.appendChild(cookElement);
+
+          this.traitHandlers.push(states => {
+            const elementValue = this.$.states.querySelector(`#states-cook span`);
+            if (!elementValue) return;
+            if (states.currentCookingMode === 'NONE') {
+              elementValue.innerText = 'Nothing is being cooked'
+            } else {
+              elementValue.innerText = `${states.currentCookingMode} ${states.currentFoodPreset}` +
+                ` (${states.currentFoodQuantity} ${states.currentFoodUnit})`
             }
           })
           break;

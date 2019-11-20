@@ -33,8 +33,9 @@ class Microwave extends DeviceType {
       id: instance.genUuid(),
       type: 'action.devices.types.MICROWAVE',
       traits: [
+        'action.devices.traits.Cook',
         'action.devices.traits.StartStop',
-        'action.devices.traits.Timer'
+        'action.devices.traits.Timer',
       ],
       defaultNames: [`Smart Microwave`],
       name: `Smart Microwave`,
@@ -42,7 +43,12 @@ class Microwave extends DeviceType {
       roomHint: instance.getRoomHint(element),
       attributes: {
         maxTimerLimitSec: 60,
-        pausable: true
+        pausable: true,
+        supportedCookingModes: [
+          'DEFROST',
+          'MICROWAVE',
+          'WARM',
+        ]
       },
       willReportState: true,
       states: {
@@ -51,6 +57,10 @@ class Microwave extends DeviceType {
         timerPaused: false,
         isRunning: false,
         isPaused: false,
+        currentCookingMode: 'NONE',
+        currentFoodPreset: 'NONE',
+        currentFoodQuantity: 0,
+        currentFoodUnit: 'NONE'
       },
       hwVersion: '3.2',
       swVersion: '11.4',

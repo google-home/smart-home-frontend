@@ -42,6 +42,7 @@ class Oven extends DeviceType {
       id: instance.genUuid(),
       type: 'action.devices.types.OVEN',
       traits: [
+        'action.devices.traits.Cook',
         'action.devices.traits.OnOff',
         'action.devices.traits.TemperatureControl',
       ],
@@ -54,12 +55,21 @@ class Oven extends DeviceType {
           minThresholdCelsius: 100.0,
           maxThresholdCelsius: 300.0
         },
-        temperatureUnitForUX: 'C'
+        temperatureUnitForUX: 'C',
+        supportedCookingModes: [
+          'BAKE',
+          'CONVECTION_BAKE',
+          'ROAST',
+        ]
       },
       willReportState: true,
       states: {
         online: true,
         temperatureSetpointCelsius: 200,
+        currentCookingMode: 'NONE',
+        currentFoodPreset: 'NONE',
+        currentFoodQuantity: 0,
+        currentFoodUnit: 'NONE'
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',

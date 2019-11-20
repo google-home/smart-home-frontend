@@ -27,7 +27,7 @@ class CoffeeMaker extends DeviceType {
       nicknames: ['my coffee cup'],
       roomHint: 'Office'
     }, {
-        nicknames: ['desktop espresso machine'],
+      nicknames: ['desktop espresso machine'],
       roomHint: 'Office'
     }];
   }
@@ -42,6 +42,7 @@ class CoffeeMaker extends DeviceType {
       id: instance.genUuid(),
       type: 'action.devices.types.COFFEE_MAKER',
       traits: [
+        'action.devices.traits.Cook',
         'action.devices.traits.OnOff',
         'action.devices.traits.TemperatureControl',
       ],
@@ -54,12 +55,27 @@ class CoffeeMaker extends DeviceType {
           minThresholdCelsius: 0.0,
           maxThresholdCelsius: 100.0
         },
-        temperatureUnitForUX: 'C'
+        temperatureUnitForUX: 'C',
+        supportedCookingModes: [
+          'BREW'
+        ],
+        foodPresets: [{
+          food_preset_name: 'coffee',
+          supported_units: ['NO_UNITS', 'CUPS'],
+          food_synonyms: [{
+            synonyms: ['coffee'],
+            lang: 'en'
+          }]
+        }]
       },
       willReportState: true,
       states: {
         online: true,
         temperatureSetpointCelsius: 30,
+        currentCookingMode: 'NONE',
+        currentFoodPreset: 'NONE',
+        currentFoodQuantity: 0,
+        currentFoodUnit: 'NONE'
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
