@@ -37,6 +37,7 @@ import './device-types/ac-unit.js';
 import './device-types/air-freshener.js';
 import './device-types/air-purifier.js';
 import './device-types/awning.js';
+import './device-types/bathtub.js';
 import './device-types/blinds.js';
 import './device-types/boiler.js';
 import './device-types/camera.js';
