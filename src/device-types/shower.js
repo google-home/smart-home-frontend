@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.SHOWER'
+
 class Shower extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Shower extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.SHOWER',
+      type,
       traits: [
         'action.devices.traits.StartStop',
         'action.devices.traits.OnOff',
@@ -84,6 +86,7 @@ class Shower extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addShower',
   icon: 'maps:local-car-wash',
   label: 'Shower',

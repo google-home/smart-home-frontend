@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.VALVE'
+
 class Valve extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Valve extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.VALVE',
+      type,
       traits: [
         'action.devices.traits.OpenClose'
       ],
@@ -53,6 +55,7 @@ class Valve extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addValve',
   icon: 'icons:settings-input-component',
   label: 'Valve',

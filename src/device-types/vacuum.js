@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.VACUUM'
+
 class Vacuum extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class Vacuum extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.VACUUM',
+      type,
       traits: [
         'action.devices.traits.StartStop',
         'action.devices.traits.Toggles',
@@ -73,6 +75,7 @@ class Vacuum extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addVacuum',
   icon: 'hardware:router',
   label: 'Vacuum',

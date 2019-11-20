@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.SWITCH'
+
 class Switch extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Switch extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.SWITCH',
+      type,
       traits: [
         'action.devices.traits.OnOff',
       ],
@@ -53,6 +55,7 @@ class Switch extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addSwitch',
   icon: 'communication:call-merge',
   label: 'Switch',

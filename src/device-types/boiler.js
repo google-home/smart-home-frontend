@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.BOILER'
+
 class Boiler extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Boiler extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.BOILER',
+      type,
       traits: [
         'action.devices.traits.TemperatureControl',
         'action.devices.traits.OnOff'
@@ -63,6 +65,7 @@ class Boiler extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addBoiler',
   icon: 'icons:invert-colors',
   label: 'Boiler',

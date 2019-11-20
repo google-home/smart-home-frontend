@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.SCENE'
+
 class Scene extends DeviceType {
   constructor() {
     super()
@@ -26,7 +28,7 @@ class Scene extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.SCENE',
+      type,
       traits: [
         'action.devices.traits.Scene',
       ],
@@ -51,6 +53,7 @@ class Scene extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addScene',
   icon: 'image:slideshow',
   label: 'Scene',

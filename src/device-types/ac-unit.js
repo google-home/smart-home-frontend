@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.AC_UNIT'
+
 class AcUnit extends DeviceType {
   constructor() {
     super()
@@ -37,7 +39,7 @@ class AcUnit extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.AC_UNIT',
+      type,
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.Modes',
@@ -89,6 +91,7 @@ class AcUnit extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addAcUnit',
   icon: 'places:ac-unit',
   label: 'AC Unit',

@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.MICROWAVE'
+
 class Microwave extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Microwave extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.MICROWAVE',
+      type,
       traits: [
         'action.devices.traits.Cook',
         'action.devices.traits.StartStop',
@@ -71,6 +73,7 @@ class Microwave extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addMicrowave',
   icon: 'device:nfc',
   label: 'Microwave',

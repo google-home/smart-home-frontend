@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.LOCK'
+
 class Lock extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class Lock extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.LOCK',
+      type,
       traits: [
         'action.devices.traits.LockUnlock'
       ],
@@ -57,6 +59,7 @@ class Lock extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addLock',
   icon: 'icons:lock',
   label: 'Lock',

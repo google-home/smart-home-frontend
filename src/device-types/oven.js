@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.OVEN'
+
 class Oven extends DeviceType {
   constructor() {
     super()
@@ -40,7 +42,7 @@ class Oven extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.OVEN',
+      type,
       traits: [
         'action.devices.traits.Cook',
         'action.devices.traits.OnOff',
@@ -80,6 +82,7 @@ class Oven extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addOven',
   icon: 'av:web',
   label: 'Oven',

@@ -280,6 +280,13 @@ export class MyApp extends PolymerElement {
     this.db.settings({
       timestampsInSnapshots: true
     });
+    window.iconMap = (() => {
+      const map = {}
+      window.deviceTypes.forEach(device => {
+        map[device.type] = device.iconFunction || device.icon
+      })
+      return map
+    })()
   }
 
   /**

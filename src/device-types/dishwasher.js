@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.DISHWASHER'
+
 class Dishwasher extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Dishwasher extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.DISHWASHER',
+      type,
       traits: [
         'action.devices.traits.RunCycle',
         'action.devices.traits.StartStop',
@@ -65,6 +67,7 @@ class Dishwasher extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addDishwasher',
   icon: 'maps:restaurant',
   label: 'Dishwasher',

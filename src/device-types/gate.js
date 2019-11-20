@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.GATE'
+
 class Gate extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Gate extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.GATE',
+      type,
       traits: [
         'action.devices.traits.OpenClose',
       ],
@@ -62,6 +64,7 @@ class Gate extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addGate',
   icon: 'device:storage',
   label: 'Gate',

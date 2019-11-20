@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.KETTLE'
+
 class Kettle extends DeviceType {
   constructor() {
     super()
@@ -37,7 +39,7 @@ class Kettle extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.KETTLE',
+      type,
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.TemperatureControl',
@@ -67,6 +69,7 @@ class Kettle extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addKettle',
   icon: 'image:filter-frames',
   label: 'Kettle',

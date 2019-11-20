@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.BLINDS'
+
 class Blinds extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Blinds extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.BLINDS',
+      type,
       traits: [
         'action.devices.traits.OpenClose',
         'action.devices.traits.Rotation'
@@ -70,6 +72,7 @@ class Blinds extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addBlinds',
   icon: 'icons:view-week',
   label: 'Blinds',

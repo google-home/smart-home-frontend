@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.THERMOSTAT'
+
 class Thermostat extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class Thermostat extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.THERMOSTAT',
+      type,
       traits: [
         'action.devices.traits.TemperatureSetting',
       ],
@@ -65,6 +67,7 @@ class Thermostat extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addThermostat',
   icon: 'image:brightness-7',
   label: 'Thermostat',

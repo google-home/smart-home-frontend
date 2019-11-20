@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.COFFEE_MAKER'
+
 class CoffeeMaker extends DeviceType {
   constructor() {
     super()
@@ -40,7 +42,7 @@ class CoffeeMaker extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.COFFEE_MAKER',
+      type,
       traits: [
         'action.devices.traits.Cook',
         'action.devices.traits.OnOff',
@@ -86,6 +88,7 @@ class CoffeeMaker extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addCoffeeMaker',
   icon: 'maps:local-cafe',
   label: 'Coffee Maker',

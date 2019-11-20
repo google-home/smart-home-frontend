@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.AIRFRESHENER'
+
 class AirFreshener extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class AirFreshener extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.AIRFRESHENER',
+      type,
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.Toggles',
@@ -65,6 +67,7 @@ class AirFreshener extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addAirFreshener',
   icon: 'icons:hourglass-full',
   label: 'Air Freshener',

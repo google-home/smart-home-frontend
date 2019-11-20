@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.SPRINKLER'
+
 class Sprinkler extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class Sprinkler extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.SPRINKLER',
+      type,
       traits: [
         'action.devices.traits.StartStop',
       ],
@@ -60,6 +62,7 @@ class Sprinkler extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addSprinkler',
   icon: 'image:filter-vintage',
   label: 'Sprinkler',

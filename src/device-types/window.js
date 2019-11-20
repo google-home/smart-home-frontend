@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.WINDOW'
+
 class Window extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Window extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.WINDOW',
+      type,
       traits: [
         'action.devices.traits.LockUnlock',
         'action.devices.traits.OpenClose'
@@ -54,6 +56,7 @@ class Window extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addWindow',
   icon: 'device:wallpaper',
   label: 'Window',

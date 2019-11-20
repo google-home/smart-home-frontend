@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.CAMERA'
+
 class Camera extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class Camera extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.CAMERA',
+      type,
       traits: [
         'action.devices.traits.CameraStream',
       ],
@@ -63,6 +65,7 @@ class Camera extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addCamera',
   icon: 'image:camera-alt',
   label: 'Camera',

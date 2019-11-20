@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.WASHER'
+
 class Washer extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class Washer extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.WASHER',
+      type,
       traits: [
         'action.devices.traits.RunCycle',
         'action.devices.traits.Modes',
@@ -100,6 +102,7 @@ class Washer extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addWasher',
   icon: 'maps:local-laundry-service',
   label: 'Washer',

@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.SHUTTER'
+
 class Shutter extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Shutter extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.SHUTTER',
+      type,
       traits: [
         'action.devices.traits.OpenClose'
       ],
@@ -62,6 +64,7 @@ class Shutter extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addShutter',
   icon: 'maps:map',
   label: 'Shutters',

@@ -14,6 +14,14 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.LIGHT'
+const iconFunction = (attributes) => {
+  if (attributes.colorTemperatureRange) {
+    return 'image:wb-iridescent'
+  }
+  return 'image:wb-incandescent'
+}
+
 class Light extends DeviceType {
   constructor() {
     super()
@@ -54,7 +62,7 @@ class Light extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.LIGHT',
+      type,
       traits: [
         'action.devices.traits.Brightness',
         'action.devices.traits.OnOff',
@@ -95,7 +103,7 @@ class Light extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.LIGHT',
+      type,
       traits: [
         'action.devices.traits.Brightness',
         'action.devices.traits.OnOff',
@@ -126,16 +134,20 @@ class Light extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addMonochromeLight',
   icon: 'image:wb-iridescent',
   label: 'Monochrome Light',
+  iconFunction,
   function: (app) => { app._createDevice(Light.createMonochromeLight()); }
 })
 
 
 window.deviceTypes.push({
+  type,
   identifier: '_addLight',
   icon: 'image:wb-incandescent',
   label: 'RGB Light',
+  iconFunction,
   function: (app) => { app._createDevice(Light.createRgbLight()); }
 })

@@ -16,6 +16,8 @@ let instance;
 const LAST_WEEK = new Date();
 LAST_WEEK.setDate(LAST_WEEK.getDate() - 7);
 
+const type = 'action.devices.types.SECURITYSYSTEM'
+
 class SecuritySystem extends DeviceType {
   constructor() {
     super()
@@ -33,7 +35,7 @@ class SecuritySystem extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.SECURITYSYSTEM',
+      type,
       traits: [
         'action.devices.traits.ArmDisarm',
         'action.devices.traits.Reboot',
@@ -84,6 +86,7 @@ class SecuritySystem extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addSecuritySystem',
   icon: 'icons:verified-user',
   label: 'Security System',

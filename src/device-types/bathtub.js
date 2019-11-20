@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.BATHTUB'
+
 class Bathtub extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class Bathtub extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.BATHTUB',
+      type,
       traits: [
         'action.devices.traits.Fill'
       ],
@@ -91,6 +93,7 @@ class Bathtub extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addBathtub',
   icon: 'places:hot-tub',
   label: 'Bathtub',

@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.GARAGE'
+
 class Garage extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Garage extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.GARAGE',
+      type,
       traits: [
         'action.devices.traits.OpenClose'
       ],
@@ -53,6 +55,7 @@ class Garage extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addGarage',
   icon: 'notification:drive-eta',
   label: 'Garage Door',

@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.HOOD'
+
 class Hood extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Hood extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.HOOD',
+      type,
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.Toggles',
@@ -89,6 +91,7 @@ class Hood extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addHood',
   icon: 'icons:view-day',
   label: 'Hood',

@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.DEHUMIDIFIER'
+
 class Dehumidifier extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Dehumidifier extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.DEHUMIDIFIER',
+      type,
       traits: [
         'action.devices.traits.StartStop',
         'action.devices.traits.FanSpeed',
@@ -95,6 +97,7 @@ class Dehumidifier extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addDehumidifier',
   icon: 'av:volume-off',
   label: 'Dehumidifier',

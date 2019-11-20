@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.CURTAIN'
+
 class Curtain extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Curtain extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.CURTAIN',
+      type,
       traits: [
         'action.devices.traits.OpenClose'
       ],
@@ -62,7 +64,8 @@ class Curtain extends DeviceType {
 }
 
 window.deviceTypes.push({
-  identifier: '_curtain',
+  type,
+  identifier: '_addCurtain',
   icon: 'icons:flag',
   label: 'Curtain',
   function: (app) => { app._createDevice(Curtain.createDevice()); }

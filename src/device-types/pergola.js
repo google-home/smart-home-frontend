@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.PERGOLA'
+
 class Pergola extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Pergola extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.PERGOLA',
+      type,
       traits: [
         'action.devices.traits.OpenClose'
       ],
@@ -62,6 +64,7 @@ class Pergola extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addPergola',
   icon: 'maps:layers',
   label: 'Pergola',

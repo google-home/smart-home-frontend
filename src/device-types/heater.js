@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.HEATER'
+
 class Heater extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Heater extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.HEATER',
+      type,
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.FanSpeed'
@@ -72,6 +74,7 @@ class Heater extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addHeater',
   icon: 'icons:account-balance-wallet',
   label: 'Heater',

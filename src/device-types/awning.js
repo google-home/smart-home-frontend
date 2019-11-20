@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.AWNING'
+
 class Awning extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class Awning extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.AWNING',
+      type,
       traits: [
         'action.devices.traits.OpenClose'
       ],
@@ -62,6 +64,7 @@ class Awning extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addAwning',
   icon: 'maps:store-mall-directory',
   label: 'Awning',

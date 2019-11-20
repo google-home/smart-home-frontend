@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.AIRPURIFIER'
+
 class AirPurifier extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class AirPurifier extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.AIRPURIFIER',
+      type,
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.Toggles',
@@ -99,6 +101,7 @@ class AirPurifier extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addAirPurifier',
   icon: 'hardware:sim-card',
   label: 'Air Purifier',

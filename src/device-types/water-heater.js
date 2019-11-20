@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.WATERHEATER'
+
 class WaterHeater extends DeviceType {
   constructor() {
     super()
@@ -31,7 +33,7 @@ class WaterHeater extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.WATERHEATER',
+      type,
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.TemperatureControl'
@@ -60,6 +62,7 @@ class WaterHeater extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addWaterHeater',
   icon: 'maps:local-drink',
   label: 'Water Heater',

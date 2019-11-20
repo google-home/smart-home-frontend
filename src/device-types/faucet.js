@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.FAUCET'
+
 class Faucet extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class Faucet extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.FAUCET',
+      type,
       traits: [
         'action.devices.traits.Dispense'
       ],
@@ -114,6 +116,7 @@ class Faucet extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addFaucet',
   icon: 'communication:voicemail',
   label: 'Faucet',

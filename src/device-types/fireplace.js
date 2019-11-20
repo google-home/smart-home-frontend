@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.FIREPLACE'
+
 class Fireplace extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class Fireplace extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.FIREPLACE',
+      type,
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.Toggles',
@@ -68,6 +70,7 @@ class Fireplace extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addFireplace',
   icon: 'social:whatshot',
   label: 'Fireplace',

@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.FAN'
+
 class Fan extends DeviceType {
   constructor() {
     super()
@@ -40,7 +42,7 @@ class Fan extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.FAN',
+      type,
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.FanSpeed',
@@ -94,6 +96,7 @@ class Fan extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addFan',
   icon: 'hardware:toys',
   label: 'Fan',

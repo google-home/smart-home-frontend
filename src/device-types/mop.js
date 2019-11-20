@@ -14,6 +14,8 @@ import { DeviceType } from './device-type';
 
 let instance;
 
+const type = 'action.devices.types.MOP'
+
 class Mop extends DeviceType {
   constructor() {
     super()
@@ -34,7 +36,7 @@ class Mop extends DeviceType {
 
     return {
       id: instance.genUuid(),
-      type: 'action.devices.types.MOP',
+      type,
       traits: [
         'action.devices.traits.Dock',
         'action.devices.traits.StartStop',
@@ -76,6 +78,7 @@ class Mop extends DeviceType {
 }
 
 window.deviceTypes.push({
+  type,
   identifier: '_addMop',
   icon: 'image:brush',
   label: 'Mop',
