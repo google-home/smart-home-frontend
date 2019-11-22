@@ -74,6 +74,7 @@ import './device-types/light.js';
 import './device-types/outlet.js';
 import './device-types/oven.js';
 import './device-types/pergola.js';
+import './device-types/petfeeder.js';
 import './device-types/pressurecooker.js';
 import './device-types/refrigerator.js';
 import './device-types/scene.js';
