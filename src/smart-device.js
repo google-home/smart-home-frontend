@@ -97,6 +97,14 @@ export class SmartDevice extends PolymerElement {
         .disabled {
           text-decoration: line-through;
         }
+
+        .statusReport {
+          color: #BDBDBD;
+        }
+
+        .statusReportActive {
+          color: #FF9800;
+        }
       </style>
 
       <div class="card">
@@ -778,6 +786,85 @@ export class SmartDevice extends PolymerElement {
               this.$.icon.style.color = '#555555';
             }
           });
+          break;
+
+        case 'action.devices.traits.StatusReport':
+          const report = this.device.states.currentStatusReport;
+          const toggleStatus = (report, statusCode, status) => {
+            const index = report.findIndex((status) => status.statusCode === statusCode);
+            if (index > -1) {
+              this.device.states.currentStatusReport.splice(index, 1);
+              this._updateState();
+            } else {
+              this.device.states.currentStatusReport.push(status);
+              this._updateState();
+            }
+          }
+          const deviceTarget = this.$['device-id'].innerText;
+          // Add three possible status reports which can be toggled
+          const lowBattery = {
+            blocking: false,
+            priority: 0,
+            statusCode: 'lowBattery',
+            deviceTarget
+          };
+          const lowBatteryIcon = document.createElement('paper-icon-button');
+          lowBatteryIcon.icon = 'device:battery-alert';
+          lowBatteryIcon.classList.add('statusReport');
+          lowBatteryIcon.addEventListener('click', () => {
+            toggleStatus(report, 'lowBattery', lowBattery);
+          });
+
+          const hardwareFailure = {
+            blocking: true,
+            priority: 0,
+            statusCode: 'hardwareFailure',
+            deviceTarget
+          };
+          const hardwareFailureIcon = document.createElement('paper-icon-button');
+          hardwareFailureIcon.icon = 'communication:no-sim';
+          hardwareFailureIcon.classList.add('statusReport');
+          hardwareFailureIcon.addEventListener('click', () => {
+            toggleStatus(report, 'hardwareFailure', hardwareFailure);
+          })
+
+          const smokeDetected = {
+            blocking: false,
+            priority: 1,
+            statusCode: 'smokeDetected',
+            deviceTarget
+          };
+          const smokeDetectedIcon = document.createElement('paper-icon-button');
+          smokeDetectedIcon.icon = 'social:whatshot';
+          smokeDetectedIcon.classList.add('statusReport');
+          smokeDetectedIcon.addEventListener('click', () => {
+            toggleStatus(report, 'smokeDetected', smokeDetected);
+          })
+
+          // Add each element to the device card
+          this.$.states.appendChild(lowBatteryIcon);
+          this.$.states.appendChild(hardwareFailureIcon);
+          this.$.states.appendChild(smokeDetectedIcon);
+
+          this.traitHandlers.push(states => {
+            if (states.currentStatusReport) {
+              lowBatteryIcon.classList.remove('statusReportActive');
+              hardwareFailureIcon.classList.remove('statusReportActive');
+              smokeDetectedIcon.classList.remove('statusReportActive');
+              for (const status of states.currentStatusReport) {
+                if (status.statusCode === 'lowBattery') {
+                  lowBatteryIcon.classList.add('statusReportActive');
+                }
+                if (status.statusCode === 'hardwareFailure') {
+                  hardwareFailureIcon.classList.add('statusReportActive');
+                }
+                if (status.statusCode === 'smokeDetected') {
+                  smokeDetectedIcon.classList.add('statusReportActive');
+                }
+              }
+            }
+          })
+
           break;
 
         case 'action.devices.traits.TemperatureControl':

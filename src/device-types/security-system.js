@@ -37,7 +37,8 @@ class SecuritySystem extends DeviceType {
       traits: [
         'action.devices.traits.ArmDisarm',
         'action.devices.traits.Reboot',
-        'action.devices.traits.SoftwareUpdate'
+        'action.devices.traits.SoftwareUpdate',
+        'action.devices.traits.StatusReport',
       ],
       defaultNames: [`Smart Security System`],
       name: `Smart Security System`,
@@ -73,7 +74,8 @@ class SecuritySystem extends DeviceType {
         currentArmLevel: 'L1',
         isArmed: false,
         // Timestamp state should be in seconds
-        lastSoftwareUpdateUnixTimestampSec: Math.floor(LAST_WEEK.getTime() / 1000)
+        lastSoftwareUpdateUnixTimestampSec: Math.floor(LAST_WEEK.getTime() / 1000),
+        currentStatusReport: []
       },
       hwVersion: '3.2',
       swVersion: '11.4',
