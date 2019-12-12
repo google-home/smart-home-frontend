@@ -843,16 +843,6 @@ export class SmartDevice extends PolymerElement {
 
   receiveState(device) {
     this.device = device;
-    if (this.device.states.color) {
-      if (this.device.states.color.spectrumRgb) {
-        this.device.states.color.spectrumRGB = this.device.states.color.spectrumRgb
-        delete this.device.states.color.spectrumRgb
-      }
-      if (this.device.states.color.spectrumHsv) {
-        this.device.states.color.spectrumHSV = this.device.states.color.spectrumHsv
-        delete this.device.states.color.spectrumHsv
-      }
-    }
     this._deviceChanged();
   }
 }
