@@ -21,10 +21,10 @@ class Thermostat extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['wall thermostat'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['upstairs thermostat'],
-      roomHint: 'hallway'
+      roomHint: 'hallway',
     }];
   }
 
@@ -46,7 +46,7 @@ class Thermostat extends DeviceType {
       roomHint: instance.getRoomHint(element),
       attributes: {
         availableThermostatModes: 'off,heat,cool,on,heatcool',
-        thermostatTemperatureUnit: 'C'
+        thermostatTemperatureUnit: 'C',
       },
       willReportState: true,
       states: {
@@ -56,7 +56,7 @@ class Thermostat extends DeviceType {
         thermostatTemperatureSetpointHigh: 28,
         thermostatTemperatureSetpointLow: 22,
         thermostatTemperatureAmbient: 25.1,
-        thermostatHumidityAmbient: 45.3
+        thermostatHumidityAmbient: 45.3,
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -71,5 +71,7 @@ window.deviceTypes.push({
   identifier: '_addThermostat',
   icon: 'image:brightness-7',
   label: 'Thermostat',
-  function: (app) => { app._createDevice(Thermostat.createDevice()); }
+  function: (app) => {
+    app._createDevice(Thermostat.createDevice());
+  },
 })

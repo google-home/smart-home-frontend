@@ -21,16 +21,16 @@ class Fan extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['workshop fan'],
-      roomHint: 'Shed'
+      roomHint: 'Shed',
     }, {
       nicknames: ['kitchen ceiling fan'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['patio fan'],
-      roomHint: 'Patio'
+      roomHint: 'Patio',
     }, {
       nicknames: ['air conditioner'],
-      roomHint: 'Den'
+      roomHint: 'Den',
     }];
   }
 
@@ -57,30 +57,30 @@ class Fan extends DeviceType {
             speed_name: '0',
             speed_values: [{
               speed_synonym: ['off'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             speed_name: '1',
             speed_values: [{
               speed_synonym: ['low'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             speed_name: '2',
             speed_values: [{
               speed_synonym: ['medium'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             speed_name: '3',
             speed_values: [{
               speed_synonym: ['high'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }],
           ordered: true,
         },
-        reversible: true
+        reversible: true,
       },
       willReportState: true,
       states: {
@@ -100,5 +100,7 @@ window.deviceTypes.push({
   identifier: '_addFan',
   icon: 'hardware:toys',
   label: 'Fan',
-  function: (app) => { app._createDevice(Fan.createDevice()); }
+  function: (app) => {
+    app._createDevice(Fan.createDevice());
+  },
 })

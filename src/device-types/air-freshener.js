@@ -21,7 +21,7 @@ class AirFreshener extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Mr. Fresh'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -47,12 +47,12 @@ class AirFreshener extends DeviceType {
           name: 'intermittent spray',
           name_values: [{
             name_synonym: ['intermittent spray'],
-            lang: 'en'
+            lang: 'en',
           }, {
             name_synonym: ['intermittierender Spray'],
-            lang: 'de'
-          }]
-        }]
+            lang: 'de',
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -71,5 +71,7 @@ window.deviceTypes.push({
   identifier: '_addAirFreshener',
   icon: 'icons:hourglass-full',
   label: 'Air Freshener',
-  function: (app) => { app._createDevice(AirFreshener.createDevice()); }
+  function: (app) => {
+    app._createDevice(AirFreshener.createDevice());
+  },
 })

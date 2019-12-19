@@ -21,10 +21,10 @@ class PetFeeder extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Cat feeder'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['Dog feeder'],
-      roomHint: 'Living Room'
+      roomHint: 'Living Room',
     }];
   }
 
@@ -38,7 +38,7 @@ class PetFeeder extends DeviceType {
       id: instance.genUuid(),
       type,
       traits: [
-        'action.devices.traits.Dispense'
+        'action.devices.traits.Dispense',
       ],
       defaultNames: [`Smart Pet Feeder`],
       name: `Smart Pet Feeder`,
@@ -49,7 +49,7 @@ class PetFeeder extends DeviceType {
           item_name: 'catFood',
           item_name_synonyms: [{
             lang: 'en',
-            synonyms: ['cat food', 'kibble']
+            synonyms: ['cat food', 'kibble'],
           }],
           supported_units: [
             'OUNCES',
@@ -57,8 +57,8 @@ class PetFeeder extends DeviceType {
           ],
           default_portion: {
             amount: 1.0,
-            unit: 'CUPS'
-          }
+            unit: 'CUPS',
+          },
         }],
         supportedDispensePresets: [{
           preset_name: 'catMeal',
@@ -66,10 +66,10 @@ class PetFeeder extends DeviceType {
             lang: 'en',
             synonyms: [
               'normal meal',
-              'dinner'
-            ]
-          }]
-        }]
+              'dinner',
+            ],
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -78,10 +78,10 @@ class PetFeeder extends DeviceType {
           itemName: 'catFood',
           amountLastDispensed: {
             amount: 0,
-            unit: 'CUPS'
+            unit: 'CUPS',
           },
-          isCurrentlyDispensing: false
-        }]
+          isCurrentlyDispensing: false,
+        }],
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -96,5 +96,7 @@ window.deviceTypes.push({
   identifier: '_addPetFeeder',
   icon: 'icons:pets',
   label: 'Pet Feeder',
-  function: (app) => { app._createDevice(PetFeeder.createDevice()); }
+  function: (app) => {
+    app._createDevice(PetFeeder.createDevice());
+  },
 })

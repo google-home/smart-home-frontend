@@ -21,10 +21,10 @@ class Faucet extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Kitchen sink'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['Bathroom sink', 'Fancy sink'],
-      roomHint: 'Bathroom'
+      roomHint: 'Bathroom',
     }];
   }
 
@@ -38,7 +38,7 @@ class Faucet extends DeviceType {
       id: instance.genUuid(),
       type,
       traits: [
-        'action.devices.traits.Dispense'
+        'action.devices.traits.Dispense',
       ],
       defaultNames: [`Smart Faucet`],
       name: `Smart Faucet`,
@@ -49,13 +49,13 @@ class Faucet extends DeviceType {
           item_name: 'water',
           item_name_synonyms: [{
             lang: 'en',
-            synonyms: ['water']
+            synonyms: ['water'],
           }, {
             lang: 'es',
-            synonyms: ['agua']
+            synonyms: ['agua'],
           }, {
             lang: 'fr',
-            synonyms: ['eau']
+            synonyms: ['eau'],
           }],
           supported_units: [
             'CUPS',
@@ -63,37 +63,37 @@ class Faucet extends DeviceType {
             'GALLONS',
             'MILLILITERS',
             'LITERS',
-            'DECILITERS'
+            'DECILITERS',
           ],
           default_portion: {
             amount: 1,
-            unit: 'CUPS'
-          }
+            unit: 'CUPS',
+          },
         }],
         supportedDispensePresets: [{
           preset_name: 'cat water bowl',
           preset_name_synonyms: [{
             lang: 'en',
             synonyms: [
-              "cat water bowl",
-              "cat water dish",
-              "cat water cup"
-            ]
+              'cat water bowl',
+              'cat water dish',
+              'cat water cup',
+            ],
           }, {
             lang: 'es',
             synonyms: [
-              "plato de agua para gato",
-              "bebedero para gato"
-            ]
+              'plato de agua para gato',
+              'bebedero para gato',
+            ],
           }, {
             lang: 'fr',
             synonyms: [
-              "bol d'eau de chat",
-              "bac à eau pour chat",
-              "tasse d'eau de chat"
-            ]
-          }]
-        }]
+              'bol d\'eau de chat',
+              'bac à eau pour chat',
+              'tasse d\'eau de chat',
+            ],
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -102,10 +102,10 @@ class Faucet extends DeviceType {
           itemName: 'water',
           amountLastDispensed: {
             amount: 0,
-            unit: 'CUPS'
+            unit: 'CUPS',
           },
-          isCurrentlyDispensing: false
-        }]
+          isCurrentlyDispensing: false,
+        }],
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -120,5 +120,7 @@ window.deviceTypes.push({
   identifier: '_addFaucet',
   icon: 'communication:voicemail',
   label: 'Faucet',
-  function: (app) => { app._createDevice(Faucet.createDevice()); }
+  function: (app) => {
+    app._createDevice(Faucet.createDevice());
+  },
 })

@@ -21,10 +21,10 @@ class Lock extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['front door'],
-      roomHint: 'Living Room'
+      roomHint: 'Living Room',
     }, {
       nicknames: ['back door'],
-      roomHint: 'Garage'
+      roomHint: 'Garage',
     }];
   }
 
@@ -38,7 +38,7 @@ class Lock extends DeviceType {
       id: instance.genUuid(),
       type,
       traits: [
-        'action.devices.traits.LockUnlock'
+        'action.devices.traits.LockUnlock',
       ],
       defaultNames: [`Smart Lock`],
       name: `Smart Lock`,
@@ -48,7 +48,7 @@ class Lock extends DeviceType {
       states: {
         online: true,
         isLocked: false,
-        isJammed: false
+        isJammed: false,
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -63,5 +63,7 @@ window.deviceTypes.push({
   identifier: '_addLock',
   icon: 'icons:lock',
   label: 'Lock',
-  function: (app) => { app._createDevice(Lock.createDevice()); }
+  function: (app) => {
+    app._createDevice(Lock.createDevice());
+  },
 })

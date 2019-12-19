@@ -21,13 +21,13 @@ class Refrigerator extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['kitchen refrigerator'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['mini fridge'],
-      roomHint: 'Office'
+      roomHint: 'Office',
     }, {
       nicknames: ['garage freezer'],
-      roomHint: 'Garage'
+      roomHint: 'Garage',
     }];
   }
 
@@ -54,9 +54,9 @@ class Refrigerator extends DeviceType {
           name: 'quiet',
           name_values: [{
             name_synonym: ['quiet', 'silent'],
-            lang: 'en'
-          }]
-        }]
+            lang: 'en',
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -64,7 +64,7 @@ class Refrigerator extends DeviceType {
         on: false,
         currentToggleSettings: {
           quiet: false,
-        }
+        },
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -79,5 +79,7 @@ window.deviceTypes.push({
   identifier: '_addRefrigerator',
   icon: 'places:kitchen',
   label: 'Refrigerator',
-  function: (app) => { app._createDevice(Refrigerator.createDevice()); }
+  function: (app) => {
+    app._createDevice(Refrigerator.createDevice());
+  },
 })

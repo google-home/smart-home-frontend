@@ -21,10 +21,10 @@ class Outlet extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['smart plug'],
-      roomHint: 'Basement'
+      roomHint: 'Basement',
     }, {
       nicknames: ['wall outlet'],
-      roomHint: 'Family Room'
+      roomHint: 'Family Room',
     }];
   }
 
@@ -47,7 +47,7 @@ class Outlet extends DeviceType {
       willReportState: true,
       states: {
         online: true,
-        on: false
+        on: false,
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -62,5 +62,7 @@ window.deviceTypes.push({
   identifier: '_addOutlet',
   icon: 'notification:power',
   label: 'Outlet',
-  function: (app) => { app._createDevice(Outlet.createDevice()); }
+  function: (app) => {
+    app._createDevice(Outlet.createDevice());
+  },
 })

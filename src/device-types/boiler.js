@@ -21,7 +21,7 @@ class Boiler extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['my boiler'],
-      roomHint: 'Laundry Room'
+      roomHint: 'Laundry Room',
     }];
   }
 
@@ -36,7 +36,7 @@ class Boiler extends DeviceType {
       type,
       traits: [
         'action.devices.traits.TemperatureControl',
-        'action.devices.traits.OnOff'
+        'action.devices.traits.OnOff',
       ],
       defaultNames: [`Smart Boiler`],
       name: `Smart Boiler`,
@@ -45,16 +45,16 @@ class Boiler extends DeviceType {
       attributes: {
         temperatureRange: {
           minThresholdCelsius: 50,
-          maxThresholdCelsius: 125
+          maxThresholdCelsius: 125,
         },
-        temperatureUnitForUX: 'C'
+        temperatureUnitForUX: 'C',
       },
       willReportState: true,
       states: {
         online: true,
         on: false,
         temperatureSetpointCelsius: 105,
-        temperatureAmbientCelsius: 110
+        temperatureAmbientCelsius: 110,
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -69,5 +69,7 @@ window.deviceTypes.push({
   identifier: '_addBoiler',
   icon: 'icons:invert-colors',
   label: 'Boiler',
-  function: (app) => { app._createDevice(Boiler.createDevice()); }
+  function: (app) => {
+    app._createDevice(Boiler.createDevice());
+  },
 })

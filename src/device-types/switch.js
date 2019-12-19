@@ -21,7 +21,7 @@ class Switch extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['smart switch'],
-      roomHint: 'Living Room'
+      roomHint: 'Living Room',
     }];
   }
 
@@ -44,7 +44,7 @@ class Switch extends DeviceType {
       willReportState: true,
       states: {
         online: true,
-        on: false
+        on: false,
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -59,5 +59,7 @@ window.deviceTypes.push({
   identifier: '_addSwitch',
   icon: 'communication:call-merge',
   label: 'Switch',
-  function: (app) => { app._createDevice(Switch.createDevice()); }
+  function: (app) => {
+    app._createDevice(Switch.createDevice());
+  },
 })

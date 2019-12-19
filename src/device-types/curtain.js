@@ -21,7 +21,7 @@ class Curtain extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['living room curtain'],
-      roomHint: 'Living Room'
+      roomHint: 'Living Room',
     }];
   }
 
@@ -35,25 +35,25 @@ class Curtain extends DeviceType {
       id: instance.genUuid(),
       type,
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.OpenClose',
       ],
       defaultNames: [`Smart Curtain`],
       name: `Smart Curtain`,
       nicknames: instance.getNicknames(element),
       roomHint: instance.getRoomHint(element),
       attributes: {
-        openDirection: ['LEFT', 'RIGHT']
+        openDirection: ['LEFT', 'RIGHT'],
       },
       willReportState: true,
       states: {
         online: true,
         openState: [{
           openPercent: 0,
-          openDirection: 'LEFT'
+          openDirection: 'LEFT',
         }, {
           openPercent: 0,
-          openDirection: 'RIGHT'
-        }]
+          openDirection: 'RIGHT',
+        }],
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -68,5 +68,7 @@ window.deviceTypes.push({
   identifier: '_addCurtain',
   icon: 'icons:flag',
   label: 'Curtain',
-  function: (app) => { app._createDevice(Curtain.createDevice()); }
+  function: (app) => {
+    app._createDevice(Curtain.createDevice());
+  },
 })

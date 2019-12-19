@@ -19,7 +19,7 @@ class Standmixer extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Mixer'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -34,7 +34,7 @@ class Standmixer extends DeviceType {
       type: 'action.devices.types.STANDMIXER',
       traits: [
         'action.devices.traits.StartStop',
-        'action.devices.traits.Timer'
+        'action.devices.traits.Timer',
       ],
       defaultNames: [`Smart Standmixer`],
       name: `Smart Standmixer`,
@@ -42,7 +42,7 @@ class Standmixer extends DeviceType {
       roomHint: instance.getRoomHint(element),
       attributes: {
         maxTimerLimitSec: 3600,
-        pausable: true
+        pausable: true,
       },
       willReportState: true,
       states: {
@@ -64,5 +64,7 @@ window.deviceTypes.push({
   identifier: '_addStandmixer',
   icon: 'icons:settings-backup-restore',
   label: 'Standmixer',
-  function: (app) => { app._createDevice(Standmixer.createDevice()); }
+  function: (app) => {
+    app._createDevice(Standmixer.createDevice());
+  },
 })

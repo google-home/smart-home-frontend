@@ -19,7 +19,7 @@ class Closet extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Coat closet'],
-      roomHint: 'Bedroom'
+      roomHint: 'Bedroom',
     }];
   }
 
@@ -33,25 +33,25 @@ class Closet extends DeviceType {
       id: instance.genUuid(),
       type: 'action.devices.types.CLOSET',
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.OpenClose',
       ],
       defaultNames: [`Smart Closet`],
       name: `Smart Closet`,
       nicknames: instance.getNicknames(element),
       roomHint: instance.getRoomHint(element),
       attributes: {
-        openDirection: ['LEFT', 'RIGHT']
+        openDirection: ['LEFT', 'RIGHT'],
       },
       willReportState: true,
       states: {
         online: true,
         openState: [{
           openDirection: 'LEFT',
-          openPercent: 0
+          openPercent: 0,
         }, {
           openDirection: 'RIGHT',
-          openPercent: 0
-        }]
+          openPercent: 0,
+        }],
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -65,5 +65,7 @@ window.deviceTypes.push({
   identifier: '_addCloset',
   icon: 'icons:view-array',
   label: 'Closet',
-  function: (app) => { app._createDevice(Closet.createDevice()); }
+  function: (app) => {
+    app._createDevice(Closet.createDevice());
+  },
 })

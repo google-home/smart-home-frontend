@@ -15,6 +15,7 @@ import { DeviceType } from './device-type';
 let instance;
 const LAST_WEEK = new Date();
 LAST_WEEK.setDate(LAST_WEEK.getDate() - 7);
+const LAST_WEEK_SEC = Math.floor(LAST_WEEK.getTime() / 1000)
 
 const type = 'action.devices.types.SECURITYSYSTEM'
 
@@ -23,7 +24,7 @@ class SecuritySystem extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['security panel'],
-      roomHint: 'Hallway'
+      roomHint: 'Hallway',
     }];
   }
 
@@ -52,23 +53,23 @@ class SecuritySystem extends DeviceType {
             level_name: 'L1',
             level_values: [{
               level_synonym: ['home and guarding', 'SL1'],
-              lang: 'en'
+              lang: 'en',
             }, {
               level_synonym: ['zuhause und bewachen', 'SL1'],
-              lang: 'de'
-            }]
+              lang: 'de',
+            }],
           }, {
             level_name: 'L2',
             level_values: [{
               level_synonym: ['away and guarding', 'SL2'],
-              lang: 'en'
+              lang: 'en',
             }, {
               level_synonym: ['weg und bewachen', 'SL2'],
-              lang: 'de'
-            }]
+              lang: 'de',
+            }],
           }],
-          ordered: true
-        }
+          ordered: true,
+        },
       },
       willReportState: true,
       states: {
@@ -76,8 +77,8 @@ class SecuritySystem extends DeviceType {
         currentArmLevel: 'L1',
         isArmed: false,
         // Timestamp state should be in seconds
-        lastSoftwareUpdateUnixTimestampSec: Math.floor(LAST_WEEK.getTime() / 1000),
-        currentStatusReport: []
+        lastSoftwareUpdateUnixTimestampSec: LAST_WEEK_SEC,
+        currentStatusReport: [],
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -92,5 +93,7 @@ window.deviceTypes.push({
   identifier: '_addSecuritySystem',
   icon: 'icons:verified-user',
   label: 'Security System',
-  function: (app) => { app._createDevice(SecuritySystem.createDevice()); }
+  function: (app) => {
+    app._createDevice(SecuritySystem.createDevice());
+  },
 })

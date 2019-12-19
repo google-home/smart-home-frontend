@@ -21,10 +21,10 @@ class Vacuum extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['kitchen vacuum'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['robo vacuum'],
-      roomHint: 'Master Bedroom'
+      roomHint: 'Master Bedroom',
     }];
   }
 
@@ -40,7 +40,7 @@ class Vacuum extends DeviceType {
       traits: [
         'action.devices.traits.StartStop',
         'action.devices.traits.Toggles',
-        'action.devices.traits.Dock'
+        'action.devices.traits.Dock',
       ],
       defaultNames: [`Smart Vacuum`],
       name: `Smart Vacuum`,
@@ -52,9 +52,9 @@ class Vacuum extends DeviceType {
           name: 'quiet',
           name_values: [{
             name_synonym: ['quiet', 'silent'],
-            lang: 'en'
-          }]
-        }]
+            lang: 'en',
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -63,8 +63,8 @@ class Vacuum extends DeviceType {
         isPaused: false,
         isDocked: false,
         currentToggleSettings: {
-          quiet: false
-        }
+          quiet: false,
+        },
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -79,5 +79,7 @@ window.deviceTypes.push({
   identifier: '_addVacuum',
   icon: 'hardware:router',
   label: 'Vacuum',
-  function: (app) => { app._createDevice(Vacuum.createDevice()); }
+  function: (app) => {
+    app._createDevice(Vacuum.createDevice());
+  },
 })

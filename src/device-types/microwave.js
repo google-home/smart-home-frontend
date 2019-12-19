@@ -21,7 +21,7 @@ class Microwave extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['microwave'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -50,7 +50,7 @@ class Microwave extends DeviceType {
           'DEFROST',
           'MICROWAVE',
           'WARM',
-        ]
+        ],
       },
       willReportState: true,
       states: {
@@ -62,7 +62,7 @@ class Microwave extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE'
+        currentFoodUnit: 'NONE',
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -77,5 +77,7 @@ window.deviceTypes.push({
   identifier: '_addMicrowave',
   icon: 'device:nfc',
   label: 'Microwave',
-  function: (app) => { app._createDevice(Microwave.createDevice()); }
+  function: (app) => {
+    app._createDevice(Microwave.createDevice());
+  },
 })

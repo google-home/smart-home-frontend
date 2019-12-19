@@ -19,7 +19,7 @@ class Mower extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Electric mower'],
-      roomHint: 'Garage'
+      roomHint: 'Garage',
     }];
   }
 
@@ -46,11 +46,11 @@ class Mower extends DeviceType {
           name: 'turbo',
           name_values: [{
             name_synonym: ['extra cleaning', 'turbo'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         pausable: true,
-        availableZones: ['left driveway', 'right driveway', 'around the hedges']
+        availableZones: ['left driveway', 'right driveway', 'sidewalk'],
       },
       willReportState: true,
       states: {
@@ -60,7 +60,7 @@ class Mower extends DeviceType {
         },
         isPaused: false,
         isRunning: false,
-        isDocked: false
+        isDocked: false,
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -74,5 +74,7 @@ window.deviceTypes.push({
   identifier: '_addMower',
   icon: 'maps:local-grocery-store',
   label: 'Mower',
-  function: (app) => { app._createDevice(Mower.createDevice()); }
+  function: (app) => {
+    app._createDevice(Mower.createDevice());
+  },
 })

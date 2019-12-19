@@ -21,10 +21,10 @@ class Sprinkler extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['front yard sprinklers'],
-      roomHint: 'Front Yard'
+      roomHint: 'Front Yard',
     }, {
       nicknames: ['garage faucet'],
-      roomHint: 'Garage'
+      roomHint: 'Garage',
     }];
   }
 
@@ -45,7 +45,7 @@ class Sprinkler extends DeviceType {
       nicknames: instance.getNicknames(element),
       roomHint: instance.getRoomHint(element),
       attributes: {
-        pausable: false
+        pausable: false,
       },
       willReportState: true,
       states: {
@@ -66,5 +66,7 @@ window.deviceTypes.push({
   identifier: '_addSprinkler',
   icon: 'image:filter-vintage',
   label: 'Sprinkler',
-  function: (app) => { app._createDevice(Sprinkler.createDevice()); }
+  function: (app) => {
+    app._createDevice(Sprinkler.createDevice());
+  },
 })

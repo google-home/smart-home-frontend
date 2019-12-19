@@ -21,7 +21,7 @@ class Heater extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['upstairs heater'],
-      roomHint: 'Bedroom'
+      roomHint: 'Bedroom',
     }];
   }
 
@@ -36,7 +36,7 @@ class Heater extends DeviceType {
       type,
       traits: [
         'action.devices.traits.OnOff',
-        'action.devices.traits.FanSpeed'
+        'action.devices.traits.FanSpeed',
       ],
       defaultNames: [`Smart Heater`],
       name: `Smart Heater`,
@@ -48,18 +48,18 @@ class Heater extends DeviceType {
             speed_name: 'Low',
             speed_values: [{
               speed_synonym: ['low', 'slow'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             speed_name: 'High',
             speed_values: [{
               speed_synonym: ['high'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }],
-          ordered: true
+          ordered: true,
         },
-        reversible: true
+        reversible: true,
       },
       willReportState: true,
       states: {
@@ -78,5 +78,7 @@ window.deviceTypes.push({
   identifier: '_addHeater',
   icon: 'icons:account-balance-wallet',
   label: 'Heater',
-  function: (app) => { app._createDevice(Heater.createDevice()); }
+  function: (app) => {
+    app._createDevice(Heater.createDevice());
+  },
 })

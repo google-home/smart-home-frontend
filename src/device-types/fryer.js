@@ -21,7 +21,7 @@ class Fryer extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Countertop fryer'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -45,25 +45,25 @@ class Fryer extends DeviceType {
       roomHint: instance.getRoomHint(element),
       attributes: {
         supportedCookingModes: [
-          'FRY'
+          'FRY',
         ],
         foodPresets: [{
           food_preset_name: 'french fries',
           supported_units: ['POUNDS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['french fries', 'fries'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }, {
           food_preset_name: 'hash browns',
           supported_units: ['CUPS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['hash browns', 'hash potatoes'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         maxTimerLimitSec: 1200,
-        pausable: true
+        pausable: true,
       },
       willReportState: true,
       states: {
@@ -75,7 +75,7 @@ class Fryer extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE'
+        currentFoodUnit: 'NONE',
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -90,5 +90,7 @@ window.deviceTypes.push({
   identifier: '_addFryer',
   icon: 'icons:unarchive',
   label: 'Fryer',
-  function: (app) => { app._createDevice(Fryer.createDevice()); }
+  function: (app) => {
+    app._createDevice(Fryer.createDevice());
+  },
 })

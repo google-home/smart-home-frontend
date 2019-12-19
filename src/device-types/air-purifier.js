@@ -21,10 +21,10 @@ class AirPurifier extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['air filter'],
-      roomHint: 'Living Room'
+      roomHint: 'Living Room',
     }, {
       nicknames: ['violet air purifier'],
-      roomHint: 'Dining Room'
+      roomHint: 'Dining Room',
     }];
   }
 
@@ -52,26 +52,26 @@ class AirPurifier extends DeviceType {
             speed_name: '0',
             speed_values: [{
               speed_synonym: ['off'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             speed_name: '1',
             speed_values: [{
               speed_synonym: ['low'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             speed_name: '2',
             speed_values: [{
               speed_synonym: ['medium'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             speed_name: '3',
             speed_values: [{
               speed_synonym: ['high'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }],
           ordered: true,
         },
@@ -80,9 +80,9 @@ class AirPurifier extends DeviceType {
           name: 'uv',
           name_values: [{
             name_synonym: ['uv'],
-            lang: 'en'
-          }]
-        }]
+            lang: 'en',
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -90,7 +90,7 @@ class AirPurifier extends DeviceType {
         currentFanSpeedSetting: '0',
         currentToggleSettings: {
           uv: false,
-        }
+        },
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -105,5 +105,7 @@ window.deviceTypes.push({
   identifier: '_addAirPurifier',
   icon: 'hardware:sim-card',
   label: 'Air Purifier',
-  function: (app) => { app._createDevice(AirPurifier.createDevice()); }
+  function: (app) => {
+    app._createDevice(AirPurifier.createDevice());
+  },
 })

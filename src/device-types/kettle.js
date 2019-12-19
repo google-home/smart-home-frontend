@@ -21,13 +21,13 @@ class Kettle extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['little teapot'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['ramen cooker'],
-      roomHint: 'Bedroom'
+      roomHint: 'Bedroom',
     }, {
       nicknames: ['solder station'],
-      roomHint: 'Shed'
+      roomHint: 'Shed',
     }];
   }
 
@@ -51,9 +51,9 @@ class Kettle extends DeviceType {
       attributes: {
         temperatureRange: {
           minThresholdCelsius: 0.0,
-          maxThresholdCelsius: 100.0
+          maxThresholdCelsius: 100.0,
         },
-        temperatureUnitForUX: 'C'
+        temperatureUnitForUX: 'C',
       },
       willReportState: true,
       states: {
@@ -73,5 +73,7 @@ window.deviceTypes.push({
   identifier: '_addKettle',
   icon: 'image:filter-frames',
   label: 'Kettle',
-  function: (app) => { app._createDevice(Kettle.createDevice()); }
+  function: (app) => {
+    app._createDevice(Kettle.createDevice());
+  },
 })

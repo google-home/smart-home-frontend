@@ -19,7 +19,7 @@ class Drawer extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Sock drawer'],
-      roomHint: 'Bedroom'
+      roomHint: 'Bedroom',
     }];
   }
 
@@ -33,19 +33,19 @@ class Drawer extends DeviceType {
       id: instance.genUuid(),
       type: 'action.devices.types.DRAWER',
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.OpenClose',
       ],
       defaultNames: [`Smart Drawer`],
       name: `Smart Drawer`,
       nicknames: instance.getNicknames(element),
       roomHint: instance.getRoomHint(element),
       attributes: {
-        discreteOnlyOpenClose: true
+        discreteOnlyOpenClose: true,
       },
       willReportState: true,
       states: {
         online: true,
-        openPercent: 0
+        openPercent: 0,
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -59,5 +59,7 @@ window.deviceTypes.push({
   identifier: '_addDrawer',
   icon: 'av:call-to-action',
   label: 'Drawer',
-  function: (app) => { app._createDevice(Drawer.createDevice()); }
+  function: (app) => {
+    app._createDevice(Drawer.createDevice());
+  },
 })

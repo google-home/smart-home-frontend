@@ -197,7 +197,9 @@ export class MyApp extends PolymerElement {
     <!-- Main content -->
     <app-header condenses reveals effects="waterfall">
       <app-toolbar>
-        <paper-icon-button id="account" icon="account-box" on-tap="_showAccount"></paper-icon-button>
+        <paper-icon-button id="account" icon="account-box"
+          on-tap="_showAccount">
+        </paper-icon-button>
         <div main-title>Smart Home Provider</div>
         <paper-icon-button id="add" icon="add"></paper-icon-button>
       </app-toolbar>
@@ -210,7 +212,8 @@ export class MyApp extends PolymerElement {
       <div class="layout horizontal center-justified">
         <h1>Add a new device</h1>
         <template is="dom-repeat" items="{{deviceTypes}}">
-          <button dialog-confirm autofocus class="square" id$="{{item.identifier}}">
+          <button dialog-confirm autofocus class="square"
+              id$="{{item.identifier}}">
             <iron-icon icon="{{item.icon}}"></iron-icon>
             <p>{{item.label}}</p>
           </button>
@@ -231,8 +234,14 @@ export class MyApp extends PolymerElement {
     </paper-dialog>
 
     <paper-dialog id="error-code" modal>
-      <paper-toggle-button id="error-code-offline" checked="{{errorCodeOffline}}">Offline</paper-toggle-button>
-      <paper-input id="error-code-input" label="Error Code" value$="{{errorCode}}" disabled="[[errorCodeOffline]]"></paper-input>
+      <paper-toggle-button id="error-code-offline"
+          checked="{{errorCodeOffline}}">
+        Offline
+      </paper-toggle-button>
+      <paper-input id="error-code-input" label="Error Code"
+          value$="{{errorCode}}"
+          disabled="[[errorCodeOffline]]">
+      </paper-input>
       <a href="https://developers.google.com/actions/smarthome/reference/errors-exceptions#error_list" target="_blank">
         Full list of error codes
       </a>
@@ -241,8 +250,14 @@ export class MyApp extends PolymerElement {
     </paper-dialog>
 
     <paper-dialog id="two-factor" modal>
-      <paper-toggle-button id="two-factor-ack" checked="{{twoFactorAck}}">Ack</paper-toggle-button>
-      <paper-input id="two-factor-input" label="PIN" value$="{{twoFactorPin}}" disabled="[[twoFactorAck]]"></paper-input>
+      <paper-toggle-button id="two-factor-ack"
+          checked="{{twoFactorAck}}">
+        Ack
+      </paper-toggle-button>
+      <paper-input id="two-factor-input" label="PIN"
+          value$="{{twoFactorPin}}"
+          disabled="[[twoFactorAck]]">
+      </paper-input>
       <paper-button raised id="two-factor-submit">Okay</paper-button>
     </paper-dialog>
 
@@ -275,26 +290,27 @@ export class MyApp extends PolymerElement {
     return {
       devices: {
         type: Array,
-        value: []
+        value: [],
       },
       deviceTypes: {
         type: Array,
-        value: window.deviceTypes
-      }
+        value: window.deviceTypes,
+      },
     }
   }
 
   ready() {
     super.ready()
     // Initialize Cloud Firestore through Firebase
+    // eslint-disable-next-line
     this.db = firebase.firestore();
     // Disable deprecated features
     this.db.settings({
-      timestampsInSnapshots: true
+      timestampsInSnapshots: true,
     });
     window.iconMap = (() => {
       const map = {}
-      window.deviceTypes.forEach(device => {
+      window.deviceTypes.forEach((device) => {
         map[device.type] = device.iconFunction || device.icon
       })
       return map
@@ -311,15 +327,18 @@ export class MyApp extends PolymerElement {
       this.$.add.addEventListener('click', () => this.$.modal.open());
 
       // Read from database to get current devices
-      const querySnapshot = await this.db.collection('users').doc('1234').collection('devices').get()
-      querySnapshot.forEach(doc => {
+      const querySnapshot = await this.db.collection('users')
+          .doc('1234')
+          .collection('devices')
+          .get()
+      querySnapshot.forEach((doc) => {
         const data = doc.data();
         data.deviceId = doc.id;
         this._addDevice(data);
         this.addDbListener(doc.id);
       })
 
-      this.deviceTypes.forEach(type => {
+      this.deviceTypes.forEach((type) => {
         const element = this.$.modal.querySelector(`#${type.identifier}`)
         element.addEventListener('click', () => {
           type.function(this)
@@ -330,14 +349,15 @@ export class MyApp extends PolymerElement {
 
   addDbListener(id) {
     // Add a listener to each device
-    this.db.collection('users').doc('1234').collection('devices').doc(id).onSnapshot(doc => {
-      if (!doc.exists) {
-        console.warn(`Document ${id} does not exist`)
-        return;
-      }
-      const data = doc.data();
-      this.$.devices.querySelector(`#d-${id}`).receiveState(data);
-    })
+    this.db.collection('users').doc('1234').collection('devices').doc(id)
+        .onSnapshot((doc) => {
+          if (!doc.exists) {
+            console.warn(`Document ${id} does not exist`)
+            return;
+          }
+          const data = doc.data();
+          this.$.devices.querySelector(`#d-${id}`).receiveState(data);
+        })
   }
 
   /**
@@ -357,13 +377,14 @@ export class MyApp extends PolymerElement {
   /**
    * Removes a device.
    * @param {number} deviceId The id of the device.
+   * @return {Promise<void>}
    */
   removeDevice(deviceId) {
     this.devices.forEach((device, index) => {
       if (device.deviceId === deviceId) {
         // Mark the HTML element as hidden.
-        // This will prevent users from seeing it and they won't interact with it.
-        // The server-side representation for the device will be deleted.
+        // This will prevent users from seeing it and they won't interact with
+        // it. The server-side representation for the device will be deleted.
         // The next time the page is refreshed the device will not be rendered.
         this.$.devices.querySelectorAll('.item')[index].style.display = 'none'
         this.hide = this.devices.length > 0;
@@ -371,15 +392,16 @@ export class MyApp extends PolymerElement {
     })
 
     // Remove this device
+    // eslint-disable-next-line
     return fetch(`${API_ENDPOINT}/smarthome/delete`, {
       method: 'POST',
       headers: new Headers({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }),
       body: JSON.stringify({
         userId: '1234',
-        deviceId
-      })
+        deviceId,
+      }),
     })
   }
 
@@ -404,15 +426,16 @@ export class MyApp extends PolymerElement {
     this._addDevice(device);
     // Push new device to database
     try {
+      // eslint-disable-next-line
       await fetch(`${API_ENDPOINT}/smarthome/create`, {
         method: 'POST',
         headers: new Headers({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         }),
         body: JSON.stringify({
           userId: '1234',
-          data: device
-        })
+          data: device,
+        }),
       })
       this.addDbListener(device.id);
     } catch (e) {

@@ -21,7 +21,7 @@ class Dishwasher extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['dish cleaner'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -49,9 +49,9 @@ class Dishwasher extends DeviceType {
       states: {
         online: true,
         currentRunCycle: [{
-          currentCycle: "rinse",
-          nextCycle: "soap",
-          lang: "en"
+          currentCycle: 'rinse',
+          nextCycle: 'soap',
+          lang: 'en',
         }],
         currentTotalRemainingTime: 1212,
         currentCycleRemainingTime: 301,
@@ -71,5 +71,7 @@ window.deviceTypes.push({
   identifier: '_addDishwasher',
   icon: 'maps:restaurant',
   label: 'Dishwasher',
-  function: (app) => { app._createDevice(Dishwasher.createDevice()); }
+  function: (app) => {
+    app._createDevice(Dishwasher.createDevice());
+  },
 })

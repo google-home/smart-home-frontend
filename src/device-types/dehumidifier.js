@@ -21,7 +21,7 @@ class Dehumidifier extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Garage Dehumidifier'],
-      roomHint: 'Garage'
+      roomHint: 'Garage',
     }];
   }
 
@@ -37,7 +37,7 @@ class Dehumidifier extends DeviceType {
       traits: [
         'action.devices.traits.StartStop',
         'action.devices.traits.FanSpeed',
-        'action.devices.traits.HumiditySetting'
+        'action.devices.traits.HumiditySetting',
       ],
       defaultNames: [`Smart Dehumidifier`],
       name: `Smart Dehumidifier`,
@@ -47,37 +47,37 @@ class Dehumidifier extends DeviceType {
         pausable: true,
         humiditySetpointRange: {
           minPercent: 0,
-          maxPercent: 50
+          maxPercent: 50,
         },
         availableFanSpeeds: {
           speeds: [{
             speed_name: '0',
             speed_values: [{
               speed_synonym: ['off'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             speed_name: '1',
             speed_values: [{
               speed_synonym: ['low'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             speed_name: '2',
             speed_values: [{
               speed_synonym: ['medium'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             speed_name: '3',
             speed_values: [{
               speed_synonym: ['high'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }],
           ordered: true,
         },
-        reversible: true
+        reversible: true,
       },
       willReportState: true,
       states: {
@@ -101,5 +101,7 @@ window.deviceTypes.push({
   identifier: '_addDehumidifier',
   icon: 'av:volume-off',
   label: 'Dehumidifier',
-  function: (app) => { app._createDevice(Dehumidifier.createDevice()); }
+  function: (app) => {
+    app._createDevice(Dehumidifier.createDevice());
+  },
 })

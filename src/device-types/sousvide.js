@@ -21,7 +21,7 @@ class SousVide extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['My sous vide'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -52,18 +52,18 @@ class SousVide extends DeviceType {
           supported_units: ['POUNDS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['chicken', 'whole chicken'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }, {
           food_preset_name: 'salmon',
           supported_units: ['POUNDS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['salmon', 'king salmon'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         maxTimerLimitSec: 30,
-        pausable: true
+        pausable: true,
       },
       willReportState: true,
       states: {
@@ -75,7 +75,7 @@ class SousVide extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE'
+        currentFoodUnit: 'NONE',
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -90,5 +90,7 @@ window.deviceTypes.push({
   identifier: '_addSousVide',
   icon: 'device:battery-full',
   label: 'Sous Vide',
-  function: (app) => { app._createDevice(SousVide.createDevice()); }
+  function: (app) => {
+    app._createDevice(SousVide.createDevice());
+  },
 })

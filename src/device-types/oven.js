@@ -21,16 +21,16 @@ class Oven extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['oven'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['stove'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['broiler'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['microwave'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -55,14 +55,14 @@ class Oven extends DeviceType {
       attributes: {
         temperatureRange: {
           minThresholdCelsius: 100.0,
-          maxThresholdCelsius: 300.0
+          maxThresholdCelsius: 300.0,
         },
         temperatureUnitForUX: 'C',
         supportedCookingModes: [
           'BAKE',
           'CONVECTION_BAKE',
           'ROAST',
-        ]
+        ],
       },
       willReportState: true,
       states: {
@@ -71,7 +71,7 @@ class Oven extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE'
+        currentFoodUnit: 'NONE',
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -86,5 +86,7 @@ window.deviceTypes.push({
   identifier: '_addOven',
   icon: 'av:web',
   label: 'Oven',
-  function: (app) => { app._createDevice(Oven.createDevice()); }
+  function: (app) => {
+    app._createDevice(Oven.createDevice());
+  },
 })

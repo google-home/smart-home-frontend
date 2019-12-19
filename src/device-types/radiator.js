@@ -21,7 +21,7 @@ class Radiator extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Bedroom radiator'],
-      roomHint: 'Bedroom'
+      roomHint: 'Bedroom',
     }];
   }
 
@@ -44,7 +44,7 @@ class Radiator extends DeviceType {
       willReportState: true,
       states: {
         online: true,
-        on: false
+        on: false,
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -59,5 +59,7 @@ window.deviceTypes.push({
   identifier: '_addRadiator',
   icon: 'av:equalizer',
   label: 'Radiator',
-  function: (app) => { app._createDevice(Radiator.createDevice()); }
+  function: (app) => {
+    app._createDevice(Radiator.createDevice());
+  },
 })

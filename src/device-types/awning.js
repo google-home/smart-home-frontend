@@ -21,7 +21,7 @@ class Awning extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['back window awning'],
-      roomHint: 'Patio'
+      roomHint: 'Patio',
     }];
   }
 
@@ -35,25 +35,25 @@ class Awning extends DeviceType {
       id: instance.genUuid(),
       type,
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.OpenClose',
       ],
       defaultNames: [`Smart Awning`],
       name: `Smart Awning`,
       nicknames: instance.getNicknames(element),
       roomHint: instance.getRoomHint(element),
       attributes: {
-        openDirection: ['UP', 'DOWN']
+        openDirection: ['UP', 'DOWN'],
       },
       willReportState: true,
       states: {
         online: true,
         openState: [{
           openPercent: 0,
-          openDirection: 'UP'
+          openDirection: 'UP',
         }, {
           openPercent: 0,
-          openDirection: 'DOWN'
-        }]
+          openDirection: 'DOWN',
+        }],
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -68,5 +68,7 @@ window.deviceTypes.push({
   identifier: '_addAwning',
   icon: 'maps:store-mall-directory',
   label: 'Awning',
-  function: (app) => { app._createDevice(Awning.createDevice()); }
+  function: (app) => {
+    app._createDevice(Awning.createDevice());
+  },
 })

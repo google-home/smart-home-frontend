@@ -21,10 +21,10 @@ class Camera extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['backyard camera'],
-      roomHint: 'Backyard'
+      roomHint: 'Backyard',
     }, {
       nicknames: ['security camera'],
-      roomHint: 'Entryway'
+      roomHint: 'Entryway',
     }];
   }
 
@@ -47,7 +47,7 @@ class Camera extends DeviceType {
       attributes: {
         cameraStreamSupportedProtocols: [
           'hls',
-          'dash'
+          'dash',
         ],
         cameraStreamNeedAuthToken: false,
         cameraStreamNeedDrmEncryption: false,
@@ -69,5 +69,7 @@ window.deviceTypes.push({
   identifier: '_addCamera',
   icon: 'image:camera-alt',
   label: 'Camera',
-  function: (app) => { app._createDevice(Camera.createDevice()); }
+  function: (app) => {
+    app._createDevice(Camera.createDevice());
+  },
 })

@@ -21,7 +21,7 @@ class PressureCooker extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Countertop multicooker'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -46,22 +46,22 @@ class PressureCooker extends DeviceType {
       roomHint: instance.getRoomHint(element),
       attributes: {
         supportedCookingModes: [
-          'PRESSURE_COOK'
+          'PRESSURE_COOK',
         ],
         foodPresets: [{
           food_preset_name: 'roast',
           supported_units: ['POUNDS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['roast', 'chuck roast'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }, {
           food_preset_name: 'ribs',
           supportedUnits: ['POUNDS', 'OUNCES'],
           foodSynonyms: [{
             synonym: ['ribs', 'rack of ribs'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         maxTimerLimitSec: 1200,
         pausable: true,
@@ -69,9 +69,9 @@ class PressureCooker extends DeviceType {
           name: 'chime',
           values: [{
             nameSynonym: ['chime', 'chime signal'],
-            lang: 'en'
-          }]
-        }]
+            lang: 'en',
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -85,8 +85,8 @@ class PressureCooker extends DeviceType {
         currentFoodQuantity: 0,
         currentFoodUnit: 'NONE',
         currentToggleSettings: {
-          chime: false
-        }
+          chime: false,
+        },
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -101,5 +101,7 @@ window.deviceTypes.push({
   identifier: '_addPressureCooker',
   icon: 'editor:vertical-align-center',
   label: 'Pressure Cooker',
-  function: (app) => { app._createDevice(PressureCooker.createDevice()); }
+  function: (app) => {
+    app._createDevice(PressureCooker.createDevice());
+  },
 })

@@ -21,7 +21,7 @@ class Dehydrator extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['My food dehydrator'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -45,25 +45,25 @@ class Dehydrator extends DeviceType {
       roomHint: instance.getRoomHint(element),
       attributes: {
         supportedCookingModes: [
-          'DEHYDRATE'
+          'DEHYDRATE',
         ],
         foodPresets: [{
           food_preset_name: 'beef jerky',
           supported_units: ['POUNDS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['beef jerky', 'jerky'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }, {
           food_preset_name: 'beet chips',
           supported_units: ['POUNDS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['beet chips', 'beets'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         maxTimerLimitSec: 30,
-        pausable: true
+        pausable: true,
       },
       willReportState: true,
       states: {
@@ -75,7 +75,7 @@ class Dehydrator extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE'
+        currentFoodUnit: 'NONE',
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -90,5 +90,7 @@ window.deviceTypes.push({
   identifier: '_addDehydrator',
   icon: 'device:gps-fixed',
   label: 'Dehydrator',
-  function: (app) => { app._createDevice(Dehydrator.createDevice()); }
+  function: (app) => {
+    app._createDevice(Dehydrator.createDevice());
+  },
 })

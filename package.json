@@ -1,17 +1,16 @@
 {
-  "name": "smart-light",
+  "name": "smart-home-frontend",
   "version": "0.0.1",
-  "description": "Smart Light virtual device",
-  "directories": {
-    "test": "test"
-  },
+  "description": "Demo for devices that work with the Google Assistant",
   "scripts": {
     "build": "npm run build:polymer",
-    "build:polymer": "./node_modules/.bin/polymer build",
+    "build:polymer": "polymer build",
     "clean": "rm -rf ./build/",
-    "create-firebase-config": "./node_modules/.bin/firebase setup:web > ./src/firebase-setup.js",
-    "start": "./node_modules/.bin/polymer serve",
-    "serve": "npm run start"
+    "create-firebase-config": "firebase setup:web > ./src/firebase-setup.js",
+    "lint": "eslint ./src",
+    "start": "polymer serve",
+    "serve": "npm run start",
+    "test": "npm run lint && npm run build"
   },
   "dependencies": {
     "@polymer/app-layout": "^3.0.1",
@@ -28,6 +27,9 @@
     "@polymer/polymer": "^3.1.0"
   },
   "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-polymer": "^0.4.0",
     "firebase-tools": "^6.0.0",
     "polymer-cli": "^1.8.1"
   },

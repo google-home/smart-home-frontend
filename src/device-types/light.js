@@ -27,30 +27,30 @@ class Light extends DeviceType {
     super()
     this.monochromeValuesArray = [{
       nicknames: ['ceiling lights'],
-      roomHint: 'Family Room'
+      roomHint: 'Family Room',
     }, {
       nicknames: ['garden lights'],
-      roomHint: 'Front Yard'
+      roomHint: 'Front Yard',
     }, {
       nicknames: ['workshop light'],
-      roomHint: 'Shed'
+      roomHint: 'Shed',
     }, {
       nicknames: ['porch light'],
-      roomHint: 'Front Yard'
+      roomHint: 'Front Yard',
     }];
 
     this.rgbValuesArray = [{
       nicknames: ['table lamp'],
-      roomHint: 'Living Room'
+      roomHint: 'Living Room',
     }, {
       nicknames: ['reading lamp'],
-      roomHint: 'Bedroom'
+      roomHint: 'Bedroom',
     }, {
       nicknames: ['doorway'],
-      roomHint: 'Hallway'
+      roomHint: 'Hallway',
     }, {
       nicknames: ['stairway'],
-      roomHint: 'Hallway'
+      roomHint: 'Hallway',
     }];
   }
 
@@ -76,8 +76,8 @@ class Light extends DeviceType {
         colorModel: 'rgb',
         colorTemperatureRange: {
           temperatureMinK: 2000,
-          temperatureMaxK: 9000
-        }
+          temperatureMaxK: 9000,
+        },
       },
       willReportState: true,
       states: {
@@ -85,8 +85,8 @@ class Light extends DeviceType {
         online: true,
         brightness: 90,
         color: {
-          temperatureK: 2000
-        }
+          temperatureK: 2000,
+        },
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -94,7 +94,7 @@ class Light extends DeviceType {
       manufacturer: 'L',
     };
   }
-  
+
   static createRgbLight() {
     if (!instance) {
       instance = new Light()
@@ -114,7 +114,7 @@ class Light extends DeviceType {
       nicknames: instance.getNicknames(element),
       roomHint: instance.getRoomHint(element),
       attributes: {
-        colorModel: 'rgb'
+        colorModel: 'rgb',
       },
       willReportState: true,
       states: {
@@ -122,8 +122,8 @@ class Light extends DeviceType {
         online: true,
         brightness: 90,
         color: {
-          spectrumRgb: 0
-        }
+          spectrumRgb: 0,
+        },
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -139,7 +139,9 @@ window.deviceTypes.push({
   icon: 'image:wb-iridescent',
   label: 'Monochrome Light',
   iconFunction,
-  function: (app) => { app._createDevice(Light.createMonochromeLight()); }
+  function: (app) => {
+    app._createDevice(Light.createMonochromeLight());
+  },
 })
 
 
@@ -149,5 +151,7 @@ window.deviceTypes.push({
   icon: 'image:wb-incandescent',
   label: 'RGB Light',
   iconFunction,
-  function: (app) => { app._createDevice(Light.createRgbLight()); }
+  function: (app) => {
+    app._createDevice(Light.createRgbLight());
+  },
 })

@@ -21,13 +21,13 @@ class AcUnit extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['ac unit'],
-      roomHint: 'Living Room'
+      roomHint: 'Living Room',
     }, {
       nicknames: ['temperature control system'],
-      roomHint: 'Master Bedroom'
+      roomHint: 'Master Bedroom',
     }, {
       nicknames: ['hvac'],
-      roomHint: 'Basement'
+      roomHint: 'Basement',
     }]
   }
 
@@ -56,28 +56,28 @@ class AcUnit extends DeviceType {
           name: 'mode',
           name_values: [{
             name_synonym: ['mode'],
-            lang: 'en'
+            lang: 'en',
           }],
           settings: [{
             setting_name: 'auto',
             setting_values: [{
               setting_synonym: ['auto'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             setting_name: 'manual',
             setting_values: [{
               setting_synonym: ['manual'],
-              lang: 'en'
-            }]
-          }]
-        }]
+              lang: 'en',
+            }],
+          }],
+        }],
       },
       willReportState: true,
       states: {
         online: true,
         currentModeSettings: {
-          mode: 'auto'
+          mode: 'auto',
         },
         on: false,
         thermostatTemperatureSetpoint: 20,
@@ -95,5 +95,7 @@ window.deviceTypes.push({
   identifier: '_addAcUnit',
   icon: 'places:ac-unit',
   label: 'AC Unit',
-  function: (app) => { app._createDevice(AcUnit.createDevice()); }
+  function: (app) => {
+    app._createDevice(AcUnit.createDevice());
+  },
 })

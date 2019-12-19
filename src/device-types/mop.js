@@ -21,10 +21,10 @@ class Mop extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['micro mop'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['dog hair mop'],
-      roomHint: 'Garage'
+      roomHint: 'Garage',
     }];
   }
 
@@ -40,7 +40,7 @@ class Mop extends DeviceType {
       traits: [
         'action.devices.traits.Dock',
         'action.devices.traits.StartStop',
-        'action.devices.traits.Toggles'
+        'action.devices.traits.Toggles',
       ],
       defaultNames: [`Smart Mop`],
       name: `Smart Mop`,
@@ -52,13 +52,13 @@ class Mop extends DeviceType {
           name: 'turbo',
           name_values: [{
             name_synonym: ['extra cleaning', 'turbo'],
-            lang: 'en'
+            lang: 'en',
           }, {
             name_synonym: ['zusätzliche Reinigung', 'turbo'],
-            lang: 'de'
-          }]
+            lang: 'de',
+          }],
         }],
-        pausable: true
+        pausable: true,
       },
       states: {
         online: true,
@@ -66,8 +66,8 @@ class Mop extends DeviceType {
         isPaused: false,
         isDocked: false,
         currentToggleSettings: {
-          turbo: false
-        }
+          turbo: false,
+        },
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -82,5 +82,7 @@ window.deviceTypes.push({
   identifier: '_addMop',
   icon: 'image:brush',
   label: 'Mop',
-  function: (app) => { app._createDevice(Mop.createDevice()); }
+  function: (app) => {
+    app._createDevice(Mop.createDevice());
+  },
 })

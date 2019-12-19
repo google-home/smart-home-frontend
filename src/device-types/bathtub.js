@@ -21,10 +21,10 @@ class Bathtub extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Master Bathtub', 'Fancy Tub'],
-      roomHint: 'Bathroom'
+      roomHint: 'Bathroom',
     }, {
       nicknames: ['Rubber Duck Pond', 'Goose Lake'],
-      roomHint: 'Garden'
+      roomHint: 'Garden',
     }];
   }
 
@@ -38,7 +38,7 @@ class Bathtub extends DeviceType {
       id: instance.genUuid(),
       type,
       traits: [
-        'action.devices.traits.Fill'
+        'action.devices.traits.Fill',
       ],
       defaultNames: [`Smart Bathtub`],
       name: `Smart Bathtub`,
@@ -50,44 +50,44 @@ class Bathtub extends DeviceType {
             level_name: 'none',
             level_values: [{
               level_synonym: ['none', 'empty', 'drained'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             level_name: 'quarter',
             level_values: [{
               level_synonym: ['quarter', 'a fourth', 'halfway to halfway'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             level_name: 'half',
             level_values: [{
               level_synonym: ['half', 'halfway', 'half full', 'half empty'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             level_name: 'full',
             level_values: [{
               level_synonym: ['full', 'all the way', 'max'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }],
-          ordered: true
-        }]
+          ordered: true,
+        }],
       },
       willReportState: true,
       states: {
         online: true,
         on: false,
         isFilled: false,
-        currentFillLevel: 'none'
+        currentFillLevel: 'none',
       },
       hwVersion: '3.2',
       swVersion: '11.4',
       model: '442',
       manufacturer: 'sirius',
       customData: {
-        honk: 'HONK'
-      }
+        honk: 'HONK',
+      },
     };
   }
 }
@@ -97,5 +97,7 @@ window.deviceTypes.push({
   identifier: '_addBathtub',
   icon: 'places:hot-tub',
   label: 'Bathtub',
-  function: (app) => { app._createDevice(Bathtub.createDevice()); }
+  function: (app) => {
+    app._createDevice(Bathtub.createDevice());
+  },
 })

@@ -21,7 +21,7 @@ class Door extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Back door'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -35,25 +35,25 @@ class Door extends DeviceType {
       id: instance.genUuid(),
       type,
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.OpenClose',
       ],
       defaultNames: [`Smart Door`],
       name: `Smart Door`,
       nicknames: instance.getNicknames(element),
       roomHint: instance.getRoomHint(element),
       attributes: {
-        openDirection: ['IN', 'OUT']
+        openDirection: ['IN', 'OUT'],
       },
       willReportState: true,
       states: {
         online: true,
         openState: [{
           openDirection: 'IN',
-          openPercent: 0
+          openPercent: 0,
         }, {
           openDirection: 'OUT',
-          openPercent: 0
-        }]
+          openPercent: 0,
+        }],
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -68,5 +68,7 @@ window.deviceTypes.push({
   identifier: '_addDoor',
   icon: 'icons:open-in-new',
   label: 'Door',
-  function: (app) => { app._createDevice(Door.createDevice()); }
+  function: (app) => {
+    app._createDevice(Door.createDevice());
+  },
 })

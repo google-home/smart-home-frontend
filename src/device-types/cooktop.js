@@ -21,7 +21,7 @@ class Cooktop extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Kitchen cooktop'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -47,22 +47,22 @@ class Cooktop extends DeviceType {
         supportedCookingModes: [
           'COOK',
           'BOIL',
-          'SAUTE'
+          'SAUTE',
         ],
         foodPresets: [{
           food_preset_name: 'chicken',
           supported_units: ['POUNDS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['chicken', 'chicken breat', 'chicken thigh'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }, {
           food_preset_name: 'bacon',
           supported_units: ['POUNDS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['bacon', 'bacon strips'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         maxTimerLimitSec: 1200,
         pausable: true,
@@ -70,23 +70,23 @@ class Cooktop extends DeviceType {
           name: 'heat',
           nameValues: [{
             nameSynonym: ['heat', 'flame', 'heat level'],
-            lang: 'en'
+            lang: 'en',
           }],
           settings: [{
             settingName: 'low',
             settingValues: [{
               settingSynonym: ['low', 'lowest'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             settingName: 'high',
             settingValues: {
               settingSynonym: ['high', 'full', 'highest'],
-              lang: 'en'
-            }
+              lang: 'en',
+            },
           }],
-          ordered: true
-        }]
+          ordered: true,
+        }],
       },
       willReportState: true,
       states: {
@@ -97,8 +97,8 @@ class Cooktop extends DeviceType {
         currentFoodQuantity: 0,
         currentFoodUnit: 'NONE',
         currentModeSettings: {
-          heat: 'low'
-        }
+          heat: 'low',
+        },
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -113,5 +113,7 @@ window.deviceTypes.push({
   identifier: '_addCooktop',
   icon: 'hardware:power-input',
   label: 'Cooktop',
-  function: (app) => { app._createDevice(Cooktop.createDevice()); }
+  function: (app) => {
+    app._createDevice(Cooktop.createDevice());
+  },
 })

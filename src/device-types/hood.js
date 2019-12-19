@@ -21,7 +21,7 @@ class Hood extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Range hood'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -37,7 +37,7 @@ class Hood extends DeviceType {
       traits: [
         'action.devices.traits.OnOff',
         'action.devices.traits.Toggles',
-        'action.devices.traits.FanSpeed'
+        'action.devices.traits.FanSpeed',
       ],
       defaultNames: [`Smart Hood`],
       name: `Smart Hood`,
@@ -48,10 +48,10 @@ class Hood extends DeviceType {
           name: 'Light',
           name_values: [{
             name_synonym: [
-            'light'
+              'light',
             ],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         availableFanSpeeds: {
           speeds: [{
@@ -59,24 +59,24 @@ class Hood extends DeviceType {
             speed_values: [{
               speed_synonym: [
                 'low',
-                'slow'
+                'slow',
               ],
-              lang: 'en'
-              }]
-            },
-            {
+              lang: 'en',
+            }],
+          },
+          {
             speed_name: 'High',
             speed_values: [{
               speed_synonym: [
-                'high'
-                ],
-                lang: 'en'
-              }]
-            }
+                'high',
+              ],
+              lang: 'en',
+            }],
+          },
           ],
-          ordered: true
+          ordered: true,
         },
-        reversible: true
+        reversible: true,
       },
       willReportState: true,
       states: {
@@ -95,5 +95,7 @@ window.deviceTypes.push({
   identifier: '_addHood',
   icon: 'icons:view-day',
   label: 'Hood',
-  function: (app) => { app._createDevice(Hood.createDevice()); }
+  function: (app) => {
+    app._createDevice(Hood.createDevice());
+  },
 })

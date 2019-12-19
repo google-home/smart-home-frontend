@@ -21,7 +21,7 @@ class WaterHeater extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['basement water heater'],
-      roomHint: 'Basement'
+      roomHint: 'Basement',
     }];
   }
 
@@ -36,7 +36,7 @@ class WaterHeater extends DeviceType {
       type,
       traits: [
         'action.devices.traits.OnOff',
-        'action.devices.traits.TemperatureControl'
+        'action.devices.traits.TemperatureControl',
       ],
       defaultNames: [`Smart Water Heater`],
       name: `Smart Water Heater`,
@@ -45,9 +45,9 @@ class WaterHeater extends DeviceType {
       attributes: {
         temperatureRange: {
           minThresholdCelsius: 10,
-          maxThresholdCelsius: 50
+          maxThresholdCelsius: 50,
         },
-        temperatureUnitForUX: 'F'
+        temperatureUnitForUX: 'F',
       },
       willReportState: true,
       states: {
@@ -66,5 +66,7 @@ window.deviceTypes.push({
   identifier: '_addWaterHeater',
   icon: 'maps:local-drink',
   label: 'Water Heater',
-  function: (app) => { app._createDevice(WaterHeater.createDevice()); }
+  function: (app) => {
+    app._createDevice(WaterHeater.createDevice());
+  },
 })

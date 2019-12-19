@@ -21,7 +21,7 @@ class Valve extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['water valve'],
-      roomHint: 'Laundry Room'
+      roomHint: 'Laundry Room',
     }];
   }
 
@@ -35,7 +35,7 @@ class Valve extends DeviceType {
       id: instance.genUuid(),
       type,
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.OpenClose',
       ],
       defaultNames: [`Smart Valve`],
       name: `Smart Valve`,
@@ -44,7 +44,7 @@ class Valve extends DeviceType {
       willReportState: true,
       states: {
         online: true,
-        openPercent: 0
+        openPercent: 0,
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -59,5 +59,7 @@ window.deviceTypes.push({
   identifier: '_addValve',
   icon: 'icons:settings-input-component',
   label: 'Valve',
-  function: (app) => { app._createDevice(Valve.createDevice()); }
+  function: (app) => {
+    app._createDevice(Valve.createDevice());
+  },
 })

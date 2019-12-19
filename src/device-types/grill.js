@@ -21,10 +21,10 @@ class Grill extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Countertop grill'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['Outdoor grill'],
-      roomHint: 'Garden'
+      roomHint: 'Garden',
     }];
   }
 
@@ -53,15 +53,15 @@ class Grill extends DeviceType {
           supported_units: ['POUNDS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['chicken', 'chicken breat', 'chicken thigh'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }, {
           food_preset_name: 'hamburger',
           supported_units: ['POUNDS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['hamburger', 'burger', 'burger patty'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         maxTimerLimitSec: 1200,
         pausable: true,
@@ -69,9 +69,9 @@ class Grill extends DeviceType {
           name: 'ventilate',
           values: [{
             nameSynonym: ['ventilate', 'ventilation', 'air vent'],
-            lang: 'en'
-          }]
-        }]
+            lang: 'en',
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -82,8 +82,8 @@ class Grill extends DeviceType {
         currentFoodQuantity: 0,
         currentFoodUnit: 'NONE',
         currentToggleSettings: {
-          ventilate: false
-        }
+          ventilate: false,
+        },
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -98,5 +98,7 @@ window.deviceTypes.push({
   identifier: '_addGrill',
   icon: 'editor:highlight',
   label: 'Grill',
-  function: (app) => { app._createDevice(Grill.createDevice()); }
+  function: (app) => {
+    app._createDevice(Grill.createDevice());
+  },
 })

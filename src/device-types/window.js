@@ -21,7 +21,7 @@ class Window extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['sink window'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -36,7 +36,7 @@ class Window extends DeviceType {
       type,
       traits: [
         'action.devices.traits.LockUnlock',
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.OpenClose',
       ],
       defaultNames: [`Smart Window`],
       name: `Smart Window`,
@@ -45,7 +45,7 @@ class Window extends DeviceType {
       willReportState: true,
       states: {
         online: true,
-        openPercent: 0
+        openPercent: 0,
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -60,5 +60,7 @@ window.deviceTypes.push({
   identifier: '_addWindow',
   icon: 'device:wallpaper',
   label: 'Window',
-  function: (app) => { app._createDevice(Window.createDevice()); }
+  function: (app) => {
+    app._createDevice(Window.createDevice());
+  },
 })

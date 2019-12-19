@@ -112,37 +112,62 @@ export class SmartDevice extends PolymerElement {
           <div id="device-id" class="circle">{{deviceid}}</div>
           <div class="flex"></div>
 
-          <paper-icon-button id="reportState" icon="arrow-downward" on-tap="_handleReportState"></paper-icon-button>
-          <paper-icon-button id="tfa" icon="lock" on-tap="_handleTfa"></paper-icon-button>
-          <paper-icon-button id="cloud" icon="cloud-off" on-tap="_handleCloud"></paper-icon-button>
-          <paper-icon-button id="delete" icon="delete" on-tap="_handleDelete"></paper-icon-button>
+          <paper-icon-button id="reportState" icon="arrow-downward"
+              on-tap="_handleReportState">
+          </paper-icon-button>
+          <paper-icon-button id="tfa" icon="lock" on-tap="_handleTfa">
+          </paper-icon-button>
+          <paper-icon-button id="cloud" icon="cloud-off" on-tap="_handleCloud">
+          </paper-icon-button>
+          <paper-icon-button id="delete" icon="delete" on-tap="_handleDelete">
+          </paper-icon-button>
         </div>
 
         <!-- icon -->
         <div class="center">
           <paper-slider id="brightness" title="Brightness" pin
-            disabled="[[!device.states.on]]" value="{{device.states.brightness}}"></paper-slider>
-          <paper-slider id="temperatureSetpointCelsius" title="Setpoint" pin min="0" max="500" step="10"
-            value="{{device.states.temperatureSetpointCelsius}}"></paper-slider>
-          <paper-slider id="thermostatTemperatureSetpoint" title="Setpoint" pin min="18" max="35"
-            value="{{device.states.thermostatTemperatureSetpoint}}"></paper-slider>
-          <paper-slider id="humiditySetpointPercent" title="Setpoint" pin min="0" max="100"
-            value="{{device.states.humiditySetpointPercent}}"></paper-slider>
+              disabled="[[!device.states.on]]"
+              value="{{device.states.brightness}}">
+          </paper-slider>
+          <paper-slider id="temperatureSetpointCelsius" title="Setpoint" pin
+              min="0"
+              max="500"
+              step="10"
+              value="{{device.states.temperatureSetpointCelsius}}">
+          </paper-slider>
+          <paper-slider id="thermostatTemperatureSetpoint" title="Setpoint" pin
+              min="18"
+              max="35"
+              value="{{device.states.thermostatTemperatureSetpoint}}">
+          </paper-slider>
+          <paper-slider id="humiditySetpointPercent" title="Setpoint" pin
+              min="0"
+              max="100"
+              value="{{device.states.humiditySetpointPercent}}">
+          </paper-slider>
           <iron-icon id="icon"></iron-icon>
           <div id="states"></div>
         </div>
 
         <!-- controls -->
-        <paper-input id="nickname" label="Nickname" value$="{{device.nicknames.0}}"></paper-input>
-        <paper-input id="name" label="Name" value$="{{device.name}}"></paper-input>
+        <paper-input id="nickname" label="Nickname"
+            value$="{{device.nicknames.0}}">
+        </paper-input>
+        <paper-input id="name" label="Name" value$="{{device.name}}">
+        </paper-input>
         <div>Default Name:
           <span id='defaultName'>{{device.defaultNames.0}}</span>
         </div>
 
         <!-- local execution -->
         <div>
-          <paper-toggle-button id="localExecution" checked="{{localexecution}}">Local Execution</paper-toggle-button>
-          <paper-input id="localDeviceId" label="Local Device ID" value="{{localdeviceid}}" disabled="[[!localexecution]]"></paper-input>
+          <paper-toggle-button id="localExecution" checked="{{localexecution}}">
+            Local Execution
+          </paper-toggle-button>
+          <paper-input id="localDeviceId" label="Local Device ID"
+              value="{{localdeviceid}}"
+              disabled="[[!localexecution]]">
+          </paper-input>
         </div>
       </div>
     `
@@ -157,20 +182,20 @@ export class SmartDevice extends PolymerElement {
         type: Number,
       },
       deviceid: {
-        type: String
+        type: String,
       },
       localexecution: {
         type: Boolean,
       },
       localdeviceid: {
         type: String,
-      }
+      },
     }
   }
 
   static get observers() {
     return [
-      '_localExecutionChanged(localexecution, localdeviceid)'
+      '_localExecutionChanged(localexecution, localdeviceid)',
     ]
   }
 
@@ -185,11 +210,15 @@ export class SmartDevice extends PolymerElement {
       this._registerTraits();
       this._deviceChanged();
 
-      this.$.nickname.addEventListener('keydown', this._handleNameOrNicknameChange.bind(this));
-      this.$.nickname.addEventListener('blur', this._execNameOrNicknameChange.bind(this));
+      this.$.nickname.addEventListener('keydown',
+          this._handleNameOrNicknameChange.bind(this));
+      this.$.nickname.addEventListener('blur',
+          this._execNameOrNicknameChange.bind(this));
 
-      this.$.name.addEventListener('keydown', this._handleNameOrNicknameChange.bind(this));
-      this.$.name.addEventListener('blur', this._execNameOrNicknameChange.bind(this));
+      this.$.name.addEventListener('keydown',
+          this._handleNameOrNicknameChange.bind(this));
+      this.$.name.addEventListener('blur',
+          this._execNameOrNicknameChange.bind(this));
     });
   }
 
@@ -197,35 +226,38 @@ export class SmartDevice extends PolymerElement {
    * Event that occurs after enter/tab key pressed or on tapout from
    * input field
    * @param {event} event DOM event.
+   * @return {Promise<void>}
    */
   _execNameOrNicknameChange(event) {
     if (event.target.id == 'nickname') {
       this.device.nicknames[0] = event.target.value;
 
+      // eslint-disable-next-line
       return fetch(`${API_ENDPOINT}/smarthome/update`, {
         method: 'POST',
         headers: new Headers({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         }),
         body: JSON.stringify({
           userId: '1234',
           deviceId: this.deviceid,
-          nickname: this.device.nicknames[0]
-        })
+          nickname: this.device.nicknames[0],
+        }),
       })
     } else if (event.target.id == 'name') {
       this.device.name = event.target.value;
 
+      // eslint-disable-next-line
       return fetch(`${API_ENDPOINT}/smarthome/update`, {
         method: 'POST',
         headers: new Headers({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         }),
         body: JSON.stringify({
           userId: '1234',
           deviceId: this.deviceid,
-          name: this.device.name
-        })
+          name: this.device.name,
+        }),
       })
     }
   }
@@ -290,24 +322,27 @@ export class SmartDevice extends PolymerElement {
   }
 
   _localExecutionChanged(localexecution, localdeviceid) {
+    // eslint-disable-next-line
     return fetch(`${API_ENDPOINT}/smarthome/update`, {
       method: 'POST',
       headers: new Headers({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }),
       body: JSON.stringify({
         userId: '1234',
         deviceId: this.deviceid,
-        localDeviceId: localexecution ? localdeviceid : null
-      })
-    }).catch(e => {
+        localDeviceId: localexecution ? localdeviceid : null,
+      }),
+    }).catch((e) => {
       console.error('failed to update device', e);
     });
   }
 
   _deviceChanged() {
-    this.$.reportState.style.color = this.device.willReportState ? '#4CAF50' : '#757575';
-    this.$.reportState.icon = this.device.willReportState ? 'arrow-upward' : 'arrow-downward';
+    this.$.reportState.style.color =
+        this.device.willReportState ? '#4CAF50' : '#757575';
+    this.$.reportState.icon =
+        this.device.willReportState ? 'arrow-upward' : 'arrow-downward';
     this.$.cloud.icon = this.device.states.online ? 'cloud' : 'cloud-off';
     if (this.device.errorCode) {
       this.$.cloud.style.color = '#E64A19';
@@ -319,7 +354,7 @@ export class SmartDevice extends PolymerElement {
     this.$.tfa.icon = this.device.tfa ? 'lock' : 'lock-open';
     this.$.tfa.title = this.device.tfa;
     window.requestAnimationFrame(() => {
-      this.traitHandlers.forEach(fun => {
+      this.traitHandlers.forEach((fun) => {
         fun(this.device.states);
       });
     });
@@ -330,28 +365,29 @@ export class SmartDevice extends PolymerElement {
     if (!this.device.willReportState) return;
 
     // Push state
+    // eslint-disable-next-line
     return fetch(`${API_ENDPOINT}/smarthome/update`, {
       method: 'POST',
       headers: new Headers({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }),
       body: JSON.stringify({
         userId: '1234',
         deviceId: this.deviceid,
         errorCode: this.device.errorCode,
         states: this.device.states,
-        tfa: this.device.tfa
-      })
+        tfa: this.device.tfa,
+      }),
     })
   }
 
   _registerTraits() {
     this.traitHandlers = [];
     const {traits} = this.device;
-    traits.forEach(trait => {
+    traits.forEach((trait) => {
       switch (trait) {
         case 'action.devices.traits.ArmDisarm':
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             switch (states.currentArmLevel) {
               case 'L1':
                 this.$.icon.style.color = '#555555';
@@ -365,17 +401,17 @@ export class SmartDevice extends PolymerElement {
 
         case 'action.devices.traits.Brightness':
           this.$.brightness.style.display = 'block';
-          this.$.brightness.addEventListener('value-change', event => {
+          this.$.brightness.addEventListener('value-change', (event) => {
             this.device.states.brightness = this.$.brightness.value;
             this._updateState();
           });
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             this.$.icon.style.opacity = states.brightness / 100;
           });
           break;
 
         case 'action.devices.traits.ColorSetting':
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             if (!states.on) return;
             if (states.color.spectrumRgb) {
               let rgb = states.color.spectrumRgb;
@@ -401,14 +437,16 @@ export class SmartDevice extends PolymerElement {
           cookElement.appendChild(cookValue);
           this.$.states.appendChild(cookElement);
 
-          this.traitHandlers.push(states => {
-            const elementValue = this.$.states.querySelector(`#states-cook span`);
+          this.traitHandlers.push((states) => {
+            const elementValue =
+              this.$.states.querySelector(`#states-cook span`);
             if (!elementValue) return;
             if (states.currentCookingMode === 'NONE') {
               elementValue.innerText = 'Nothing is being cooked'
             } else {
-              elementValue.innerText = `${states.currentCookingMode} ${states.currentFoodPreset}` +
-                ` (${states.currentFoodQuantity} ${states.currentFoodUnit})`
+              elementValue.innerText = `${states.currentCookingMode} ` +
+                `${states.currentFoodPreset} ` +
+                `(${states.currentFoodQuantity} ${states.currentFoodUnit})`
             }
           })
           break;
@@ -421,15 +459,17 @@ export class SmartDevice extends PolymerElement {
           dispenseElement.appendChild(dispenseValue);
           this.$.states.appendChild(dispenseElement);
 
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             if (states.isCurrentlyDispensing) {
               this.$.icon.style.color = '#2196F3';
             } else {
               this.$.icon.style.color = '#333333';
             }
-            const elementValue = this.$.states.querySelector(`#states-dispense span`);
+            const elementValue =
+              this.$.states.querySelector(`#states-dispense span`);
             if (!elementValue) return;
-            elementValue.innerText = `${states.dispenseItems[0].amountLastDispensed.amount} ` +
+            elementValue.innerText =
+              `${states.dispenseItems[0].amountLastDispensed.amount} ` +
               states.dispenseItems[0].amountLastDispensed.unit;
           })
           break;
@@ -441,8 +481,9 @@ export class SmartDevice extends PolymerElement {
           const dockLabel = document.createTextNode('Docked');
           dockElement.appendChild(dockLabel);
           this.$.states.appendChild(dockElement);
-          this.traitHandlers.push(states => {
-            const dockedElement = this.$.states.querySelector('#states-isdocked');
+          this.traitHandlers.push((states) => {
+            const dockedElement =
+              this.$.states.querySelector('#states-isdocked');
             if (states.isDocked) {
               dockedElement.classList.remove('disabled');
             } else {
@@ -452,7 +493,7 @@ export class SmartDevice extends PolymerElement {
           break;
 
         case 'action.devices.traits.FanSpeed':
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             switch (states.currentFanSpeedSetting) {
               case '0':
                 this.$.icon.style.color = '#eee';
@@ -477,13 +518,14 @@ export class SmartDevice extends PolymerElement {
           const fillValue = document.createElement('span');
           fillElement.appendChild(fillValue);
           this.$.states.appendChild(fillElement);
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             if (states.isFilled) {
               this.$.icon.style.color = '#2196F3';
             } else {
               this.$.icon.style.color = '#333333';
             }
-            const elementValue = this.$.states.querySelector(`#states-fill span`);
+            const elementValue =
+              this.$.states.querySelector(`#states-fill span`);
             if (!elementValue) return;
             elementValue.innerText = states.currentFillLevel;
           })
@@ -491,18 +533,20 @@ export class SmartDevice extends PolymerElement {
 
         case 'action.devices.traits.HumiditySetting':
           this.$.humiditySetpointPercent.style.display = 'block';
-          this.$.humiditySetpointPercent.addEventListener('input', _ => {
-            this.device.states.humiditySetpointPercent = this.$.humiditySetpointPercent.value;
+          this.$.humiditySetpointPercent.addEventListener('input', (_) => {
+            this.device.states.humiditySetpointPercent =
+              this.$.humiditySetpointPercent.value;
             this._updateState();
           });
 
-          this.traitHandlers.push(states => {
-            this.$.humiditySetpointPercent.value = states.humiditySetpointPercent
+          this.traitHandlers.push((states) => {
+            this.$.humiditySetpointPercent.value =
+              states.humiditySetpointPercent
           })
           break;
 
         case 'action.devices.traits.Locator':
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             if (states.generatedAlert) {
               if (states.silent) {
                 this.$.icon.style.color = '#555';
@@ -516,7 +560,7 @@ export class SmartDevice extends PolymerElement {
           break;
 
         case 'action.devices.traits.LockUnlock':
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             if (states.isJammed) {
               this.$.icon.style.color = '#F44336';
             } else if (states.isLocked) {
@@ -525,7 +569,7 @@ export class SmartDevice extends PolymerElement {
               this.$.icon.style.color = '#555555';
             }
 
-            if (this.device.type = 'action.devices.types.LOCK') {
+            if (this.device.type === 'action.devices.types.LOCK') {
               if (states.isLocked) {
                 this.$.icon.icon = 'icons:lock';
               } else {
@@ -536,7 +580,7 @@ export class SmartDevice extends PolymerElement {
           break;
 
         case 'action.devices.traits.Modes':
-          this.device.attributes.availableModes.forEach(mode => {
+          this.device.attributes.availableModes.forEach((mode) => {
             // Add a block for each mode
             const modeElement = document.createElement('div');
             modeElement.appendChild(document.createTextNode(`${mode.name}: `))
@@ -545,10 +589,12 @@ export class SmartDevice extends PolymerElement {
             modeElement.appendChild(modeValue);
             this.$.states.appendChild(modeElement);
           })
-          this.traitHandlers.push(states => {
-            for (const [mode, setting] of Object.entries(states.currentModeSettings)) {
+          this.traitHandlers.push((states) => {
+            const entries = Object.entries(states.currentModeSettings)
+            for (const [mode, setting] of entries) {
               const elementId = `states-${mode}`
-              const elementValue = this.$.states.querySelector(`#${elementId} span`);
+              const elementValue =
+                this.$.states.querySelector(`#${elementId} span`);
               if (!elementValue) return;
               elementValue.innerText = setting;
             }
@@ -557,11 +603,11 @@ export class SmartDevice extends PolymerElement {
 
         case 'action.devices.traits.OnOff':
           this.$.icon.style.cursor = 'pointer';
-          this.$.icon.addEventListener('tap', event => {
+          this.$.icon.addEventListener('tap', (event) => {
             this.device.states.on = !this.device.states.on;
             this._updateState();
           });
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             if (states.on) {
               this.$.icon.style.color = '#4CAF50';
             } else {
@@ -572,8 +618,9 @@ export class SmartDevice extends PolymerElement {
 
         case 'action.devices.traits.OpenClose':
           this.$.icon.style.cursor = 'pointer';
-          this.$.icon.addEventListener('tap', event => {
-            if (this.device.attributes && this.device.attributes.openDirection) {
+          this.$.icon.addEventListener('tap', (event) => {
+            if (this.device.attributes &&
+                this.device.attributes.openDirection) {
               // Tap will open/close in the primary direction
               const percent = this.device.states.openState[0].openPercent;
               if (percent > 0) {
@@ -592,9 +639,10 @@ export class SmartDevice extends PolymerElement {
             }
             this._updateState();
           });
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             let percent = 0
-            if (this.device.attributes && this.device.attributes.openDirection) {
+            if (this.device.attributes &&
+                this.device.attributes.openDirection) {
               // Only show percentage for primary direction
               percent = states.openState[0].openPercent;
             } else {
@@ -611,13 +659,15 @@ export class SmartDevice extends PolymerElement {
           })
           break;
 
-        // 'action.devices.traits.Reboot'
-        // As this trait does not have its own state, the online state will be turned off.
-        // The field will need to be manually turned back on.
+          // 'action.devices.traits.Reboot'
+          // As this trait does not have its own state,
+          // the online state will be turned off.
+          // The field will need to be manually turned back on.
 
         case 'action.devices.traits.Rotation':
-          this.traitHandlers.push(states => {
-            this.$.icon.style.transform = `rotate(${states.rotationDegrees}deg)`;
+          this.traitHandlers.push((states) => {
+            this.$.icon.style.transform =
+              `rotate(${states.rotationDegrees}deg)`;
           })
           break;
 
@@ -636,18 +686,22 @@ export class SmartDevice extends PolymerElement {
           runCycleElement.appendChild(runCycleTimes);
 
           this.$.states.appendChild(runCycleElement);
-          this.traitHandlers.push(states => {
-            const currentCycleElement = this.$.states.querySelector(`#states-runcycle-current`);
-            currentCycleElement.innerText = states.currentRunCycle[0].currentCycle;
+          this.traitHandlers.push((states) => {
+            const currentCycleElement =
+              this.$.states.querySelector(`#states-runcycle-current`);
+            currentCycleElement.innerText =
+              states.currentRunCycle[0].currentCycle;
 
-            const currentTimeElement = this.$.states.querySelector(`#states-runcycle-time`);
-            currentTimeElement.innerText = ` ${states.currentCycleRemainingTime}/` +
+            const currentTimeElement =
+              this.$.states.querySelector(`#states-runcycle-time`);
+            currentTimeElement.innerText =
+              ` ${states.currentCycleRemainingTime}/` +
               `${states.currentTotalRemainingTime} seconds`;
           });
           break;
 
         case 'action.devices.traits.Scene':
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             if (!states.deactivate) {
               this.$.icon.style.color = '#4CAF50';
             } else {
@@ -656,12 +710,12 @@ export class SmartDevice extends PolymerElement {
           });
           break;
 
-        // 'action.devices.traits.SoftwareUpdate'
-        // The online state will be turned off.
-        // The field will need to be manually turned back on.
+          // 'action.devices.traits.SoftwareUpdate'
+          // The online state will be turned off.
+          // The field will need to be manually turned back on.
 
         case 'action.devices.traits.StartStop':
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             if (states.isRunning) {
               if (states.isPaused) {
                 this.$.icon.style.color = '#FF9800';
@@ -677,7 +731,8 @@ export class SmartDevice extends PolymerElement {
         case 'action.devices.traits.StatusReport':
           const report = this.device.states.currentStatusReport;
           const toggleStatus = (report, statusCode, status) => {
-            const index = report.findIndex((status) => status.statusCode === statusCode);
+            const index = report.findIndex((status) =>
+              status.statusCode === statusCode);
             if (index > -1) {
               this.device.states.currentStatusReport.splice(index, 1);
               this._updateState();
@@ -692,7 +747,7 @@ export class SmartDevice extends PolymerElement {
             blocking: false,
             priority: 0,
             statusCode: 'lowBattery',
-            deviceTarget
+            deviceTarget,
           };
           const lowBatteryIcon = document.createElement('paper-icon-button');
           lowBatteryIcon.icon = 'device:battery-alert';
@@ -705,9 +760,10 @@ export class SmartDevice extends PolymerElement {
             blocking: true,
             priority: 0,
             statusCode: 'hardwareFailure',
-            deviceTarget
+            deviceTarget,
           };
-          const hardwareFailureIcon = document.createElement('paper-icon-button');
+          const hardwareFailureIcon =
+            document.createElement('paper-icon-button');
           hardwareFailureIcon.icon = 'communication:no-sim';
           hardwareFailureIcon.classList.add('statusReport');
           hardwareFailureIcon.addEventListener('click', () => {
@@ -718,7 +774,7 @@ export class SmartDevice extends PolymerElement {
             blocking: false,
             priority: 1,
             statusCode: 'smokeDetected',
-            deviceTarget
+            deviceTarget,
           };
           const smokeDetectedIcon = document.createElement('paper-icon-button');
           smokeDetectedIcon.icon = 'social:whatshot';
@@ -732,7 +788,7 @@ export class SmartDevice extends PolymerElement {
           this.$.states.appendChild(hardwareFailureIcon);
           this.$.states.appendChild(smokeDetectedIcon);
 
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             if (states.currentStatusReport) {
               lowBatteryIcon.classList.remove('statusReportActive');
               hardwareFailureIcon.classList.remove('statusReportActive');
@@ -755,26 +811,31 @@ export class SmartDevice extends PolymerElement {
 
         case 'action.devices.traits.TemperatureControl':
           this.$.temperatureSetpointCelsius.style.display = 'block';
-          this.$.temperatureSetpointCelsius.addEventListener('value-change', event => {
-            this.device.states.temperatureSetpointCelsius = this.$.temperatureSetpointCelsius.value;
-            this._updateState();
-          });
+          this.$.temperatureSetpointCelsius.addEventListener('value-change',
+              (event) => {
+                this.device.states.temperatureSetpointCelsius =
+                  this.$.temperatureSetpointCelsius.value;
+                this._updateState();
+              });
           break;
 
         case 'action.devices.traits.TemperatureSetting':
           this.$.thermostatTemperatureSetpoint.style.display = 'block';
-          this.$.thermostatTemperatureSetpoint.addEventListener('value-change', event => {
-            this.device.states.thermostatTemperatureSetpoint = this.$.thermostatTemperatureSetpoint.value;
-            this._updateState();
-          });
+          this.$.thermostatTemperatureSetpoint.addEventListener('value-change',
+              (event) => {
+                this.device.states.thermostatTemperatureSetpoint =
+                  this.$.thermostatTemperatureSetpoint.value;
+                this._updateState();
+              });
 
           const thermostatElement = document.createElement('span');
           thermostatElement.id = 'states-thermostatmode';
           const thermostatLabel = document.createTextNode('Mode: n/a');
           thermostatElement.appendChild(thermostatLabel);
           this.$.states.appendChild(thermostatElement);
-          this.traitHandlers.push(states => {
-            const thermostatElement = this.$.states.querySelector(`#states-thermostatmode`);
+          this.traitHandlers.push((states) => {
+            const thermostatElement =
+              this.$.states.querySelector(`#states-thermostatmode`);
             thermostatElement.innerText = states.thermostatMode;
           });
           break;
@@ -788,15 +849,16 @@ export class SmartDevice extends PolymerElement {
           timerElement.appendChild(modeValue);
           this.$.states.appendChild(timerElement);
 
-          this.$.icon.addEventListener('tap', event => {
+          this.$.icon.addEventListener('tap', (event) => {
             // Finish the Timer task
             this.device.states.timerRemainingSec = -1;
             this._updateState();
           });
 
-          this.traitHandlers.push(states => {
+          this.traitHandlers.push((states) => {
             const elementId = `states-timer`
-            const elementValue = this.$.states.querySelector(`#${elementId} span`);
+            const elementValue =
+              this.$.states.querySelector(`#${elementId} span`);
             if (!elementValue) return;
             if (states.timerRemainingSec === -1) {
               // -1 means no timer set
@@ -811,15 +873,16 @@ export class SmartDevice extends PolymerElement {
           break;
 
         case 'action.devices.traits.Toggles':
-          this.device.attributes.availableToggles.forEach(toggle => {
+          this.device.attributes.availableToggles.forEach((toggle) => {
             // Add a block for each toggle
             const toggleElement = document.createElement('div');
             toggleElement.appendChild(document.createTextNode(toggle.name))
             toggleElement.id = `states-${toggle.name}`;
             this.$.states.appendChild(toggleElement);
           })
-          this.traitHandlers.push(states => {
-            for (const [toggle, setting] of Object.entries(states.currentToggleSettings)) {
+          this.traitHandlers.push((states) => {
+            const entries = Object.entries(states.currentToggleSettings)
+            for (const [toggle, setting] of entries) {
               const elementId = `states-${toggle}`
               const elementValue = this.$.states.querySelector(`#${elementId}`);
               if (!elementValue) return;

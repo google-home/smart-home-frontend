@@ -21,7 +21,7 @@ class Multicooker extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Countertop multicooker'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -48,22 +48,22 @@ class Multicooker extends DeviceType {
         supportedCookingModes: [
           'COOK',
           'BOIL',
-          'STEW'
+          'STEW',
         ],
         foodPresets: [{
           food_preset_name: 'soup',
           supported_units: ['CUPS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['soup', 'stew'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }, {
           food_preset_name: 'oatmeal',
           supported_units: ['CUPS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['oatmeal', 'oats', 'porridge'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         maxTimerLimitSec: 1200,
         pausable: true,
@@ -71,9 +71,9 @@ class Multicooker extends DeviceType {
           name: 'keep_warm',
           values: [{
             nameSynonym: ['keep warm'],
-            lang: 'en'
-          }]
-        }]
+            lang: 'en',
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -87,8 +87,8 @@ class Multicooker extends DeviceType {
         currentFoodQuantity: 0,
         currentFoodUnit: 'NONE',
         currentToggleSettings: {
-          keep_warm: false
-        }
+          keep_warm: false,
+        },
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -103,5 +103,7 @@ window.deviceTypes.push({
   identifier: '_addMulticooker',
   icon: 'maps:local-mall',
   label: 'Multicooker',
-  function: (app) => { app._createDevice(Multicooker.createDevice()); }
+  function: (app) => {
+    app._createDevice(Multicooker.createDevice());
+  },
 })

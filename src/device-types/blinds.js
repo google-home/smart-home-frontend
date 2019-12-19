@@ -21,7 +21,7 @@ class Blinds extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['sink window'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -36,7 +36,7 @@ class Blinds extends DeviceType {
       type,
       traits: [
         'action.devices.traits.OpenClose',
-        'action.devices.traits.Rotation'
+        'action.devices.traits.Rotation',
       ],
       defaultNames: [`Smart Blinds`],
       name: `Smart Blinds`,
@@ -48,18 +48,18 @@ class Blinds extends DeviceType {
         supportsPercent: false,
         rotationDegreesRange: {
           rotationDegreesMin: 0,
-          rotationDegreesMax: 360
-        }
+          rotationDegreesMax: 360,
+        },
       },
       willReportState: true,
       states: {
         online: true,
         openState: [{
           openPercent: 0,
-          openDirection: 'LEFT'
+          openDirection: 'LEFT',
         }, {
           openPercent: 0,
-          openDirection: 'RIGHT'
+          openDirection: 'RIGHT',
         }],
         rotationDegrees: 0,
       },
@@ -76,5 +76,7 @@ window.deviceTypes.push({
   identifier: '_addBlinds',
   icon: 'icons:view-week',
   label: 'Blinds',
-  function: (app) => { app._createDevice(Blinds.createDevice()); }
+  function: (app) => {
+    app._createDevice(Blinds.createDevice());
+  },
 })

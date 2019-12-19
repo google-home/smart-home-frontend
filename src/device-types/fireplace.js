@@ -21,10 +21,10 @@ class Fireplace extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Downstairs Fireplace'],
-      roomHint: 'Living Room'
+      roomHint: 'Living Room',
     }, {
       nicknames: ['firepit'],
-      roomHint: 'Garden'
+      roomHint: 'Garden',
     }];
   }
 
@@ -53,9 +53,9 @@ class Fireplace extends DeviceType {
             lang: 'en',
           }, {
             name_synonym: ['Hintergrundbeleuchtung', 'Stimmungslicht'],
-            lang: 'de'
-          }]
-        }]
+            lang: 'de',
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -74,5 +74,7 @@ window.deviceTypes.push({
   identifier: '_addFireplace',
   icon: 'social:whatshot',
   label: 'Fireplace',
-  function: (app) => { app._createDevice(Fireplace.createDevice()); }
+  function: (app) => {
+    app._createDevice(Fireplace.createDevice());
+  },
 })

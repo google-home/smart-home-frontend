@@ -21,16 +21,16 @@ class CoffeeMaker extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['little coffee pot'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['coffee maker'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }, {
       nicknames: ['my coffee cup'],
-      roomHint: 'Office'
+      roomHint: 'Office',
     }, {
       nicknames: ['desktop espresso machine'],
-      roomHint: 'Office'
+      roomHint: 'Office',
     }];
   }
 
@@ -55,20 +55,20 @@ class CoffeeMaker extends DeviceType {
       attributes: {
         temperatureRange: {
           minThresholdCelsius: 0.0,
-          maxThresholdCelsius: 100.0
+          maxThresholdCelsius: 100.0,
         },
         temperatureUnitForUX: 'C',
         supportedCookingModes: [
-          'BREW'
+          'BREW',
         ],
         foodPresets: [{
           food_preset_name: 'coffee',
           supported_units: ['NO_UNITS', 'CUPS'],
           food_synonyms: [{
             synonyms: ['coffee'],
-            lang: 'en'
-          }]
-        }]
+            lang: 'en',
+          }],
+        }],
       },
       willReportState: true,
       states: {
@@ -77,7 +77,7 @@ class CoffeeMaker extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE'
+        currentFoodUnit: 'NONE',
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -92,5 +92,7 @@ window.deviceTypes.push({
   identifier: '_addCoffeeMaker',
   icon: 'maps:local-cafe',
   label: 'Coffee Maker',
-  function: (app) => { app._createDevice(CoffeeMaker.createDevice()); }
+  function: (app) => {
+    app._createDevice(CoffeeMaker.createDevice());
+  },
 })

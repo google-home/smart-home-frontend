@@ -1,0 +1,17 @@
+{
+    "extends": ["eslint:recommended", "google", "plugin:polymer/polymer-3"],
+    "plugins": ["polymer"],
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "env": {
+        "es6": true,
+        "browser": true
+    },
+    "rules": {
+        "no-case-declarations": "off",
+        "object-curly-spacing": "off",
+        "require-jsdoc": "off",
+        "semi": "off"
+    }
+}

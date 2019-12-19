@@ -19,7 +19,7 @@ class Bed extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['Electric Bed'],
-      roomHint: 'Bedroom'
+      roomHint: 'Bedroom',
     }];
   }
 
@@ -33,7 +33,7 @@ class Bed extends DeviceType {
       id: instance.genUuid(),
       type: 'action.devices.types.BED',
       traits: [
-        'action.devices.traits.Modes'
+        'action.devices.traits.Modes',
       ],
       defaultNames: [`Smart Bed`],
       name: `Smart Bed`,
@@ -44,30 +44,30 @@ class Bed extends DeviceType {
           name: 'massage',
           name_values: [{
             name_synonym: ['massage'],
-            lang: 'en'
+            lang: 'en',
           }],
           settings: [{
             setting_name: 'lumbar',
             setting_values: [{
               setting_synonym: ['back', 'middle'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }, {
             setting_name: 'head',
             setting_values: [{
               setting_synonym: ['head', 'neck'],
-              lang: 'en'
-            }]
+              lang: 'en',
+            }],
           }],
-          ordered: true
-        }]
+          ordered: true,
+        }],
       },
       willReportState: true,
       states: {
         online: true,
         currentModeSettings: {
-          massage: 'lumbar'
-        }
+          massage: 'lumbar',
+        },
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -81,5 +81,7 @@ window.deviceTypes.push({
   identifier: '_addBed',
   icon: 'notification:airline-seat-individual-suite',
   label: 'Bed',
-  function: (app) => { app._createDevice(Bed.createDevice()); }
+  function: (app) => {
+    app._createDevice(Bed.createDevice());
+  },
 })

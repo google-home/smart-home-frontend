@@ -38,13 +38,13 @@ window.deviceTypes.push({
           roomHint: json.roomHint,
           willReportState: json.willReportState || false,
           states: {
-            online: true
+            online: true,
           },
           hwVersion: json.deviceInfo.hwVersion,
           swVersion: json.deviceInfo.swVersion,
           model: json.deviceInfo.model,
           manufacturer: json.deviceInfo.manufacturer,
-          customData: json.customData
+          customData: json.customData,
         }
         app._createDevice(device);
         app.$['insert-json'].close()
@@ -52,5 +52,5 @@ window.deviceTypes.push({
         app.$['insert-json-message'].innerText = 'Error creating device: ' + e
       }
     }
-  }
+  },
 })

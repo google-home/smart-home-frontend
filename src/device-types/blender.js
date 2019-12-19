@@ -21,7 +21,7 @@ class Blender extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['My blender'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -54,18 +54,18 @@ class Blender extends DeviceType {
           supported_units: ['CUPS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['smoothie', 'shake'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }, {
           food_preset_name: 'salad dressing',
           supported_units: ['CUPS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['salad dressing', 'dressing'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         maxTimerLimitSec: 30,
-        pausable: true
+        pausable: true,
       },
       willReportState: true,
       states: {
@@ -77,7 +77,7 @@ class Blender extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE'
+        currentFoodUnit: 'NONE',
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -92,5 +92,7 @@ window.deviceTypes.push({
   identifier: '_addBlender',
   icon: 'notification:sync-problem',
   label: 'Blender',
-  function: (app) => { app._createDevice(Blender.createDevice()); }
+  function: (app) => {
+    app._createDevice(Blender.createDevice());
+  },
 })

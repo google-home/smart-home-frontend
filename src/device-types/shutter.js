@@ -21,7 +21,7 @@ class Shutter extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['back window shutter'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -35,25 +35,25 @@ class Shutter extends DeviceType {
       id: instance.genUuid(),
       type,
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.OpenClose',
       ],
       defaultNames: [`Smart Shutter`],
       name: `Smart Shutter`,
       nicknames: instance.getNicknames(element),
       roomHint: instance.getRoomHint(element),
       attributes: {
-        openDirection: ['LEFT', 'RIGHT']
+        openDirection: ['LEFT', 'RIGHT'],
       },
       willReportState: true,
       states: {
         online: true,
         openState: [{
           openPercent: 0,
-          openDirection: 'LEFT'
+          openDirection: 'LEFT',
         }, {
           openPercent: 0,
-          openDirection: 'RIGHT'
-        }]
+          openDirection: 'RIGHT',
+        }],
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -68,5 +68,7 @@ window.deviceTypes.push({
   identifier: '_addShutter',
   icon: 'maps:map',
   label: 'Shutters',
-  function: (app) => { app._createDevice(Shutter.createDevice()); }
+  function: (app) => {
+    app._createDevice(Shutter.createDevice());
+  },
 })

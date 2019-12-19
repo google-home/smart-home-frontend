@@ -21,7 +21,7 @@ class Garage extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['left entrance'],
-      roomHint: 'Garage'
+      roomHint: 'Garage',
     }];
   }
 
@@ -35,7 +35,7 @@ class Garage extends DeviceType {
       id: instance.genUuid(),
       type,
       traits: [
-        'action.devices.traits.OpenClose'
+        'action.devices.traits.OpenClose',
       ],
       defaultNames: [`Smart Garage`],
       name: `Smart Garage`,
@@ -44,7 +44,7 @@ class Garage extends DeviceType {
       willReportState: true,
       states: {
         online: true,
-        openPercent: 0
+        openPercent: 0,
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -59,5 +59,7 @@ window.deviceTypes.push({
   identifier: '_addGarage',
   icon: 'notification:drive-eta',
   label: 'Garage Door',
-  function: (app) => { app._createDevice(Garage.createDevice()); }
+  function: (app) => {
+    app._createDevice(Garage.createDevice());
+  },
 })

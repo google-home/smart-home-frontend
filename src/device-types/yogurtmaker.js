@@ -21,7 +21,7 @@ class YogurtMaker extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['My yogurt machine'],
-      roomHint: 'Kitchen'
+      roomHint: 'Kitchen',
     }];
   }
 
@@ -52,18 +52,18 @@ class YogurtMaker extends DeviceType {
           supported_units: ['CUPS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['yogurt', 'yoghurt'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }, {
           food_preset_name: 'coconut yogurt',
           supported_units: ['CUPS', 'OUNCES'],
           food_synonyms: [{
             synonym: ['coconut yogurt', 'vegan yogurt'],
-            lang: 'en'
-          }]
+            lang: 'en',
+          }],
         }],
         maxTimerLimitSec: 30,
-        pausable: true
+        pausable: true,
       },
       willReportState: true,
       states: {
@@ -75,7 +75,7 @@ class YogurtMaker extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE'
+        currentFoodUnit: 'NONE',
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',
@@ -90,5 +90,7 @@ window.deviceTypes.push({
   identifier: '_addYogurtMaker',
   icon: 'icons:group-work',
   label: 'Yogurt Maker',
-  function: (app) => { app._createDevice(YogurtMaker.createDevice()); }
+  function: (app) => {
+    app._createDevice(YogurtMaker.createDevice());
+  },
 })

@@ -21,7 +21,7 @@ class Gate extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['driveway gate'],
-      roomHint: 'Patio'
+      roomHint: 'Patio',
     }];
   }
 
@@ -42,18 +42,18 @@ class Gate extends DeviceType {
       nicknames: instance.getNicknames(element),
       roomHint: instance.getRoomHint(element),
       attributes: {
-        openDirection: ['IN', 'OUT']
+        openDirection: ['IN', 'OUT'],
       },
       willReportState: true,
       states: {
         online: true,
         openState: [{
           openPercent: 0,
-          openDirection: 'IN'
+          openDirection: 'IN',
         }, {
           openPercent: 0,
-          openDirection: 'OUT'
-        }]
+          openDirection: 'OUT',
+        }],
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -68,5 +68,7 @@ window.deviceTypes.push({
   identifier: '_addGate',
   icon: 'device:storage',
   label: 'Gate',
-  function: (app) => { app._createDevice(Gate.createDevice()); }
+  function: (app) => {
+    app._createDevice(Gate.createDevice());
+  },
 })

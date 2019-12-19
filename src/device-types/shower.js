@@ -21,7 +21,7 @@ class Shower extends DeviceType {
     super()
     this.valuesArray = [{
       nicknames: ['guest shower'],
-      roomHint: 'Bathroom'
+      roomHint: 'Bathroom',
     }];
   }
 
@@ -37,7 +37,7 @@ class Shower extends DeviceType {
       traits: [
         'action.devices.traits.StartStop',
         'action.devices.traits.OnOff',
-        'action.devices.traits.Modes'
+        'action.devices.traits.Modes',
       ],
       defaultNames: [`Smart Shower`],
       name: `Smart Shower`,
@@ -50,22 +50,22 @@ class Shower extends DeviceType {
             name_synonym: [
               'monsoon',
               'heavy rain',
-              'waterfall'
+              'waterfall',
             ],
-            lang: 'en'
+            lang: 'en',
           }],
           settings: [{
             setting_name: 'trickle',
             setting_values: [{
               setting_synonym: [
-                "trickle",
-                "gentle"
+                'trickle',
+                'gentle',
               ],
-              lang: 'en'
-            }]
-          }]
+              lang: 'en',
+            }],
+          }],
         }],
-        ordered: true
+        ordered: true,
       },
       willReportState: true,
       states: {
@@ -74,8 +74,8 @@ class Shower extends DeviceType {
         isRunning: false,
         isPaused: false,
         currentModeSettings: {
-          monsoon: 'trickle'
-        }
+          monsoon: 'trickle',
+        },
       },
       hwVersion: '3.2',
       swVersion: '11.4',
@@ -90,5 +90,7 @@ window.deviceTypes.push({
   identifier: '_addShower',
   icon: 'maps:local-car-wash',
   label: 'Shower',
-  function: (app) => { app._createDevice(Shower.createDevice()); }
+  function: (app) => {
+    app._createDevice(Shower.createDevice());
+  },
 })

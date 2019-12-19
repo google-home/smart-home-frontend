@@ -17,10 +17,6 @@ let instance;
 const type = 'action.devices.types.SCENE'
 
 class Scene extends DeviceType {
-  constructor() {
-    super()
-  }
-
   static createDevice() {
     if (!instance) {
       instance = new Scene()
@@ -37,7 +33,7 @@ class Scene extends DeviceType {
       nicknames: [`Party Mode`],
       roomHint: '',
       attributes: {
-        sceneReversible: true
+        sceneReversible: true,
       },
       willReportState: false,
       states: {
@@ -57,5 +53,7 @@ window.deviceTypes.push({
   identifier: '_addScene',
   icon: 'image:slideshow',
   label: 'Scene',
-  function: (app) => { app._createDevice(Scene.createDevice()); }
+  function: (app) => {
+    app._createDevice(Scene.createDevice());
+  },
 })
