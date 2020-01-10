@@ -15,7 +15,7 @@ import '@polymer/iron-flex-layout/iron-flex-layout-classes.js'
 import '@polymer/paper-input/paper-input.js'
 import '@polymer/paper-slider/paper-slider.js'
 import '@polymer/paper-toggle-button/paper-toggle-button.js';
-
+import '@polymer/paper-tooltip/paper-tooltip.js';
 
 const ENTERKEY = 13;
 
@@ -115,12 +115,24 @@ export class SmartDevice extends PolymerElement {
           <paper-icon-button id="reportState" icon="arrow-downward"
               on-tap="_handleReportState">
           </paper-icon-button>
+          <paper-tooltip for="reportState" animation-delay="0">
+            Enable or disable state reporting
+          </paper-tooltip>
           <paper-icon-button id="tfa" icon="lock" on-tap="_handleTfa">
           </paper-icon-button>
+          <paper-tooltip for="tfa" animation-delay="0">
+            Configure two-factor authentication
+          </paper-tooltip>
           <paper-icon-button id="cloud" icon="cloud-off" on-tap="_handleCloud">
           </paper-icon-button>
+          <paper-tooltip for="cloud" animation-delay="0">
+            Mark device as online or offline
+          </paper-tooltip>
           <paper-icon-button id="delete" icon="delete" on-tap="_handleDelete">
           </paper-icon-button>
+          <paper-tooltip for="delete" animation-delay="0">
+            Delete this device
+          </paper-tooltip>
         </div>
 
         <!-- icon -->

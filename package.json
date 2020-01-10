@@ -10,7 +10,7 @@
     "lint": "eslint ./src",
     "start": "polymer serve",
     "serve": "npm run start",
-    "test": "npm run lint && npm run build"
+    "test": "touch src/firebase-setup.js && npm run lint && npm run build"
   },
   "dependencies": {
     "@polymer/app-layout": "^3.0.1",
@@ -24,6 +24,7 @@
     "@polymer/paper-slider": "^3.0.1",
     "@polymer/paper-toast": "^3.0.1",
     "@polymer/paper-toggle-button": "^3.0.1",
+    "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.1.0"
   },
   "devDependencies": {
