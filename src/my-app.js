@@ -418,7 +418,7 @@ export class MyApp extends PolymerElement {
    * Displays a toast message with the user's name.
    */
   _showAccount() {
-    this.$.toast.text = `Welcome ${window.USERNAME}`;
+    this.$.toast.text = `Welcome user "1234"`;
     this.$.toast.open();
   }
 
