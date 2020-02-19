@@ -44,6 +44,7 @@ import './device-types/blender.js';
 import './device-types/blinds.js';
 import './device-types/boiler.js';
 import './device-types/camera.js';
+import './device-types/charger.js';
 import './device-types/closet.js';
 import './device-types/coffee-maker.js';
 import './device-types/cooktop.js';
