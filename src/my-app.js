@@ -81,6 +81,7 @@ import './device-types/radiator.js';
 import './device-types/refrigerator.js';
 import './device-types/scene.js';
 import './device-types/security-system.js';
+import './device-types/settop.js';
 import './device-types/shower.js';
 import './device-types/shutter.js';
 import './device-types/sousvide.js';
