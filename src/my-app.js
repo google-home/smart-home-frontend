@@ -88,6 +88,7 @@ import './device-types/sprinkler.js';
 import './device-types/standmixer';
 import './device-types/switch.js';
 import './device-types/thermostat.js';
+import './device-types/tv.js';
 import './device-types/vacuum.js';
 import './device-types/valve.js';
 import './device-types/washer.js';
