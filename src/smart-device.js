@@ -504,6 +504,16 @@ export class SmartDevice extends PolymerElement {
           });
           break;
 
+        case 'action.devices.traits.EnergyStorage':
+          this.traitHandlers.push((states) => {
+            if (states.isCharging) {
+              this.$.icon.style.color = '#9bea00';
+            } else {
+              this.$.icon.style.color = '#333333';
+            }
+          })
+          break
+
         case 'action.devices.traits.FanSpeed':
           this.traitHandlers.push((states) => {
             switch (states.currentFanSpeedSetting) {
