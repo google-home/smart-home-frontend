@@ -79,6 +79,7 @@ import './device-types/petfeeder.js';
 import './device-types/pressurecooker.js';
 import './device-types/radiator.js';
 import './device-types/refrigerator.js';
+import './device-types/remote.js';
 import './device-types/scene.js';
 import './device-types/security-system.js';
 import './device-types/settop.js';
