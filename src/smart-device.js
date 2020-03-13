@@ -398,6 +398,18 @@ export class SmartDevice extends PolymerElement {
     const {traits} = this.device;
     traits.forEach((trait) => {
       switch (trait) {
+        case 'action.devices.traits.AppSelector':
+          const appElement = document.createElement('div');
+          appElement.appendChild(document.createTextNode(`App: `))
+          appElement.id = `states-appselector`;
+          const appValue = document.createElement('span');
+          appElement.appendChild(appValue);
+          this.$.states.appendChild(appElement);
+          this.traitHandlers.push((states) => {
+            appValue.innerText = states.currentApplication
+          })
+          break;
+
         case 'action.devices.traits.ArmDisarm':
           this.traitHandlers.push((states) => {
             switch (states.currentArmLevel) {
@@ -567,6 +579,18 @@ export class SmartDevice extends PolymerElement {
           })
           break;
 
+        case 'action.devices.traits.InputSelector':
+          const inputElement = document.createElement('div');
+          inputElement.appendChild(document.createTextNode(`Input: `))
+          inputElement.id = `states-inputselector`;
+          const inputValue = document.createElement('span');
+          inputElement.appendChild(inputValue);
+          this.$.states.appendChild(inputElement);
+          this.traitHandlers.push((states) => {
+            inputValue.innerText = states.currentInput
+          })
+          break;
+
         case 'action.devices.traits.Locator':
           this.traitHandlers.push((states) => {
             if (states.generatedAlert) {
@@ -599,6 +623,22 @@ export class SmartDevice extends PolymerElement {
               }
             }
           });
+          break;
+
+        case 'action.devices.traits.MediaState':
+          const mediaElement = document.createElement('div');
+          mediaElement.id = `states-mediastate`;
+          this.$.states.appendChild(mediaElement);
+          this.traitHandlers.push((states) => {
+            if (states.activityState === 'INACTIVE') {
+              mediaElement.innerText = 'Currently inactive'
+            } else if (states.activityState === 'STANDBY') {
+              mediaElement.innerText = 'Ready to play'
+            } else if (states.activityState === 'ACTIVE') {
+              const {playbackState} = states
+              mediaElement.innerText = playbackState
+            }
+          })
           break;
 
         case 'action.devices.traits.Modes':
@@ -916,6 +956,18 @@ export class SmartDevice extends PolymerElement {
               }
             }
           });
+          break;
+
+        case 'action.devices.traits.Volume':
+          const volumeElement = document.createElement('div');
+          volumeElement.appendChild(document.createTextNode(`Volume: `))
+          volumeElement.id = `states-volume`;
+          const volumeValue = document.createElement('span');
+          volumeElement.appendChild(volumeValue);
+          this.$.states.appendChild(volumeElement);
+          this.traitHandlers.push((states) => {
+            volumeValue.innerText = states.currentVolume
+          })
           break;
 
         case 'action.devices.traits.CameraStream':
