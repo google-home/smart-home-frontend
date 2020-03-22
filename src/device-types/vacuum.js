@@ -77,7 +77,7 @@ class Vacuum extends DeviceType {
 window.deviceTypes.push({
   type,
   identifier: '_addVacuum',
-  icon: 'hardware:router',
+  icon: 'hardware:scanner',
   label: 'Vacuum',
   function: (app) => {
     app._createDevice(Vacuum.createDevice());

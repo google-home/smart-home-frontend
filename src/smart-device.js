@@ -663,6 +663,36 @@ export class SmartDevice extends PolymerElement {
           });
           break;
 
+        case 'action.devices.traits.NetworkControl':
+          const networkElement = document.createElement('div');
+          const networkSettingsDiv = document.createElement('div');
+          const guestNetworkSettingsDiv = document.createElement('div');
+          const speedTestDiv = document.createElement('div');
+          networkElement.appendChild(networkSettingsDiv);
+          networkElement.appendChild(guestNetworkSettingsDiv);
+          networkElement.appendChild(speedTestDiv);
+          this.$.states.appendChild(networkElement);
+
+          this.traitHandlers.push((states) => {
+            networkSettingsDiv.innerText = states.networkSettings.ssid
+
+            guestNetworkSettingsDiv.innerText =
+              states.guestNetworkSettings.ssid
+            if (states.guestNetworkEnabled) {
+              guestNetworkSettingsDiv.classList.remove('disabled')
+            } else {
+              guestNetworkSettingsDiv.classList.add('disabled')
+            }
+            const {
+              downloadSpeedMbps,
+              uploadSpeedMbps,
+            } = states.lastNetworkDownloadSpeedTest
+            speedTestDiv.innerText =
+              `${downloadSpeedMbps} Mbps Down / ${uploadSpeedMbps} ` +
+              `Mbps Up`
+          })
+          break;
+
         case 'action.devices.traits.OnOff':
           this.$.icon.style.cursor = 'pointer';
           this.$.icon.addEventListener('tap', (event) => {
