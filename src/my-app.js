@@ -58,6 +58,7 @@ import './device-types/dryer.js';
 import './device-types/fan.js';
 import './device-types/faucet.js';
 import './device-types/fireplace.js';
+import './device-types/freezer.js';
 import './device-types/fryer.js';
 import './device-types/garage.js';
 import './device-types/gate.js';
