@@ -58,7 +58,7 @@ class PressureCooker extends DeviceType {
         }, {
           food_preset_name: 'ribs',
           supportedUnits: ['POUNDS', 'OUNCES'],
-          foodSynonyms: [{
+          food_synonyms: [{
             synonym: ['ribs', 'rack of ribs'],
             lang: 'en',
           }],
