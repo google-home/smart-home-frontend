@@ -11,6 +11,34 @@
  * limitations under the License.
  */
 
+/**
+ * Transforms a smart home device to fit in the sample database
+ *
+ * @param {object} json Smart home device payload
+ * @return {object} Data model for device to put into Firestore
+ */
+function generateDeviceModel(json) {
+  return {
+    id: json.id,
+    type: json.type,
+    traits: json.traits,
+    attributes: json.attributes,
+    defaultNames: json.name.defaultNames,
+    name: json.name.name,
+    nicknames: json.name.nicknames,
+    roomHint: json.roomHint,
+    willReportState: json.willReportState || false,
+    states: {
+      online: true,
+    },
+    hwVersion: json.deviceInfo ? json.deviceInfo.hwVersion : undefined,
+    swVersion: json.deviceInfo ? json.deviceInfo.swVersion : undefined,
+    model: json.deviceInfo ? json.deviceInfo.model : undefined,
+    manufacturer: json.deviceInfo ? json.deviceInfo.manufacturer : undefined,
+    customData: json.customData,
+  }
+}
+
 window.deviceTypes.push({
   identifier: '_addJson',
   icon: 'icons:settings-ethernet',
@@ -27,26 +55,16 @@ window.deviceTypes.push({
       // Make a few data adjustments before DB insertion
       try {
         const json = JSON.parse(text)
-        const device = {
-          id: json.id,
-          type: json.type,
-          traits: json.traits,
-          attributes: json.attributes,
-          defaultNames: json.name.defaultNames,
-          name: json.name.name,
-          nicknames: json.name.nicknames,
-          roomHint: json.roomHint,
-          willReportState: json.willReportState || false,
-          states: {
-            online: true,
-          },
-          hwVersion: json.deviceInfo.hwVersion,
-          swVersion: json.deviceInfo.swVersion,
-          model: json.deviceInfo.model,
-          manufacturer: json.deviceInfo.manufacturer,
-          customData: json.customData,
+        if ('requestId' in json) {
+          // Importing a full SYNC payload rather than just one device
+          const deviceList = json.payload.devices
+          for (const device of deviceList) {
+            app._createDevice(generateDeviceModel(device));
+          }
+        } else {
+          // Just importing a single device
+          app._createDevice(generateDeviceModel(json));
         }
-        app._createDevice(device);
         app.$['insert-json'].close()
       } catch (e) {
         app.$['insert-json-message'].innerText = 'Error creating device: ' + e
