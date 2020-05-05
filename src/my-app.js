@@ -35,6 +35,7 @@ import '@polymer/paper-toggle-button/paper-toggle-button.js';
 
 import './smart-device.js';
 import './device-types/ac-unit.js';
+import './device-types/air-cooler.js';
 import './device-types/air-freshener.js';
 import './device-types/air-purifier.js';
 import './device-types/awning.js';
