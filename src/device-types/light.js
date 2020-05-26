@@ -122,7 +122,7 @@ class Light extends DeviceType {
         online: true,
         brightness: 90,
         color: {
-          spectrumRgb: 0,
+          spectrumRgb: 0xFF0000 /* Red */,
         },
       },
       hwVersion: '1.0.0',
