@@ -119,6 +119,13 @@ class Tv extends DeviceType {
         commandOnlyVolume: false,
         supportActivityState: true,
         supportPlaybackState: true,
+        currentModeSettings: {
+          'picture': 'game',
+        },
+        currentToggleSettings: {
+          'hdr': false,
+          '3d_audio': false,
+        },
       },
       willReportState: true,
       states: {
