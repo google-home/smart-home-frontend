@@ -83,7 +83,7 @@ class PressureCooker extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE',
+        currentFoodUnit: 'NO_UNITS',
         currentToggleSettings: {
           chime: false,
         },

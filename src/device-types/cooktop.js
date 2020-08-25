@@ -95,7 +95,7 @@ class Cooktop extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE',
+        currentFoodUnit: 'NO_UNITS',
         currentModeSettings: {
           heat: 'low',
         },
