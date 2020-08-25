@@ -75,7 +75,7 @@ class SousVide extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE',
+        currentFoodUnit: 'NO_UNITS',
       },
       hwVersion: '1.0.0',
       swVersion: '2.0.0',

@@ -62,7 +62,7 @@ class Microwave extends DeviceType {
         currentCookingMode: 'NONE',
         currentFoodPreset: 'NONE',
         currentFoodQuantity: 0,
-        currentFoodUnit: 'NONE',
+        currentFoodUnit: 'NO_UNITS',
       },
       hwVersion: '3.2',
       swVersion: '11.4',
