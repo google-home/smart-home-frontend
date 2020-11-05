@@ -3,36 +3,37 @@
   "version": "0.0.1",
   "description": "Demo for devices that work with the Google Assistant",
   "scripts": {
-    "build": "npm run build:polymer",
-    "build:polymer": "polymer build",
-    "clean": "rm -rf ./build/",
-    "create-firebase-config": "firebase setup:web > ./src/firebase-setup.js",
+    "build": "rollup -c rollup.config.js",
+    "clean": "rm ./build/my-app.js",
     "lint": "eslint ./src",
-    "start": "polymer serve",
-    "serve": "npm run start",
-    "test": "touch src/firebase-setup.js && npm run lint && npm run build"
+    "test": "npm run lint"
   },
   "dependencies": {
-    "@polymer/app-layout": "^3.0.1",
+    "@polymer/app-layout": "^3.1.0",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
-    "@polymer/iron-list": "^3.0.1",
+    "@polymer/iron-list": "^3.1.0",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-dialog": "^3.0.1",
-    "@polymer/paper-icon-button": "^3.0.1",
-    "@polymer/paper-input": "^3.0.1",
+    "@polymer/paper-icon-button": "^3.0.2",
+    "@polymer/paper-input": "^3.2.1",
     "@polymer/paper-slider": "^3.0.1",
     "@polymer/paper-toast": "^3.0.1",
     "@polymer/paper-toggle-button": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@polymer/polymer": "^3.1.0"
+    "@polymer/polymer": "^3.4.1",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
-    "eslint": "^6.7.2",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-virtual": "^2.0.3",
+    "eslint": "^7.12.1",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-polymer": "^0.4.0",
-    "firebase-tools": "^6.0.0",
-    "polymer-cli": "^1.8.1"
+    "firebase-tools": "^8.15.0",
+    "rollup": "^2.33.1",
+    "yaml": "^1.10.0"
   },
   "author": "Google"
 }

@@ -244,8 +244,7 @@ export class SmartDevice extends PolymerElement {
     if (event.target.id == 'nickname') {
       this.device.nicknames[0] = event.target.value;
 
-      // eslint-disable-next-line
-      return fetch(`${API_ENDPOINT}/smarthome/update`, {
+      return fetch('/smarthome/update', {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json',
@@ -259,8 +258,7 @@ export class SmartDevice extends PolymerElement {
     } else if (event.target.id == 'name') {
       this.device.name = event.target.value;
 
-      // eslint-disable-next-line
-      return fetch(`${API_ENDPOINT}/smarthome/update`, {
+      return fetch('/smarthome/update', {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json',
@@ -334,8 +332,7 @@ export class SmartDevice extends PolymerElement {
   }
 
   _localExecutionChanged(localexecution, localdeviceid) {
-    // eslint-disable-next-line
-    return fetch(`${API_ENDPOINT}/smarthome/update`, {
+    return fetch('/smarthome/update', {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -377,8 +374,7 @@ export class SmartDevice extends PolymerElement {
     if (!this.device.willReportState) return;
 
     // Push state
-    // eslint-disable-next-line
-    return fetch(`${API_ENDPOINT}/smarthome/update`, {
+    return fetch('/smarthome/update', {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json',

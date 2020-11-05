@@ -109,6 +109,8 @@ import './device-types/window.js';
 import './device-types/yogurtmaker.js';
 import './device-types/importer.js';
 
+/* global firebase */
+
 export class MyApp extends PolymerElement {
   static get template() {
     return html`
@@ -316,7 +318,6 @@ export class MyApp extends PolymerElement {
   ready() {
     super.ready()
     // Initialize Cloud Firestore through Firebase
-    // eslint-disable-next-line
     this.db = firebase.firestore();
     // Disable deprecated features
     this.db.settings({
@@ -406,8 +407,7 @@ export class MyApp extends PolymerElement {
     })
 
     // Remove this device
-    // eslint-disable-next-line
-    return fetch(`${API_ENDPOINT}/smarthome/delete`, {
+    return fetch('/smarthome/delete', {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -440,8 +440,7 @@ export class MyApp extends PolymerElement {
     this._addDevice(device);
     // Push new device to database
     try {
-      // eslint-disable-next-line
-      await fetch(`${API_ENDPOINT}/smarthome/create`, {
+      await fetch('/smarthome/create', {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json',

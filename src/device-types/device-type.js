@@ -28,3 +28,5 @@ export class DeviceType {
     return element ? element.roomHint : '';
   }
 }
+
+window.deviceTypes = [];

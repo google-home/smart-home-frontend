@@ -1,9 +1,4 @@
-.cache/
-build/
-dist/
-tsc/
-node_modules/
-src/firebase-setup.js
-yarn-error.log
 .firebaserc
-yarn.lock
+.firebase/
+node_modules/
+public/my-app.js
