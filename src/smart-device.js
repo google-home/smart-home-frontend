@@ -173,12 +173,17 @@ export class SmartDevice extends PolymerElement {
 
         <!-- local execution -->
         <div>
-          <paper-toggle-button id="localExecution" checked="{{localexecution}}">
-            Local Execution
+          <paper-toggle-button
+              id="localExecution"
+              checked="{{localexecution::change}}">
+              Local Execution
           </paper-toggle-button>
-          <paper-input id="localDeviceId" label="Local Device ID"
-              value="{{localdeviceid}}"
-              disabled="[[!localexecution]]">
+          <paper-input id="localDeviceId"
+              label="Local Device ID"
+              value="{{localdeviceid::change}}"
+              disabled="[[!localexecution]]"
+              required
+              auto-validate>
           </paper-input>
         </div>
       </div>
@@ -198,17 +203,13 @@ export class SmartDevice extends PolymerElement {
       },
       localexecution: {
         type: Boolean,
+        observer: '_localExecutionChanged',
       },
       localdeviceid: {
         type: String,
+        observer: '_localDeviceIdChanged',
       },
     }
-  }
-
-  static get observers() {
-    return [
-      '_localExecutionChanged(localexecution, localdeviceid)',
-    ]
   }
 
   ready() {
@@ -331,7 +332,36 @@ export class SmartDevice extends PolymerElement {
     app.removeDevice(this.deviceid);
   }
 
-  _localExecutionChanged(localexecution, localdeviceid) {
+  _localExecutionChanged(newValue, oldValue) {
+    // do not trigger /update on host initialization.
+    if (oldValue === undefined) {
+      return;
+    }
+    // initialize local device ID if first time being set.
+    if (newValue === true && this.localdeviceid === undefined) {
+      this.localdeviceid = '';
+      return;
+    }
+    // do not enable local execution if locale device ID invalid.
+    if (newValue === true && this.$.localDeviceId.invalid === true) {
+      return;
+    }
+    return this._updateLocalExecution();
+  }
+
+  _localDeviceIdChanged(newValue, oldValue) {
+    // do not trigger /update on host initialization.
+    if (oldValue === undefined) {
+      return;
+    }
+    // do not trigger /update if local device id is invalid.
+    if (this.$.localDeviceId.invalid === true) {
+      return;
+    }
+    return this._updateLocalExecution();
+  }
+
+  _updateLocalExecution() {
     return fetch('/smarthome/update', {
       method: 'POST',
       headers: new Headers({
@@ -340,7 +370,7 @@ export class SmartDevice extends PolymerElement {
       body: JSON.stringify({
         userId: '1234',
         deviceId: this.deviceid,
-        localDeviceId: localexecution ? localdeviceid : null,
+        localDeviceId: this.localexecution ? this.localdeviceid : null,
       }),
     }).catch((e) => {
       console.error('failed to update device', e);
