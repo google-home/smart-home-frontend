@@ -31,7 +31,7 @@
     "eslint": "^7.12.1",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-polymer": "^0.4.0",
-    "firebase-tools": "^9.1.2",
+    "firebase-tools": "^9.23.3",
     "rollup": "^2.33.1",
     "yaml": "^1.10.0"
   },
