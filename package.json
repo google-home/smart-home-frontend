@@ -33,7 +33,7 @@
     "eslint-plugin-polymer": "^0.4.0",
     "firebase-tools": "^9.1.2",
     "rollup": "^2.33.1",
-    "yaml": "^1.10.0"
+    "yaml": "^2.2.2"
   },
   "author": "Google"
 }
