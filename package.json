@@ -32,7 +32,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-polymer": "^0.4.0",
     "firebase-tools": "^9.1.2",
-    "rollup": "^2.33.1",
+    "rollup": "^2.80.0",
     "yaml": "^1.10.0"
   },
   "author": "Google"
